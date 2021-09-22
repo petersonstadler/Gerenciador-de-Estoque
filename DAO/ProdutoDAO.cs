@@ -33,9 +33,8 @@ namespace Gerenciador_de_Estoque.DAO
             }
         }
 
-        public void InserirProduto(Produto produto)
+        private void AdicionarParametros(Produto produto)
         {
-            mySqlCmd.CommandText = "INSERT INTO produtos (nomeproduto, descproduto, tamanhoproduto, custoproduto, precoproduto, categorias_idcategoria, qtdproduto, ativoproduto) VALUES (?nome, ?descricao, ?tamanho, ?custo, ?preco, ?idcategoria, ?quantidade, ?ativo);";
             mySqlCmd.Parameters.AddWithValue("?nome", produto.Nome);
             mySqlCmd.Parameters.AddWithValue("?descricao", produto.Descricao);
             mySqlCmd.Parameters.AddWithValue("?tamanho", produto.Tamanho);
@@ -44,14 +43,20 @@ namespace Gerenciador_de_Estoque.DAO
             mySqlCmd.Parameters.AddWithValue("?idcategoria", produto.Idcategoria);
             mySqlCmd.Parameters.AddWithValue("?quantidade", produto.Quantidade);
             mySqlCmd.Parameters.AddWithValue("?ativo", produto.Ativo);
+        }
+
+        public void InserirProduto(Produto produto)
+        {
+            mySqlCmd.CommandText = "INSERT INTO produtos (nomeproduto, descproduto, tamanhoproduto, custoproduto, precoproduto, categorias_idcategoria, qtdproduto, ativoproduto) VALUES (?nome, ?descricao, ?tamanho, ?custo, ?preco, ?idcategoria, ?quantidade, ?ativo);";
+            AdicionarParametros(produto);
             try
             {
                 mySqlCmd.ExecuteNonQuery();
-                MessageBox.Show("Produto inserido com sucesso!", "Inserir Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Produto inserido com sucesso! \n\n", "Inserir Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
             {
-                MessageBox.Show("Erro ao executar comando Inserir Produto!" + e.Message, "Inserir Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao executar comando Inserir Produto! \n\n" + e.Message, "Inserir Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -67,9 +72,24 @@ namespace Gerenciador_de_Estoque.DAO
             }
             catch(Exception e)
             {
-                MessageBox.Show("Erro ao listar Produtos!" + e.Message, "Listar Produtos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao listar Produtos! \n\n" + e.Message, "Listar Produtos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
+        }
+
+        public void AlterarProduto(Produto produto)
+        {
+            mySqlCmd.CommandText = $"UPDATE produtos SET nomeproduto = ?nome, descproduto = ?descricao, tamanhoproduto = ?tamanho, custoproduto = ?custo, precoproduto = ?preco, categorias_idcategoria = ?idcategoria, qtdproduto = ?quantidade, ativoproduto = ?ativo WHERE idproduto = ?idproduto;";
+            AdicionarParametros(produto);
+            mySqlCmd.Parameters.AddWithValue("idproduto", produto.Id);
+            try
+            {
+                mySqlCmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro ao alterar Produto! \n\n" + e.Message, "Alterar Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

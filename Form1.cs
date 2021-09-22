@@ -23,7 +23,19 @@ namespace Gerenciador_de_Estoque
         {
             try
             {
+                Produto prod = new Produto();
                 ProdutoDAO prodDAO = new ProdutoDAO();
+                prod.Ativo = true;
+                prod.Nome = "teste2";
+                prod.Descricao = "desc";
+                prod.Id = 2;
+                prod.Idcategoria = 2;
+                prod.Tamanho = "G";
+                prod.Custo = 1;
+                prod.Preco = 2;
+
+                prodDAO.AlterarProduto(prod);
+              
             }
             catch(Exception ex)
             {
