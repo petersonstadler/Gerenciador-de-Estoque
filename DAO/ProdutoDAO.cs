@@ -9,7 +9,7 @@ using Gerenciador_de_Estoque.MODEL;
 
 namespace Gerenciador_de_Estoque.DAO
 {
-    class ProdutoDAO
+    public class ProdutoDAO
     {
         private readonly MySqlConnection mySqlConn;
         private readonly MySqlCommand mySqlCmd;
@@ -34,15 +34,15 @@ namespace Gerenciador_de_Estoque.DAO
 
         public void InserirProduto(Produto produto)
         {
-            mySqlCmd.CommandText = "IINSERT INTO produtos (nomeproduto, descproduto, tamanho, custoproduto, precoproduto, categorias_idcategoria, qtdproduto, ativoproduto) VALUES (?nome, ?descricao, ?tamanho, ?custo, ?preco, ?idcategoria, ?quantidade, ?ativo);";
-            mySqlCmd.Parameters.AddWithValue("?nomeproduto", produto.Nome);
-            mySqlCmd.Parameters.AddWithValue("?descproduto", produto.Descricao);
+            mySqlCmd.CommandText = "INSERT INTO produtos (nomeproduto, descproduto, tamanho, custoproduto, precoproduto, categorias_idcategoria, qtdproduto, ativoproduto) VALUES (?nome, ?descricao, ?tamanho, ?custo, ?preco, ?idcategoria, ?quantidade, ?ativo);";
+            mySqlCmd.Parameters.AddWithValue("?nome", produto.Nome);
+            mySqlCmd.Parameters.AddWithValue("?descricao", produto.Descricao);
             mySqlCmd.Parameters.AddWithValue("?tamanho", produto.Tamanho);
             mySqlCmd.Parameters.AddWithValue("?custo", produto.Custo);
             mySqlCmd.Parameters.AddWithValue("?preco", produto.Preco);
             mySqlCmd.Parameters.AddWithValue("?idcategoria", produto.Idcategoria);
             mySqlCmd.Parameters.AddWithValue("?quantidade", produto.Quantidade);
-            mySqlCmd.Parameters.AddWithValue("ativo", produto.Ativo);
+            mySqlCmd.Parameters.AddWithValue("?ativo", produto.Ativo);
             try
             {
                 mySqlCmd.ExecuteNonQuery();
@@ -50,7 +50,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
             catch (Exception e)
             {
-                MessageBox.Show("Erro ao executar comando Inserir Produto!" + e, "Inserir Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao executar comando Inserir Produto!" + e.Message, "Inserir Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
