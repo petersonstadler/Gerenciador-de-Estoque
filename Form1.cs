@@ -24,20 +24,10 @@ namespace Gerenciador_de_Estoque
             try
             {
                 ProdutoDAO prodDAO = new ProdutoDAO();
-                Produto produto = new Produto();
-                produto.Nome = "teste";
-                produto.Descricao = "descricao teste 2";
-                produto.Ativo = true;
-                produto.Custo = (decimal)1.20;
-                produto.Preco = (decimal)5.50;
-                produto.Quantidade = 0;
-                produto.Tamanho = "GG";
-                produto.Idcategoria = 1;
-                prodDAO.InserirProduto(produto);
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Falha ao inserir produto! \n\n" + ex.Message, "Inserir produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao clicar em botão teste! \n\n" + ex.Message, "Inserir produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

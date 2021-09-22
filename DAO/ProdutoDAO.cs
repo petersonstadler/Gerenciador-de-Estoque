@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using Gerenciador_de_Estoque.MODEL;
+using System.Data;
 
 namespace Gerenciador_de_Estoque.DAO
 {
@@ -34,7 +35,7 @@ namespace Gerenciador_de_Estoque.DAO
 
         public void InserirProduto(Produto produto)
         {
-            mySqlCmd.CommandText = "INSERT INTO produtos (nomeproduto, descproduto, tamanho, custoproduto, precoproduto, categorias_idcategoria, qtdproduto, ativoproduto) VALUES (?nome, ?descricao, ?tamanho, ?custo, ?preco, ?idcategoria, ?quantidade, ?ativo);";
+            mySqlCmd.CommandText = "INSERT INTO produtos (nomeproduto, descproduto, tamanhoproduto, custoproduto, precoproduto, categorias_idcategoria, qtdproduto, ativoproduto) VALUES (?nome, ?descricao, ?tamanho, ?custo, ?preco, ?idcategoria, ?quantidade, ?ativo);";
             mySqlCmd.Parameters.AddWithValue("?nome", produto.Nome);
             mySqlCmd.Parameters.AddWithValue("?descricao", produto.Descricao);
             mySqlCmd.Parameters.AddWithValue("?tamanho", produto.Tamanho);
@@ -52,6 +53,23 @@ namespace Gerenciador_de_Estoque.DAO
             {
                 MessageBox.Show("Erro ao executar comando Inserir Produto!" + e.Message, "Inserir Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public DataTable ListarProdutosEmDataTable()
+        {
+            DataTable dt = new DataTable();
+            mySqlCmd.CommandText = "SELECT nomeproduto as Nome, tamanhoproduto as Tamanho, custoproduto as Custo, precoproduto as Preço, qtdproduto as Quantidade, CASE WHEN ativoproduto = true THEN 'SIM' ELSE 'NÃO' end as Ativo FROM produtos";
+            try
+            {
+                MySqlDataReader dr = mySqlCmd.ExecuteReader();
+                dt.Load(dr);
+                dr.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Erro ao listar Produtos!" + e.Message, "Listar Produtos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dt;
         }
     }
 }
