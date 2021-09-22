@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using Gerenciador_de_Estoque.MODEL;
 
 namespace Gerenciador_de_Estoque.DAO
 {
     class ProdutoDAO
     {
-        private MySqlConnection mySqlConn;
-        private MySqlCommand mySqlCmd;
+        private readonly MySqlConnection mySqlConn;
+        private readonly MySqlCommand mySqlCmd;
 
         public ProdutoDAO()
         {
@@ -31,9 +32,26 @@ namespace Gerenciador_de_Estoque.DAO
             }
         }
 
-        public void InserirProduto()
+        public void InserirProduto(Produto produto)
         {
-
+            mySqlCmd.CommandText = "IINSERT INTO produtos (nomeproduto, descproduto, tamanho, custoproduto, precoproduto, categorias_idcategoria, qtdproduto, ativoproduto) VALUES (?nome, ?descricao, ?tamanho, ?custo, ?preco, ?idcategoria, ?quantidade, ?ativo);";
+            mySqlCmd.Parameters.AddWithValue("?nomeproduto", produto.Nome);
+            mySqlCmd.Parameters.AddWithValue("?descproduto", produto.Descricao);
+            mySqlCmd.Parameters.AddWithValue("?tamanho", produto.Tamanho);
+            mySqlCmd.Parameters.AddWithValue("?custo", produto.Custo);
+            mySqlCmd.Parameters.AddWithValue("?preco", produto.Preco);
+            mySqlCmd.Parameters.AddWithValue("?idcategoria", produto.Idcategoria);
+            mySqlCmd.Parameters.AddWithValue("?quantidade", produto.Quantidade);
+            mySqlCmd.Parameters.AddWithValue("ativo", produto.Ativo);
+            try
+            {
+                mySqlCmd.ExecuteNonQuery();
+                MessageBox.Show("Produto inserido com sucesso!", "Inserir Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro ao executar comando Inserir Produto!" + e, "Inserir Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
