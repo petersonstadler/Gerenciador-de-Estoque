@@ -157,6 +157,7 @@ namespace Gerenciador_de_Estoque
             this.button1.TabIndex = 1;
             this.button1.Text = "Produtos";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
