@@ -33,7 +33,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
         }
 
-        private void AdicionarParametros(Produto produto)
+        private void AdicionarParametrosSemId(Produto produto)
         {
             mySqlCmd.Parameters.AddWithValue("?nome", produto.Nome);
             mySqlCmd.Parameters.AddWithValue("?descricao", produto.Descricao);
@@ -48,7 +48,7 @@ namespace Gerenciador_de_Estoque.DAO
         public void InserirProduto(Produto produto)
         {
             mySqlCmd.CommandText = "INSERT INTO produtos (nomeproduto, descproduto, tamanhoproduto, custoproduto, precoproduto, categorias_idcategoria, qtdproduto, ativoproduto) VALUES (?nome, ?descricao, ?tamanho, ?custo, ?preco, ?idcategoria, ?quantidade, ?ativo);";
-            AdicionarParametros(produto);
+            AdicionarParametrosSemId(produto);
             try
             {
                 mySqlCmd.ExecuteNonQuery();
@@ -77,10 +77,53 @@ namespace Gerenciador_de_Estoque.DAO
             return dt;
         }
 
+        private Produto PreencherDadosComDataReader(MySqlDataReader dr)
+        {
+            Produto produto = new Produto();
+            try
+            {
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    produto.Id = dr.GetInt32(0);
+                    produto.Nome = dr.GetString(1);
+                    produto.Descricao = dr.GetString(2);
+                    produto.Tamanho = dr.GetString(3);
+                    produto.Custo = dr.GetDecimal(4);
+                    produto.Preco = dr.GetDecimal(5);
+                    produto.Idcategoria = dr.GetInt32(6);
+                    produto.Quantidade = dr.GetFloat(7);
+                    produto.Ativo = dr.GetBoolean(8);
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Erro ao Preencher dados! \n\n" + e, "Preencher dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return produto;
+        }
+
+        public Produto BuscarProdutoPorId(int id)
+        {
+            Produto produto = new Produto();
+            try
+            {
+                mySqlCmd.CommandText = "SELECT idproduto, nomeproduto, descproduto, tamanhoproduto, custoproduto, precoproduto, categorias_idcategoria, qtdproduto, ativoproduto FROM produtos WHERE idproduto = ?idproduto";
+                mySqlCmd.Parameters.AddWithValue("idproduto", id);
+                MySqlDataReader dr = mySqlCmd.ExecuteReader();
+                produto = PreencherDadosComDataReader(dr);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Erro ao buscar Produto! \n\n" + e.Message, "Buscar Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return produto;
+        }
+
         public void AlterarProduto(Produto produto)
         {
             mySqlCmd.CommandText = $"UPDATE produtos SET nomeproduto = ?nome, descproduto = ?descricao, tamanhoproduto = ?tamanho, custoproduto = ?custo, precoproduto = ?preco, categorias_idcategoria = ?idcategoria, qtdproduto = ?quantidade, ativoproduto = ?ativo WHERE idproduto = ?idproduto;";
-            AdicionarParametros(produto);
+            AdicionarParametrosSemId(produto);
             mySqlCmd.Parameters.AddWithValue("idproduto", produto.Id);
             try
             {

@@ -43,5 +43,13 @@ namespace Gerenciador_de_Estoque
             }
             
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ProdutoDAO pdao = new ProdutoDAO();
+            Produto pd = new Produto();
+            pd = pdao.BuscarProdutoPorId(1);
+            MessageBox.Show($"{pd.Id}, {pd.Nome}, {pd.Descricao}, {pd.Tamanho}, {pd.Custo}, {pd.Preco}, {pd.Idcategoria}, {pd.Quantidade}, {pd.Ativo}");
+        }
     }
 }
