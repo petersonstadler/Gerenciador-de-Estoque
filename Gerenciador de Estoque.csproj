@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\Conexao.cs" />
+    <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
