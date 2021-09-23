@@ -13,9 +13,9 @@ namespace Gerenciador_de_Estoque.DAO
     {
         private readonly MySqlConnection conn;
         private readonly MySqlCommand cmd;
-        string nometabela;
-        string[] NomeColunas;
-        string[] ApelidoColunas;
+        public string nometabela = "";
+        public string[] NomeColunas = new string[0];
+        public string[] ApelidoColunas = new string[0];
 
         public DAO()
         {

@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\Conexao.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
