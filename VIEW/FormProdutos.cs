@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gerenciador_de_Estoque.DAO;
+using Gerenciador_de_Estoque.MODEL;
 
 namespace Gerenciador_de_Estoque.VIEW
 {
@@ -25,10 +26,11 @@ namespace Gerenciador_de_Estoque.VIEW
 
         private void teste_Click(object sender, EventArgs e)
         {
-            /*CategoriaDAO catDao = new CategoriaDAO();
-            DtProdutos.DataSource = catDao.ListarEmDataTable();*/
-            ProdutoDAO prodDao = new ProdutoDAO();
-            DtProdutos.DataSource = prodDao.ListarProdutosEmDataTable();
+            CategoriaDAO catDao = new CategoriaDAO();
+            Categoria categoria = new Categoria();
+            categoria.Nome = "BLUSA";
+            catDao.Inserir(categoria);
+            DtProdutos.DataSource = catDao.ListarEmDataTable();
         }
     }
 }
