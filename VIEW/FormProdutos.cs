@@ -27,11 +27,9 @@ namespace Gerenciador_de_Estoque.VIEW
         private void teste_Click(object sender, EventArgs e)
         {
             CategoriaDAO catDao = new CategoriaDAO();
-            Categoria categoria = new Categoria();
-            categoria.Id = 3;
-            categoria.Nome = "CACHECOL";
-            catDao.Alterar(categoria.Id, categoria);
+            catDao.Deletar(3);
             DtProdutos.DataSource = catDao.ListarEmDataTable();
+            catDao.CloseConnections();
         }
     }
 }

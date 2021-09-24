@@ -185,11 +185,24 @@ namespace Gerenciador_de_Estoque.DAO
             {
                 cmd.CommandText = GerarSqlUPDATE(id);
                 AddParametroAlterar(obj);
-                cmd.ExecuteNonQuery();
+                _ = cmd.ExecuteNonQuery();
             }
             catch(Exception e)
             {
                 MessageBox.Show($"Erro ao Alterar {apelidoTabela}! \n\n" + e.Message, $"Alterar {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Deletar(int id)
+        {
+            try
+            {
+                cmd.CommandText = "DELETE FROM " + nomeTabela + " WHERE " + nomeTodasColunas[0] + " = " + id;
+                _ = cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show($"Erro ao excluir {apelidoTabela}! \n\n" + e.Message, $"Excluir {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
