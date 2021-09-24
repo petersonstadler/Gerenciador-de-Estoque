@@ -205,5 +205,28 @@ namespace Gerenciador_de_Estoque.DAO
                 MessageBox.Show($"Erro ao excluir {apelidoTabela}! \n\n" + e.Message, $"Excluir {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //Este metodo terá que ser sobrescrito na classe que vai ser herdada através do override
+        protected virtual Object PreencherDados(MySqlDataReader dr)
+        {
+            return new Object();
+        }
+
+        public Object BuscarPorId(int id)
+        {
+            Object obj = null;
+            try
+            {
+                cmd.CommandText = "SELECT " + ColunasParaString(nomeTodasColunas) + " FROM " + nomeTabela + " WHERE " + nomeTodasColunas[0] + " = " + id;
+                MySqlDataReader dr = cmd.ExecuteReader();
+                obj = PreencherDados(dr);
+                dr.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show($"Erro ao buscar {apelidoTabela} por ID! \n\n" + e.Message, $"Buscar {apelidoTabela} por ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return obj;
+        }
     }
 }

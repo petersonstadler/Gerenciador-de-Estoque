@@ -27,7 +27,8 @@ namespace Gerenciador_de_Estoque.VIEW
         private void teste_Click(object sender, EventArgs e)
         {
             CategoriaDAO catDao = new CategoriaDAO();
-            catDao.Deletar(3);
+            Categoria categoria = catDao.BuscarPorId(1) as Categoria;
+            MessageBox.Show("Nome: " + categoria.Nome + " Id:" + categoria.Id);
             DtProdutos.DataSource = catDao.ListarEmDataTable();
             catDao.CloseConnections();
         }

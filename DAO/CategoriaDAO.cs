@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Gerenciador_de_Estoque.MODEL;
+using MySql.Data.MySqlClient;
 
 namespace Gerenciador_de_Estoque.DAO
 {
@@ -40,6 +41,15 @@ namespace Gerenciador_de_Estoque.DAO
         {
             Categoria categoria = obj as Categoria;
             cmd.Parameters.AddWithValue(parametrosColunasAlterar[0], categoria.Nome);
+        }
+
+        protected override object PreencherDados(MySqlDataReader dr)
+        {
+            Categoria categoria = new Categoria();
+            dr.Read();
+            categoria.Id = dr.GetInt32("idcategoria");
+            categoria.Nome = dr.GetString("nomecategoria");
+            return categoria;
         }
     }
 }
