@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerenciador de Estoque", "Gerenciador de Estoque.csproj", "{22FE4282-8705-4626-A94E-7E5EEF902CAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerenciado de Estoque TESTES", "..\Gerenciado de Estoque TESTES\Gerenciado de Estoque TESTES.csproj", "{8F95CCD1-34D3-4CC5-8AD2-1AF6C1B2687C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gerenciador de Estoque TESTES", "..\Gerenciado de Estoque TESTES\Gerenciador de Estoque TESTES.csproj", "{8F95CCD1-34D3-4CC5-8AD2-1AF6C1B2687C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

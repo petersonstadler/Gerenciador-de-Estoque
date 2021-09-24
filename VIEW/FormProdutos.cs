@@ -26,11 +26,17 @@ namespace Gerenciador_de_Estoque.VIEW
 
         private void teste_Click(object sender, EventArgs e)
         {
-            CategoriaDAO catDao = new CategoriaDAO();
-            Categoria categoria = catDao.BuscarPorId(1) as Categoria;
-            MessageBox.Show("Nome: " + categoria.Nome + " Id:" + categoria.Id);
-            DtProdutos.DataSource = catDao.ListarEmDataTable();
-            catDao.CloseConnections();
+            ProdutoDAO produtoDao = new ProdutoDAO();
+            MovimentoDAO movimentoDAO = new MovimentoDAO();
+            /*Movimento movimento = new Movimento();
+            movimento.Descricao = "Movimento teste 1";
+            movimento.Quantidade = 1;
+            movimento.Idproduto = 1;
+            movimento.Operacao = "ENTRADA";
+            movimento.Idpedido = 0;
+            movimentoDAO.Inserir(movimento);*/
+            DtProdutos.DataSource = produtoDao.ListarProdutosEmDataTable();
+            DtMovimentos.DataSource = movimentoDAO.ListarEmDataTable();
         }
     }
 }

@@ -93,16 +93,16 @@ namespace Gerenciador_de_Estoque.DAO
         public DataTable ListarEmDataTable()
         {
             DataTable dt = new DataTable();
-            cmd.CommandText = GerarSqlSELECT();
             try
             {
+                cmd.CommandText = GerarSqlSELECT();
                 MySqlDataReader dr = cmd.ExecuteReader();
                 dt.Load(dr);
                 dr.Close();
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Erro ao listar {apelidoTabela}! \n\n" + e.Message, $"Listar {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao listar {apelidoTabela}! \n\n" + e, $"Listar {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
         }
