@@ -26,6 +26,9 @@ namespace Gerenciador_de_Estoque.DAO
         protected string[] colunasInserir = new string[0];
         protected string[] parametrosColunasInserir = new string[0];
 
+        protected string[] colunasAlterar = new string[0];
+        protected string[] parametrosColunasAlterar = new string[0];
+
         public DAO()
         {
             conn = new Conexao().GetConnection();
@@ -127,7 +130,7 @@ namespace Gerenciador_de_Estoque.DAO
             return sql;
         }
 
-        //Este metodo terá que ser criado na classe que vai ser herdada através do override
+        //Este metodo terá que ser sobrescrito na classe que vai ser herdada através do override
         protected virtual void AddParametrosInserir(Object obj) { }
 
         public void Inserir(Object obj)
@@ -141,6 +144,52 @@ namespace Gerenciador_de_Estoque.DAO
             catch(Exception e)
             {
                 MessageBox.Show($"Erro ao inserir {apelidoTabela}! \n\n" + e.Message, $"Inserir {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private string GerarColunasComParametrosUPDATE(string[] colunasAlterar, string[] parametrosAlterar)
+        {
+            string colunasComParametros = "";
+            for(int i = 0; i < parametrosAlterar.Length; i++)
+            {
+                if(i == 0)
+                {
+                    colunasComParametros += colunasAlterar[i] + " = " + parametrosAlterar[i];
+                }
+                else
+                {
+                    colunasComParametros += ", " + colunasAlterar[i] + " = " + parametrosAlterar[i];
+                }
+            }
+            return colunasComParametros;
+        }
+
+        private string GerarColunaIdUPDATE()
+        {
+            string colunaId = nomeTodasColunas[0];
+            return colunaId;
+        }
+
+        private string GerarSqlUPDATE(int id)
+        {
+            string sql = "UPDATE " + nomeTabela + " SET " + GerarColunasComParametrosUPDATE(colunasAlterar, parametrosColunasAlterar) + " WHERE " + GerarColunaIdUPDATE() + " = " + id;
+            return sql;
+        }
+
+        //Este metodo terá que ser sobrescrito na classe que vai ser herdada através do override
+        protected virtual void AddParametroAlterar(Object obj) { }
+
+        public void Alterar(int id, Object obj)
+        {
+            try
+            {
+                cmd.CommandText = GerarSqlUPDATE(id);
+                AddParametroAlterar(obj);
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show($"Erro ao Alterar {apelidoTabela}! \n\n" + e.Message, $"Alterar {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

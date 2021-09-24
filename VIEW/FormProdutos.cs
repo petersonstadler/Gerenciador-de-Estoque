@@ -28,8 +28,9 @@ namespace Gerenciador_de_Estoque.VIEW
         {
             CategoriaDAO catDao = new CategoriaDAO();
             Categoria categoria = new Categoria();
-            categoria.Nome = "BLUSA";
-            catDao.Inserir(categoria);
+            categoria.Id = 3;
+            categoria.Nome = "CACHECOL";
+            catDao.Alterar(categoria.Id, categoria);
             DtProdutos.DataSource = catDao.ListarEmDataTable();
         }
     }

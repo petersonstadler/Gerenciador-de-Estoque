@@ -25,12 +25,21 @@ namespace Gerenciador_de_Estoque.DAO
 
             colunasInserir = new string[] { "nomecategoria" };
             parametrosColunasInserir = new string[] { "?nome" };
+
+            colunasAlterar = colunasInserir;
+            parametrosColunasAlterar = parametrosColunasInserir;
         }
 
         protected override void AddParametrosInserir(object obj)
         {
             Categoria categoria = obj as Categoria;
             cmd.Parameters.AddWithValue(parametrosColunasInserir[0], categoria.Nome);
+        }
+
+        protected override void AddParametroAlterar(object obj)
+        {
+            Categoria categoria = obj as Categoria;
+            cmd.Parameters.AddWithValue(parametrosColunasAlterar[0], categoria.Nome);
         }
     }
 }
