@@ -92,6 +92,7 @@
     <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\Conexao.cs" />
     <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\GeradorScriptsSql.cs" />
     <Compile Include="DAO\MovimentoDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="Principal.cs">
