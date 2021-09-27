@@ -108,11 +108,17 @@
     <Compile Include="MODEL\Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VIEW\FormProdutos.cs">
+    <Compile Include="VIEW\TelaProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VIEW\FormProdutos.Designer.cs">
-      <DependentUpon>FormProdutos.cs</DependentUpon>
+    <Compile Include="VIEW\TelaProdutos.Designer.cs">
+      <DependentUpon>TelaProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW\FormProdutos\FormProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\FormProdutos\FormProduto.Designer.cs">
+      <DependentUpon>FormProduto.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -127,8 +133,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="VIEW\FormProdutos.resx">
-      <DependentUpon>FormProdutos.cs</DependentUpon>
+    <EmbeddedResource Include="VIEW\FormProdutos\FormProduto.resx">
+      <DependentUpon>FormProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\TelaProdutos.resx">
+      <DependentUpon>TelaProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
