@@ -43,7 +43,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
             catch(Exception e)
             {
-                MessageBox.Show("Erro ao fechar conexão! \n\n" + e.Message, "Fechar Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao fechar conexão! \n\n" + e, "Fechar Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -77,7 +77,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
             catch(Exception e)
             {
-                MessageBox.Show($"Erro ao inserir {apelidoTabela}! \n\n" + e.Message, $"Inserir {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao inserir {apelidoTabela}! \n\n" + e, $"Inserir {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -94,7 +94,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
             catch(Exception e)
             {
-                MessageBox.Show($"Erro ao Alterar {apelidoTabela}! \n\n" + e.Message, $"Alterar {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao Alterar {apelidoTabela}! \n\n" + e, $"Alterar {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -107,7 +107,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
             catch(Exception e)
             {
-                MessageBox.Show($"Erro ao excluir {apelidoTabela}! \n\n" + e.Message, $"Excluir {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao excluir {apelidoTabela}! \n\n" + e, $"Excluir {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

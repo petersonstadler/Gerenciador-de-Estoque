@@ -25,7 +25,7 @@ namespace Gerenciador_de_Estoque.DAO
             parametrosColunasInserir = new string[] { "?descricao", "?quantidade", "?idproduto", "?operacao", "?idpedido" };
 
             colunasAlterar = new string[] { "descmovimento" };
-            parametrosColunasAlterar = new string[] { "?descricao" }; ;
+            parametrosColunasAlterar = new string[] { "?descricao" };
         }
 
         protected override void AddParametrosInserir(object obj)
