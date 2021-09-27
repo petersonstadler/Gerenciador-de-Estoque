@@ -47,13 +47,19 @@ namespace Gerenciador_de_Estoque.DAO
         protected override object PreencherDados(MySqlDataReader dr)
         {
             Movimento movimento = new Movimento();
-            dr.Read();
-            movimento.Id = dr.GetInt32("idmovimento");
-            movimento.Descricao = dr.GetString("descmovimento");
-            movimento.Quantidade = dr.GetInt32("qtdmovimento");
-            movimento.Idproduto = dr.GetInt32("produtos_idproduto");
-            movimento.Operacao = dr.GetString("operacaomovimento");
-            movimento.Idpedido = dr.GetInt32("pedidos_idpedido");
+            if (dr.Read())
+            {
+                movimento.Id = dr.GetInt32("idmovimento");
+                movimento.Descricao = dr.GetString("descmovimento");
+                movimento.Quantidade = dr.GetInt32("qtdmovimento");
+                movimento.Idproduto = dr.GetInt32("produtos_idproduto");
+                movimento.Operacao = dr.GetString("operacaomovimento");
+                movimento.Idpedido = dr.GetInt32("pedidos_idpedido");
+            }
+            else
+            {
+                movimento.Id = 0;
+            }
             return movimento;
         }
     }

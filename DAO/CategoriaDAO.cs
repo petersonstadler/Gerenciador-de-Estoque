@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Gerenciador_de_Estoque.MODEL;
 using MySql.Data.MySqlClient;
 
@@ -46,9 +47,15 @@ namespace Gerenciador_de_Estoque.DAO
         protected override object PreencherDados(MySqlDataReader dr)
         {
             Categoria categoria = new Categoria();
-            dr.Read();
-            categoria.Id = dr.GetInt32("idcategoria");
-            categoria.Nome = dr.GetString("nomecategoria");
+            if (dr.Read())
+            {
+                categoria.Id = dr.GetInt32("idcategoria");
+                categoria.Nome = dr.GetString("nomecategoria");
+            }
+            else
+            {
+                categoria.Id = 0;
+            }
             return categoria;
         }
     }

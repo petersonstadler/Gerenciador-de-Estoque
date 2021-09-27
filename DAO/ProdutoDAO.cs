@@ -75,7 +75,6 @@ namespace Gerenciador_de_Estoque.DAO
             else
             {
                 produto.Id = 0;
-                MessageBox.Show("Produto não encontrado!", "Buscar Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return produto;
         }
