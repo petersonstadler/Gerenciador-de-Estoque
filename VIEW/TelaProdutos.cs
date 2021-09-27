@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gerenciador_de_Estoque.DAO;
-using Gerenciador_de_Estoque.MODEL;
+using Gerenciador_de_Estoque.VIEW.FormProdutos;
 
 namespace Gerenciador_de_Estoque.VIEW
 {
@@ -53,7 +53,8 @@ namespace Gerenciador_de_Estoque.VIEW
             switch (e.ClickedItem.Text)
             {
                 case "Adicionar":
-                    teste();
+                    FormProduto formProduto = new FormProduto();
+                    formProduto.Show();
                     break;
                 case "Alterar":
                     break;

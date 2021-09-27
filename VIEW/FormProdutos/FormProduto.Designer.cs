@@ -75,7 +75,6 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtNome.Location = new System.Drawing.Point(133, 58);
             this.txtNome.Name = "txtNome";
-            this.txtNome.ReadOnly = true;
             this.txtNome.Size = new System.Drawing.Size(305, 23);
             this.txtNome.TabIndex = 3;
             // 
@@ -97,6 +96,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(450, 33);
             this.panel1.TabIndex = 4;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // lblTitulo
             // 
@@ -107,6 +107,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.lblTitulo.Size = new System.Drawing.Size(98, 29);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Produto";
+            this.lblTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseDown);
             // 
             // lblDescricao
             // 
@@ -124,7 +125,6 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.txtDescricao.Location = new System.Drawing.Point(12, 104);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.ReadOnly = true;
             this.txtDescricao.Size = new System.Drawing.Size(426, 94);
             this.txtDescricao.TabIndex = 6;
             // 
@@ -189,7 +189,6 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.txtCusto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtCusto.Location = new System.Drawing.Point(62, 231);
             this.txtCusto.Name = "txtCusto";
-            this.txtCusto.ReadOnly = true;
             this.txtCusto.Size = new System.Drawing.Size(90, 23);
             this.txtCusto.TabIndex = 14;
             // 
@@ -198,7 +197,6 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.txtVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtVenda.Location = new System.Drawing.Point(62, 260);
             this.txtVenda.Name = "txtVenda";
-            this.txtVenda.ReadOnly = true;
             this.txtVenda.Size = new System.Drawing.Size(90, 23);
             this.txtVenda.TabIndex = 15;
             // 
@@ -224,6 +222,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(363, 321);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
