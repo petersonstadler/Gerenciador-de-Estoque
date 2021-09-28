@@ -98,7 +98,7 @@ namespace Gerenciador_de_Estoque
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new FormProdutos());
+            AbrirFormInPanel(new TelaProdutos());
         }
     }
 }
