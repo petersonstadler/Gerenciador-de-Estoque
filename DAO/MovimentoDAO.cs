@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Gerenciador_de_Estoque.MODEL;
 using MySql.Data.MySqlClient;
 
@@ -12,36 +14,36 @@ namespace Gerenciador_de_Estoque.DAO
     {
         public MovimentoDAO()
         {
-            nomeTabela = "movimentos";
-            apelidoTabela = "Movimentos";
+            NomeTabela = "movimentos";
+            ApelidoTabela = "Movimentos";
 
-            nomeTodasColunas = new string[] { "idmovimento", "descmovimento", "qtdmovimento", "produtos_idproduto", "operacaomovimento", "pedidos_idpedido" };
-            apelidoTodasColunas = new string[] { "Id", "Descrição", "Quantidade", "Produto", "Operação", "Id Pedido" };
+            NomeTodasColunas = new string[] { "idmovimento", "descmovimento", "qtdmovimento", "produtos_idproduto", "operacaomovimento", "pedidos_idpedido" };
+            ApelidoTodasColunas = new string[] { "Id", "Descrição", "Quantidade", "Produto", "Operação", "Id Pedido" };
 
-            nomeColunasSelect = new string[] { "idmovimento", "descmovimento", "qtdmovimento", "produtos_idproduto", "operacaomovimento", "pedidos_idpedido" }; ;
-            apelidoColunasSelect = new string[] { "Id", "Descrição", "Quantidade", "Produto", "Operação", "IdPedido" };
+            NomeColunasSelect = new string[] { "idmovimento", "descmovimento", "qtdmovimento", "produtos_idproduto", "operacaomovimento", "pedidos_idpedido" };
+            ApelidoColunasSelect = new string[] { "Id", "Descrição", "Quantidade", "Produto", "Operação", "IdPedido" };
 
-            colunasInserir = new string[] { "descmovimento", "qtdmovimento", "produtos_idproduto", "operacaomovimento", "pedidos_idpedido" };
-            parametrosColunasInserir = new string[] { "?descricao", "?quantidade", "?idproduto", "?operacao", "?idpedido" };
+            ColunasInserir = new string[] { "descmovimento", "qtdmovimento", "produtos_idproduto", "operacaomovimento", "pedidos_idpedido" };
+            ParametrosColunasInserir = new string[] { "?descricao", "?quantidade", "?idproduto", "?operacao", "?idpedido" };
 
-            colunasAlterar = new string[] { "descmovimento" };
-            parametrosColunasAlterar = new string[] { "?descricao" };
+            ColunasAlterar = new string[] { "descmovimento" };
+            ParametrosColunasAlterar = new string[] { "?descricao" };
         }
 
         protected override void AddParametrosInserir(object obj)
         {
             Movimento movimento = obj as Movimento;
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[0], movimento.Descricao);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[1], movimento.Quantidade);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[2], movimento.Idproduto);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[3], movimento.Operacao);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[4], movimento.Idpedido);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[0], movimento.Descricao);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[1], movimento.Quantidade);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[2], movimento.Idproduto);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[3], movimento.Operacao);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[4], movimento.Idpedido);
         }
 
         protected override void AddParametroAlterar(object obj)
         {
             Movimento movimento = obj as Movimento;
-            cmd.Parameters.AddWithValue(parametrosColunasAlterar[0], movimento.Descricao);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[0], movimento.Descricao);
         }
 
         protected override object PreencherDados(MySqlDataReader dr)
@@ -61,6 +63,25 @@ namespace Gerenciador_de_Estoque.DAO
                 movimento.Id = 0;
             }
             return movimento;
+        }
+
+        public DataTable ListarPorFiltroIdProduto(int id)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                string colunas = new GeradorScriptsSql().ColunasParaString(NomeColunasSelect, ApelidoColunasSelect);
+                cmd.CommandText = "SELECT " + colunas + " FROM " + NomeTabela + " WHERE produtos_idproduto = ?id";
+                cmd.Parameters.AddWithValue("?id", id);
+                MySqlDataReader dr = cmd.ExecuteReader();
+                dt.Load(dr);
+                dr.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Erro ao listar movimentos por filtro de produtos!", "Listar Movimentos com Filtro de Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dt;
         }
     }
 }

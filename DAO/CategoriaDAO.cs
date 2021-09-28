@@ -16,32 +16,32 @@ namespace Gerenciador_de_Estoque.DAO
 
         public CategoriaDAO()
         {
-            nomeTabela = "categorias";
-            apelidoTabela = "Categorias";
+            NomeTabela = "categorias";
+            ApelidoTabela = "Categorias";
 
-            nomeTodasColunas = new string[] { "idcategoria", "nomecategoria" };
-            apelidoTodasColunas = new string[] { "Id", "Nome" };
+            NomeTodasColunas = new string[] { "idcategoria", "nomecategoria" };
+            ApelidoTodasColunas = new string[] { "Id", "Nome" };
 
-            nomeColunasSelect = new string[] { "idcategoria", "nomecategoria" };
-            apelidoColunasSelect = new string[] { "Id", "Nome" };
+            NomeColunasSelect = new string[] { "idcategoria", "nomecategoria" };
+            ApelidoColunasSelect = new string[] { "Id", "Nome" };
 
-            colunasInserir = new string[] { "nomecategoria" };
-            parametrosColunasInserir = new string[] { "?nome" };
+            ColunasInserir = new string[] { "nomecategoria" };
+            ParametrosColunasInserir = new string[] { "?nome" };
 
-            colunasAlterar = colunasInserir;
-            parametrosColunasAlterar = parametrosColunasInserir;
+            ColunasAlterar = ColunasInserir;
+            ParametrosColunasAlterar = ParametrosColunasInserir;
         }
 
         protected override void AddParametrosInserir(object obj)
         {
             Categoria categoria = obj as Categoria;
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[0], categoria.Nome);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[0], categoria.Nome);
         }
 
         protected override void AddParametroAlterar(object obj)
         {
             Categoria categoria = obj as Categoria;
-            cmd.Parameters.AddWithValue(parametrosColunasAlterar[0], categoria.Nome);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[0], categoria.Nome);
         }
 
         protected override object PreencherDados(MySqlDataReader dr)

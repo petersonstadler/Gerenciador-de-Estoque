@@ -32,11 +32,8 @@ namespace Gerenciador_de_Estoque.VIEW
         private void Carregar()
         {
             ProdutoDAO produtoDao = new ProdutoDAO();
-            MovimentoDAO movimentoDAO = new MovimentoDAO();
-            DtMovimentos.DataSource = movimentoDAO.ListarEmDataTable();
             DtProdutos.DataSource = produtoDao.ListarEmDataTable();
             produtoDao.CloseConnections();
-            movimentoDAO.CloseConnections();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -88,7 +85,11 @@ namespace Gerenciador_de_Estoque.VIEW
             {
                 ProdutoDAO produtoDAO = new ProdutoDAO();
                 produtoSelecionado = produtoDAO.BuscarPorId(idProduto) as Produto;
-                //depois implementar uma listagem de movimentação com filtro, filtrando apenas as movimentações que o id do produto seja igual idProduto;
+                MovimentoDAO movimentoDAO = new MovimentoDAO();
+                movimentoDAO.NomeColunasSelect = new string[] { "idmovimento", "descmovimento", "qtdmovimento", "operacaomovimento", "pedidos_idpedido" };
+                movimentoDAO.ApelidoColunasSelect = new string[] { "Id", "Descrição", "Quantidade", "Operação", "IdPedido" };
+                DtMovimentos.DataSource = movimentoDAO.ListarPorFiltroIdProduto(idProduto);
+                movimentoDAO.CloseConnections();
                 produtoDAO.CloseConnections();
             }
         }

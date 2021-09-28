@@ -14,20 +14,31 @@ namespace Gerenciador_de_Estoque.DAO
         protected readonly MySqlConnection conn;
         protected readonly MySqlCommand cmd;
 
-        protected string nomeTabela = "";
-        protected string apelidoTabela = "";
+        private string nomeTabela = "";
+        private string apelidoTabela = "";
 
-        protected string[] nomeTodasColunas = new string[0];
-        protected string[] apelidoTodasColunas = new string[0];
+        private string[] nomeTodasColunas = new string[0];
+        private string[] apelidoTodasColunas = new string[0];
 
-        protected string[] nomeColunasSelect = new string[0];
-        protected string[] apelidoColunasSelect = new string[0];
+        private string[] nomeColunasSelect = new string[0];
+        private string[] apelidoColunasSelect = new string[0];
 
-        protected string[] colunasInserir = new string[0];
-        protected string[] parametrosColunasInserir = new string[0];
+        private string[] colunasInserir = new string[0];
+        private string[] parametrosColunasInserir = new string[0];
 
-        protected string[] colunasAlterar = new string[0];
-        protected string[] parametrosColunasAlterar = new string[0];
+        private string[] colunasAlterar = new string[0];
+        private string[] parametrosColunasAlterar = new string[0];
+
+        public string NomeTabela { get => nomeTabela; set => nomeTabela = value; }
+        public string ApelidoTabela { get => apelidoTabela; set => apelidoTabela = value; }
+        public string[] NomeTodasColunas { get => nomeTodasColunas; set => nomeTodasColunas = value; }
+        public string[] ApelidoTodasColunas { get => apelidoTodasColunas; set => apelidoTodasColunas = value; }
+        public string[] NomeColunasSelect { get => nomeColunasSelect; set => nomeColunasSelect = value; }
+        public string[] ApelidoColunasSelect { get => apelidoColunasSelect; set => apelidoColunasSelect = value; }
+        public string[] ColunasInserir { get => colunasInserir; set => colunasInserir = value; }
+        public string[] ParametrosColunasInserir { get => parametrosColunasInserir; set => parametrosColunasInserir = value; }
+        public string[] ColunasAlterar { get => colunasAlterar; set => colunasAlterar = value; }
+        public string[] ParametrosColunasAlterar { get => parametrosColunasAlterar; set => parametrosColunasAlterar = value; }
 
         public DAO()
         {
@@ -52,14 +63,14 @@ namespace Gerenciador_de_Estoque.DAO
             DataTable dt = new DataTable();
             try
             {
-                cmd.CommandText = new GeradorScriptsSql().GerarSqlSELECT(nomeTabela, nomeColunasSelect, apelidoColunasSelect);
+                cmd.CommandText = new GeradorScriptsSql().GerarSqlSELECT(NomeTabela, NomeColunasSelect, ApelidoColunasSelect);
                 MySqlDataReader dr = cmd.ExecuteReader();
                 dt.Load(dr);
                 dr.Close();
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Erro ao listar {apelidoTabela}! \n\n" + e, $"Listar {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao listar {ApelidoTabela}! \n\n" + e, $"Listar {ApelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
         }
@@ -71,13 +82,13 @@ namespace Gerenciador_de_Estoque.DAO
         {
             try
             {
-                cmd.CommandText = new GeradorScriptsSql().GerarSqlINSERT(nomeTabela, colunasInserir, parametrosColunasInserir);
+                cmd.CommandText = new GeradorScriptsSql().GerarSqlINSERT(NomeTabela, ColunasInserir, ParametrosColunasInserir);
                 AddParametrosInserir(obj);
                 _ = cmd.ExecuteNonQuery();
             }
             catch(Exception e)
             {
-                MessageBox.Show($"Erro ao inserir {apelidoTabela}! \n\n" + e, $"Inserir {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao inserir {ApelidoTabela}! \n\n" + e, $"Inserir {ApelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -88,13 +99,13 @@ namespace Gerenciador_de_Estoque.DAO
         {
             try
             {
-                cmd.CommandText = new GeradorScriptsSql().GerarSqlUPDATE(id, nomeTodasColunas[0], nomeTabela, colunasAlterar, parametrosColunasAlterar);
+                cmd.CommandText = new GeradorScriptsSql().GerarSqlUPDATE(id, NomeTodasColunas[0], NomeTabela, ColunasAlterar, ParametrosColunasAlterar);
                 AddParametroAlterar(obj);
                 _ = cmd.ExecuteNonQuery();
             }
             catch(Exception e)
             {
-                MessageBox.Show($"Erro ao Alterar {apelidoTabela}! \n\n" + e, $"Alterar {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao Alterar {ApelidoTabela}! \n\n" + e, $"Alterar {ApelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -102,12 +113,12 @@ namespace Gerenciador_de_Estoque.DAO
         {
             try
             {
-                cmd.CommandText = "DELETE FROM " + nomeTabela + " WHERE " + nomeTodasColunas[0] + " = " + id;
+                cmd.CommandText = "DELETE FROM " + NomeTabela + " WHERE " + NomeTodasColunas[0] + " = " + id;
                 _ = cmd.ExecuteNonQuery();
             }
             catch(Exception e)
             {
-                MessageBox.Show($"Erro ao excluir {apelidoTabela}! \n\n" + e, $"Excluir {apelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao excluir {ApelidoTabela}! \n\n" + e, $"Excluir {ApelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -120,17 +131,17 @@ namespace Gerenciador_de_Estoque.DAO
         public Object BuscarPorId(int id)
         {
             Object obj = null;
-            string colunas = new GeradorScriptsSql().ColunasParaString(nomeTodasColunas);
+            string colunas = new GeradorScriptsSql().ColunasParaString(NomeTodasColunas);
             try
             {
-                cmd.CommandText = "SELECT " + colunas + " FROM " + nomeTabela + " WHERE " + nomeTodasColunas[0] + " = " + id;
+                cmd.CommandText = "SELECT " + colunas + " FROM " + NomeTabela + " WHERE " + NomeTodasColunas[0] + " = " + id;
                 MySqlDataReader dr = cmd.ExecuteReader();
                 obj = PreencherDados(dr);
                 dr.Close();
             }
             catch(Exception e)
             {
-                MessageBox.Show($"Erro ao buscar {apelidoTabela} por ID! \n\n" + e, $"Buscar {apelidoTabela} por ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao buscar {ApelidoTabela} por ID! \n\n" + e, $"Buscar {ApelidoTabela} por ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return obj;
         }
@@ -138,10 +149,10 @@ namespace Gerenciador_de_Estoque.DAO
         public DataTable BuscarPorNome(string nome)
         {
             DataTable dt = new DataTable();
-            string colunas = new GeradorScriptsSql().ColunasParaString(nomeColunasSelect, apelidoColunasSelect);
+            string colunas = new GeradorScriptsSql().ColunasParaString(NomeColunasSelect, ApelidoColunasSelect);
             try
             {
-                cmd.CommandText = "SELECT " + colunas + " FROM " + nomeTabela + " WHERE " + nomeTodasColunas[1] + " LIKE " + "?nome";
+                cmd.CommandText = "SELECT " + colunas + " FROM " + NomeTabela + " WHERE " + NomeTodasColunas[1] + " LIKE " + "?nome";
                 cmd.Parameters.AddWithValue("?nome", "%"+nome+"%");
                 MySqlDataReader dr = cmd.ExecuteReader();
                 dt.Load(dr);
@@ -149,7 +160,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
             catch(Exception e)
             {
-                MessageBox.Show($"Erro ao buscar {apelidoTabela} por Nome! \n\n" + e, $"Buscar {apelidoTabela} por Nome", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao buscar {ApelidoTabela} por Nome! \n\n" + e, $"Buscar {ApelidoTabela} por Nome", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
         }

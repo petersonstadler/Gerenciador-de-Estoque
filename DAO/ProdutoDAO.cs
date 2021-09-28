@@ -15,46 +15,46 @@ namespace Gerenciador_de_Estoque.DAO
 
         public ProdutoDAO()
         {
-            nomeTabela = "produtos";
-            apelidoTabela = "Produtos";
+            NomeTabela = "produtos";
+            ApelidoTabela = "Produtos";
 
-            nomeTodasColunas = new string[] { "idproduto", "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "qtdproduto", "ativoproduto" };
-            apelidoTodasColunas = new string[] { "Id", "Nome", "Descrição", "Tamanho", "Custo", "Preço", "Categoria", "Quantidade", "Ativo" };
+            NomeTodasColunas = new string[] { "idproduto", "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "qtdproduto", "ativoproduto" };
+            ApelidoTodasColunas = new string[] { "Id", "Nome", "Descrição", "Tamanho", "Custo", "Preço", "Categoria", "Quantidade", "Ativo" };
 
-            nomeColunasSelect = new string[] { "idproduto", "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "(SELECT nomecategoria FROM categorias WHERE categorias_idcategoria = idcategoria)", "qtdproduto", "ativoproduto" };
-            apelidoColunasSelect = new string[] { "Id", "Nome", "Descrição", "Tamanho", "Custo", "Preço", "Categoria", "Quantidade", "Ativo" };
+            NomeColunasSelect = new string[] { "idproduto", "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "(SELECT nomecategoria FROM categorias WHERE categorias_idcategoria = idcategoria)", "qtdproduto", "ativoproduto" };
+            ApelidoColunasSelect = new string[] { "Id", "Nome", "Descrição", "Tamanho", "Custo", "Preço", "Categoria", "Quantidade", "Ativo" };
 
-            colunasInserir = new string[] { "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "qtdproduto", "ativoproduto" };
-            parametrosColunasInserir = new string[] { "?nome", "?descricao", "?tamanho", "?custo", "?preco", "?categoria", "?quantidade", "?ativo" };
+            ColunasInserir = new string[] { "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "qtdproduto", "ativoproduto" };
+            ParametrosColunasInserir = new string[] { "?nome", "?descricao", "?tamanho", "?custo", "?preco", "?categoria", "?quantidade", "?ativo" };
 
-            colunasAlterar = new string[] { "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "qtdproduto", "ativoproduto" };
-            parametrosColunasAlterar = new string[] { "?nome", "?descricao", "?tamanho", "?custo", "?preco", "?categoria", "?quantidade", "?ativo" };
+            ColunasAlterar = new string[] { "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "ativoproduto" };
+            ParametrosColunasAlterar = new string[] { "?nome", "?descricao", "?tamanho", "?custo", "?preco", "?categoria", "?ativo" };
         }
 
         protected override void AddParametrosInserir(object obj)
         {
             Produto produto = obj as Produto;
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[0], produto.Nome);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[1], produto.Descricao);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[2], produto.Tamanho);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[3], produto.Custo);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[4], produto.Preco);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[5], produto.Idcategoria);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[6], produto.Quantidade);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[7], produto.Ativo);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[0], produto.Nome);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[1], produto.Descricao);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[2], produto.Tamanho);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[3], produto.Custo);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[4], produto.Preco);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[5], produto.Idcategoria);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[6], produto.Quantidade);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[7], produto.Ativo);
         }
 
         protected override void AddParametroAlterar(object obj)
         {
             Produto produto = obj as Produto;
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[0], produto.Nome);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[1], produto.Descricao);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[2], produto.Tamanho);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[3], produto.Custo);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[4], produto.Preco);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[5], produto.Idcategoria);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[6], produto.Quantidade);
-            cmd.Parameters.AddWithValue(parametrosColunasInserir[7], produto.Ativo);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[0], produto.Nome);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[1], produto.Descricao);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[2], produto.Tamanho);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[3], produto.Custo);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[4], produto.Preco);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[5], produto.Idcategoria);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[6], produto.Quantidade);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[7], produto.Ativo);
         }
 
         protected override object PreencherDados(MySqlDataReader dr)
@@ -62,15 +62,15 @@ namespace Gerenciador_de_Estoque.DAO
             Produto produto = new Produto();
             if (dr.Read())
             {
-                produto.Id = dr.GetInt32(nomeTodasColunas[0]);
-                produto.Nome = dr.GetString(nomeTodasColunas[1]);
-                produto.Descricao = dr.GetString(nomeColunasSelect[2]);
-                produto.Tamanho = dr.GetString(nomeTodasColunas[3]);
-                produto.Custo = dr.GetDecimal(nomeTodasColunas[4]);
-                produto.Preco = dr.GetDecimal(nomeTodasColunas[5]);
-                produto.Idcategoria = dr.GetInt32(nomeTodasColunas[6]);
-                produto.Quantidade = dr.GetFloat(nomeTodasColunas[7]);
-                produto.Ativo = dr.GetBoolean(nomeTodasColunas[8]);
+                produto.Id = dr.GetInt32(NomeTodasColunas[0]);
+                produto.Nome = dr.GetString(NomeTodasColunas[1]);
+                produto.Descricao = dr.GetString(NomeColunasSelect[2]);
+                produto.Tamanho = dr.GetString(NomeTodasColunas[3]);
+                produto.Custo = dr.GetDecimal(NomeTodasColunas[4]);
+                produto.Preco = dr.GetDecimal(NomeTodasColunas[5]);
+                produto.Idcategoria = dr.GetInt32(NomeTodasColunas[6]);
+                produto.Quantidade = dr.GetFloat(NomeTodasColunas[7]);
+                produto.Ativo = dr.GetBoolean(NomeTodasColunas[8]);
             }
             else
             {
