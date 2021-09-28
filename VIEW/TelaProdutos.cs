@@ -89,7 +89,13 @@ namespace Gerenciador_de_Estoque.VIEW
                 ProdutoDAO produtoDAO = new ProdutoDAO();
                 produtoSelecionado = produtoDAO.BuscarPorId(idProduto) as Produto;
                 //depois implementar uma listagem de movimentação com filtro, filtrando apenas as movimentações que o id do produto seja igual idProduto;
+                produtoDAO.CloseConnections();
             }
+        }
+
+        private void txtBusca_TextChanged(object sender, EventArgs e)
+        {
+            DtProdutos.DataSource = new ProdutoDAO().BuscarPorNome(txtBusca.Text);
         }
     }
 }

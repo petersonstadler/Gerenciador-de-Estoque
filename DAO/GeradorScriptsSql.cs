@@ -27,7 +27,7 @@ namespace Gerenciador_de_Estoque.DAO
         }
 
         //Pega as colunas que estão em uma Array e formata elas em uma string no formato: coluna1 as apelido1, coluna2 as apelido2, coluna3 as apelido3.
-        private string ColunasParaString(string[] NomeColunas, string[] ApelidoColunas)
+        public string ColunasParaString(string[] NomeColunas, string[] ApelidoColunas)
         {
             string colunas = "";
             for (int i = 0; i < NomeColunas.Length; i++)
