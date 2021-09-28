@@ -40,7 +40,6 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.lblTamanho = new System.Windows.Forms.Label();
             this.cbBoxTamanho = new System.Windows.Forms.ComboBox();
             this.lblCategoria = new System.Windows.Forms.Label();
-            this.cbBoxCategoria = new System.Windows.Forms.ComboBox();
             this.lblCusto = new System.Windows.Forms.Label();
             this.lblVenda = new System.Windows.Forms.Label();
             this.txtCusto = new System.Windows.Forms.TextBox();
@@ -48,6 +47,8 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.ckBoxAtivo = new System.Windows.Forms.CheckBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtIdCategoria = new System.Windows.Forms.TextBox();
+            this.txtNomeCategoria = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,20 +150,13 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblCategoria.Location = new System.Drawing.Point(158, 205);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(69, 17);
             this.lblCategoria.TabIndex = 9;
             this.lblCategoria.Text = "Categoria";
-            // 
-            // cbBoxCategoria
-            // 
-            this.cbBoxCategoria.FormattingEnabled = true;
-            this.cbBoxCategoria.Location = new System.Drawing.Point(233, 204);
-            this.cbBoxCategoria.Name = "cbBoxCategoria";
-            this.cbBoxCategoria.Size = new System.Drawing.Size(205, 21);
-            this.cbBoxCategoria.TabIndex = 10;
             // 
             // lblCusto
             // 
@@ -219,6 +213,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.btnOk.TabIndex = 17;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
@@ -230,6 +225,23 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // txtIdCategoria
+            // 
+            this.txtIdCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtIdCategoria.Location = new System.Drawing.Point(233, 202);
+            this.txtIdCategoria.Name = "txtIdCategoria";
+            this.txtIdCategoria.Size = new System.Drawing.Size(41, 23);
+            this.txtIdCategoria.TabIndex = 19;
+            // 
+            // txtNomeCategoria
+            // 
+            this.txtNomeCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtNomeCategoria.Location = new System.Drawing.Point(280, 202);
+            this.txtNomeCategoria.Name = "txtNomeCategoria";
+            this.txtNomeCategoria.ReadOnly = true;
+            this.txtNomeCategoria.Size = new System.Drawing.Size(158, 23);
+            this.txtNomeCategoria.TabIndex = 20;
+            // 
             // FormProduto
             // 
             this.AcceptButton = this.btnOk;
@@ -237,6 +249,8 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(450, 356);
+            this.Controls.Add(this.txtNomeCategoria);
+            this.Controls.Add(this.txtIdCategoria);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.ckBoxAtivo);
@@ -244,7 +258,6 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.Controls.Add(this.txtCusto);
             this.Controls.Add(this.lblVenda);
             this.Controls.Add(this.lblCusto);
-            this.Controls.Add(this.cbBoxCategoria);
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.cbBoxTamanho);
             this.Controls.Add(this.lblTamanho);
@@ -283,7 +296,6 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
         private System.Windows.Forms.Label lblTamanho;
         private System.Windows.Forms.ComboBox cbBoxTamanho;
         private System.Windows.Forms.Label lblCategoria;
-        private System.Windows.Forms.ComboBox cbBoxCategoria;
         private System.Windows.Forms.Label lblCusto;
         private System.Windows.Forms.Label lblVenda;
         private System.Windows.Forms.TextBox txtCusto;
@@ -291,5 +303,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
         private System.Windows.Forms.CheckBox ckBoxAtivo;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox txtIdCategoria;
+        private System.Windows.Forms.TextBox txtNomeCategoria;
     }
 }

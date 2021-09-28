@@ -54,7 +54,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
             else
             {
-                categoria.Id = 0;
+                categoria.Id = 1;
             }
             return categoria;
         }

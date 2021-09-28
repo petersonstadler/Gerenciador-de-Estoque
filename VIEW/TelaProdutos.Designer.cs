@@ -81,6 +81,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.DtProdutos.ReadOnly = true;
             this.DtProdutos.Size = new System.Drawing.Size(431, 351);
             this.DtProdutos.TabIndex = 2;
+            this.DtProdutos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtProdutos_CellEnter);
             // 
             // DtMovimentos
             // 
@@ -161,7 +162,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.panel2.Size = new System.Drawing.Size(628, 40);
             this.panel2.TabIndex = 11;
             // 
-            // FormProdutos
+            // TelaProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -171,7 +172,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.lblX);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormProdutos";
+            this.Name = "TelaProdutos";
             this.Text = "Produtos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormProdutos_Load);

@@ -134,5 +134,24 @@ namespace Gerenciador_de_Estoque.DAO
             }
             return obj;
         }
+
+        public Object BuscarPorNome(string nome)
+        {
+            Object obj = null;
+            string colunas = new GeradorScriptsSql().ColunasParaString(nomeTodasColunas);
+            try
+            {
+                cmd.CommandText = "SELECT " + colunas + " FROM " + nomeTabela + " WHERE " + nomeTodasColunas[1] + " LIKE " + "?nome";
+                cmd.Parameters.AddWithValue("?nome", "%"+nome+"%");
+                MySqlDataReader dr = cmd.ExecuteReader();
+                obj = PreencherDados(dr);
+                dr.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show($"Erro ao buscar {apelidoTabela} por Nome! \n\n" + e, $"Buscar {apelidoTabela} por Nome", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return obj;
+        }
     }
 }

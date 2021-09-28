@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gerenciador_de_Estoque.DAO;
+using Gerenciador_de_Estoque.MODEL;
 using Gerenciador_de_Estoque.VIEW.FormProdutos;
 
 namespace Gerenciador_de_Estoque.VIEW
@@ -15,6 +16,7 @@ namespace Gerenciador_de_Estoque.VIEW
     public partial class TelaProdutos : Form
     {
         ContextMenuStrip menuProdutos = new ContextMenuStrip();
+        Produto produtoSelecionado;
 
         public TelaProdutos()
         {
@@ -42,21 +44,24 @@ namespace Gerenciador_de_Estoque.VIEW
 
         }
 
-        private void teste()
+        private void CriarFormProdutoAlterar()
         {
-            MessageBox.Show("teste");
+            FormProduto formProduto = new FormProduto(ref produtoSelecionado);
+            formProduto.ShowDialog();
+            if(formProduto.DialogResult == DialogResult.OK)
+            {
+                DtProdutos.DataSource = new ProdutoDAO().ListarEmDataTable(); 
+            }
         }
 
         private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            string comando = string.Empty;
             switch (e.ClickedItem.Text)
             {
                 case "Adicionar":
-                    FormProduto formProduto = new FormProduto();
-                    formProduto.Show();
                     break;
                 case "Alterar":
+                    CriarFormProdutoAlterar();
                     break;
                 case "Inativar":
                     break;
@@ -71,6 +76,20 @@ namespace Gerenciador_de_Estoque.VIEW
             DtProdutos.ContextMenuStrip = menuProdutos;
 
             menuProdutos.ItemClicked += new ToolStripItemClickedEventHandler(menu_ItemClicked);
+        }
+
+        private void DtProdutos_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int idProduto;
+            string valorIdString;
+            DtProdutos.CurrentRow.Selected = true;
+            valorIdString = Convert.ToString(DtProdutos.Rows[e.RowIndex].Cells[0].Value);
+            if(int.TryParse(valorIdString, out idProduto))
+            {
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                produtoSelecionado = produtoDAO.BuscarPorId(idProduto) as Produto;
+                //depois implementar uma listagem de movimentação com filtro, filtrando apenas as movimentações que o id do produto seja igual idProduto;
+            }
         }
     }
 }
