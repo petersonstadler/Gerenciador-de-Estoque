@@ -79,7 +79,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
             catch(Exception e)
             {
-                MessageBox.Show("Erro ao listar movimentos por filtro de produtos!", "Listar Movimentos com Filtro de Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao listar movimentos por filtro de produtos! \n\n" + e, "Listar Movimentos com Filtro de Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
         }

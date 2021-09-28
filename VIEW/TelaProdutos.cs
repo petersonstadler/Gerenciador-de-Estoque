@@ -41,6 +41,16 @@ namespace Gerenciador_de_Estoque.VIEW
 
         }
 
+        private void CriarFormProdutoAdicionar()
+        {
+            FormProduto formProduto = new FormProduto();
+            formProduto.ShowDialog();
+            if(formProduto.DialogResult == DialogResult.OK)
+            {
+                DtProdutos.DataSource = new ProdutoDAO().ListarEmDataTable();
+            }
+        }
+
         private void CriarFormProdutoAlterar()
         {
             FormProduto formProduto = new FormProduto(ref produtoSelecionado);
@@ -56,11 +66,10 @@ namespace Gerenciador_de_Estoque.VIEW
             switch (e.ClickedItem.Text)
             {
                 case "Adicionar":
+                    CriarFormProdutoAdicionar();
                     break;
                 case "Alterar":
                     CriarFormProdutoAlterar();
-                    break;
-                case "Inativar":
                     break;
             }
         }
@@ -69,7 +78,6 @@ namespace Gerenciador_de_Estoque.VIEW
         {
             menuProdutos.Items.Add("Adicionar");
             menuProdutos.Items.Add("Alterar");
-            menuProdutos.Items.Add("Inativar");
             DtProdutos.ContextMenuStrip = menuProdutos;
 
             menuProdutos.ItemClicked += new ToolStripItemClickedEventHandler(menu_ItemClicked);

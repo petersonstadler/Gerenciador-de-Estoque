@@ -73,6 +73,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             // 
             // txtNome
             // 
+            this.txtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtNome.Location = new System.Drawing.Point(133, 58);
             this.txtNome.Name = "txtNome";
@@ -122,6 +123,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             // 
             // txtDescricao
             // 
+            this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtDescricao.Location = new System.Drawing.Point(12, 104);
             this.txtDescricao.Multiline = true;
@@ -235,6 +237,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             // 
             // txtNomeCategoria
             // 
+            this.txtNomeCategoria.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomeCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtNomeCategoria.Location = new System.Drawing.Point(280, 202);
             this.txtNomeCategoria.Name = "txtNomeCategoria";

@@ -23,6 +23,15 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
+        private void PreencherComboBoxes()
+        {
+            cbBoxTamanho.Items.Add("P");
+            cbBoxTamanho.Items.Add("M");
+            cbBoxTamanho.Items.Add("G");
+            cbBoxTamanho.Items.Add("GG");
+            cbBoxTamanho.Items.Add("XG");
+        }
+
         private void PreencherTxtBoxes()
         {
             txtID.Text = Convert.ToString(produto.Id);
@@ -48,9 +57,11 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
         public FormProduto()
         {
             InitializeComponent();
+            txtID.Text = "0";
             operacao = "CADASTRAR";
             txtIdCategoria.Text = "1";
             txtNomeCategoria.Text = PegarNomeDaCategoria(1);
+            PreencherComboBoxes();
         }
 
         public FormProduto(ref Produto prod)
@@ -58,6 +69,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             InitializeComponent();
             produto = prod;
             operacao = "ALTERAR";
+            PreencherComboBoxes();
             PreencherTxtBoxes();
             txtNomeCategoria.Text = PegarNomeDaCategoria(Convert.ToInt32(txtIdCategoria.Text));
         }
@@ -103,10 +115,12 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
                 if(operacao == "ALTERAR")
                 {
                     produtoDAO.Alterar(produto.Id, produto);
+                    MessageBox.Show("Produto alterado com sucesso!", "Alterar Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     produtoDAO.Inserir(produto);
+                    MessageBox.Show("Produto inserido com sucesso!", "Inserir Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 produtoDAO.CloseConnections();
                 this.DialogResult = DialogResult.OK;
