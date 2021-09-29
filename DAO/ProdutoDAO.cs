@@ -21,7 +21,7 @@ namespace Gerenciador_de_Estoque.DAO
             NomeTodasColunas = new string[] { "idproduto", "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "ativoproduto" };
             ApelidoTodasColunas = new string[] { "Id", "Nome", "Descrição", "Tamanho", "Custo", "Preço", "Categoria", "Ativo" };
 
-            NomeColunasSelect = new string[] { "idproduto", "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "(SELECT nomecategoria FROM categorias WHERE categorias_idcategoria = idcategoria)", "(SELECT SUM(qtdmovimento) FROM movimentos WHERE produtos_idproduto = idproduto)", "ativoproduto" };
+            NomeColunasSelect = new string[] { "idproduto", "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "(SELECT nomecategoria FROM categorias WHERE categorias_idcategoria = idcategoria)", "((SELECT SUM(qtdmovimento) FROM movimentos WHERE produtos_idproduto = idproduto AND operacaomovimento = 'ENTRADA') - (SELECT SUM(qtdmovimento) FROM movimentos WHERE produtos_idproduto = idproduto AND operacaomovimento = 'SAIDA'))", "ativoproduto" };
             ApelidoColunasSelect = new string[] { "Id", "Nome", "Descrição", "Tamanho", "Custo", "Preço", "Categoria", "Quantidade", "Ativo" };
 
             ColunasInserir = new string[] { "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "ativoproduto" };
