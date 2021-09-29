@@ -49,6 +49,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.txtNomeCategoria = new System.Windows.Forms.TextBox();
+            this.lblMensagemNome = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +80,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(305, 23);
             this.txtNome.TabIndex = 3;
+            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // lblNome
             // 
@@ -245,6 +247,16 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.txtNomeCategoria.Size = new System.Drawing.Size(158, 23);
             this.txtNomeCategoria.TabIndex = 20;
             // 
+            // lblMensagemNome
+            // 
+            this.lblMensagemNome.AutoSize = true;
+            this.lblMensagemNome.ForeColor = System.Drawing.Color.Red;
+            this.lblMensagemNome.Location = new System.Drawing.Point(130, 84);
+            this.lblMensagemNome.Name = "lblMensagemNome";
+            this.lblMensagemNome.Size = new System.Drawing.Size(11, 13);
+            this.lblMensagemNome.TabIndex = 21;
+            this.lblMensagemNome.Text = "*";
+            // 
             // FormProduto
             // 
             this.AcceptButton = this.btnOk;
@@ -252,6 +264,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(450, 356);
+            this.Controls.Add(this.lblMensagemNome);
             this.Controls.Add(this.txtNomeCategoria);
             this.Controls.Add(this.txtIdCategoria);
             this.Controls.Add(this.btnCancel);
@@ -308,5 +321,6 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtIdCategoria;
         private System.Windows.Forms.TextBox txtNomeCategoria;
+        private System.Windows.Forms.Label lblMensagemNome;
     }
 }

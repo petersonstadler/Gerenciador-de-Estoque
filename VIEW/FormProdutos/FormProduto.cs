@@ -17,6 +17,11 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
     {
         private Produto produto;
         private string operacao = "";
+        private bool nomeValidado = false;
+        private bool tamanhoValidado = false;
+        private bool idCategoriaValidado = false;
+        private bool custoValidado = false;
+        private bool vendaValidado = false;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -86,9 +91,32 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        private string ValidarCampoNome(string txtValue)
+        {
+            Validador validar = new Validador();
+            if (!validar.ValidarCampoNome(txtValue))
+            {
+                nomeValidado = false;
+                return "*Campo nome precisa conter um valor válido!";
+            }
+            else
+            {
+                nomeValidado = true;
+                return "";
+            }
+        }
+
         private bool validacaoDeCampos()
         {
-            return true;
+            if (nomeValidado && tamanhoValidado && idCategoriaValidado && custoValidado && vendaValidado)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Existem campos que ainda não foram validados!", "Validação de campos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
         }
 
         private Produto PreencherProduto()
@@ -125,6 +153,11 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
                 produtoDAO.CloseConnections();
                 this.DialogResult = DialogResult.OK;
             }
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+            lblMensagemNome.Text = ValidarCampoNome(txtNome.Text);
         }
     }
 }
