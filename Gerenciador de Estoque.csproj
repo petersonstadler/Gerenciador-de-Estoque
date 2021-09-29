@@ -125,6 +125,7 @@
     <Compile Include="VIEW\FormProdutos\FormProduto.Designer.cs">
       <DependentUpon>FormProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\Validador.cs" />
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
