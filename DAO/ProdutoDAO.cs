@@ -18,14 +18,14 @@ namespace Gerenciador_de_Estoque.DAO
             NomeTabela = "produtos";
             ApelidoTabela = "Produtos";
 
-            NomeTodasColunas = new string[] { "idproduto", "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "qtdproduto", "ativoproduto" };
-            ApelidoTodasColunas = new string[] { "Id", "Nome", "Descrição", "Tamanho", "Custo", "Preço", "Categoria", "Quantidade", "Ativo" };
+            NomeTodasColunas = new string[] { "idproduto", "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "ativoproduto" };
+            ApelidoTodasColunas = new string[] { "Id", "Nome", "Descrição", "Tamanho", "Custo", "Preço", "Categoria", "Ativo" };
 
-            NomeColunasSelect = new string[] { "idproduto", "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "(SELECT nomecategoria FROM categorias WHERE categorias_idcategoria = idcategoria)", "qtdproduto", "ativoproduto" };
+            NomeColunasSelect = new string[] { "idproduto", "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "(SELECT nomecategoria FROM categorias WHERE categorias_idcategoria = idcategoria)", "(SELECT SUM(qtdmovimento) FROM movimentos WHERE produtos_idproduto = idproduto)", "ativoproduto" };
             ApelidoColunasSelect = new string[] { "Id", "Nome", "Descrição", "Tamanho", "Custo", "Preço", "Categoria", "Quantidade", "Ativo" };
 
-            ColunasInserir = new string[] { "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "qtdproduto", "ativoproduto" };
-            ParametrosColunasInserir = new string[] { "?nome", "?descricao", "?tamanho", "?custo", "?preco", "?categoria", "?quantidade", "?ativo" };
+            ColunasInserir = new string[] { "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "ativoproduto" };
+            ParametrosColunasInserir = new string[] { "?nome", "?descricao", "?tamanho", "?custo", "?preco", "?categoria", "?ativo" };
 
             ColunasAlterar = new string[] { "nomeproduto", "descproduto", "tamanhoproduto", "custoproduto", "precoproduto", "categorias_idcategoria", "ativoproduto" };
             ParametrosColunasAlterar = new string[] { "?nome", "?descricao", "?tamanho", "?custo", "?preco", "?categoria", "?ativo" };
@@ -40,8 +40,7 @@ namespace Gerenciador_de_Estoque.DAO
             cmd.Parameters.AddWithValue(ParametrosColunasInserir[3], produto.Custo);
             cmd.Parameters.AddWithValue(ParametrosColunasInserir[4], produto.Preco);
             cmd.Parameters.AddWithValue(ParametrosColunasInserir[5], produto.Idcategoria);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[6], produto.Quantidade);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[7], produto.Ativo);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[6], produto.Ativo);
         }
 
         protected override void AddParametroAlterar(object obj)
@@ -53,8 +52,7 @@ namespace Gerenciador_de_Estoque.DAO
             cmd.Parameters.AddWithValue(ParametrosColunasInserir[3], produto.Custo);
             cmd.Parameters.AddWithValue(ParametrosColunasInserir[4], produto.Preco);
             cmd.Parameters.AddWithValue(ParametrosColunasInserir[5], produto.Idcategoria);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[6], produto.Quantidade);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[7], produto.Ativo);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[6], produto.Ativo);
         }
 
         protected override object PreencherDados(MySqlDataReader dr)
@@ -69,8 +67,7 @@ namespace Gerenciador_de_Estoque.DAO
                 produto.Custo = dr.GetDecimal(NomeTodasColunas[4]);
                 produto.Preco = dr.GetDecimal(NomeTodasColunas[5]);
                 produto.Idcategoria = dr.GetInt32(NomeTodasColunas[6]);
-                produto.Quantidade = dr.GetFloat(NomeTodasColunas[7]);
-                produto.Ativo = dr.GetBoolean(NomeTodasColunas[8]);
+                produto.Ativo = dr.GetBoolean(NomeTodasColunas[7]);
             }
             else
             {
