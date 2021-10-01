@@ -259,5 +259,23 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
                 e.Handled = false;
             }
         }
+
+        private void lblCategoria_Click(object sender, EventArgs e)
+        {
+            Categoria categoria = new Categoria();
+            SeletorDeCategoria selecionarCategoria = new SeletorDeCategoria(ref categoria);
+            selecionarCategoria.Location = MousePosition;
+            selecionarCategoria.ShowDialog();
+            if(selecionarCategoria.DialogResult == DialogResult.OK)
+            {
+                txtIdCategoria.Text = Convert.ToString(categoria.Id);
+                txtNomeCategoria.Text = categoria.Nome;
+                selecionarCategoria.Dispose();
+            }
+            else
+            {
+                selecionarCategoria.Dispose();
+            }
+        }
     }
 }

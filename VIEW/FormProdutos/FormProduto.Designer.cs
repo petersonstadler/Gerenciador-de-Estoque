@@ -164,6 +164,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.lblCategoria.Size = new System.Drawing.Size(69, 17);
             this.lblCategoria.TabIndex = 9;
             this.lblCategoria.Text = "Categoria";
+            this.lblCategoria.Click += new System.EventHandler(this.lblCategoria_Click);
             // 
             // lblCusto
             // 

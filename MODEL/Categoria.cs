@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gerenciador_de_Estoque.MODEL
 {
-    class Categoria
+    public class Categoria
     {
         private int id;
         private string nome;
