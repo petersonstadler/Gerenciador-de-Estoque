@@ -119,6 +119,60 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             }
         }
 
+        private void ValidarCampoTamanho(string txt)
+        {
+            if(txt.Length < 1)
+            {
+                lblTamanho.BackColor = Color.Red;
+                tamanhoValidado = false;
+            }
+            else
+            {
+                tamanhoValidado = true;
+                lblTamanho.BackColor = Color.White;
+            }
+        }
+
+        private void ValidarCampoCategoria(string txt)
+        {
+            int valor;
+            if (int.TryParse(txt, out valor))
+            {
+                if (valor > 0)
+                {
+                    lblCategoria.BackColor = Color.White;
+                    idCategoriaValidado = true;
+                }
+                else
+                {
+                    lblCategoria.BackColor = Color.Red;
+                    idCategoriaValidado = false;
+                }
+            }
+            else
+            {
+                lblCategoria.BackColor = Color.Red;
+                idCategoriaValidado = false;
+            }
+        }
+
+        private string ValidarCampoValores(string txt, ref bool validador)
+        {
+            string mensagem = "";
+            Validador validar = new Validador();
+            if (validar.ValidarCampoPreco(txt))
+            {
+                mensagem = "";
+                validador = true;
+            }
+            else
+            {
+                mensagem = "*O campo precisa conter um valor válido!";
+                validador = false;
+            }
+            return mensagem;
+        }
+
         private Produto PreencherProduto()
         {
             Produto prod = new Produto();
@@ -158,6 +212,52 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             lblMensagemNome.Text = ValidarCampoNome(txtNome.Text);
+        }
+
+        private void cbBoxTamanho_TextChanged(object sender, EventArgs e)
+        {
+            ValidarCampoTamanho(cbBoxTamanho.Text);
+        }
+
+        private void txtIdCategoria_TextChanged(object sender, EventArgs e)
+        {
+            ValidarCampoCategoria(txtIdCategoria.Text);
+        }
+
+        private void txtCusto_TextChanged(object sender, EventArgs e)
+        {
+            lblMensagemCusto.Text = ValidarCampoValores(txtCusto.Text, ref custoValidado);
+        }
+
+        private void txtVenda_TextChanged(object sender, EventArgs e)
+        {
+            lblMensagemVenda.Text = ValidarCampoValores(txtVenda.Text, ref vendaValidado);
+        }
+
+        private void txtCusto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validador validar = new Validador();
+            if(validar.CampoFloat(txtCusto.Text, e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void txtVenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validador validar = new Validador();
+            if (validar.CampoFloat(txtVenda.Text, e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                e.Handled = false;
+            }
         }
     }
 }

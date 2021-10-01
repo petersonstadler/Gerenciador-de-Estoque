@@ -26,7 +26,7 @@ namespace Gerenciador_de_Estoque.VIEW
                     return false;
                 }
             }
-            if (txt == "" || txt == null || txt.Length < 1 || txt.Length > 7)
+            if (txt == "" || txt == null || txt.Length < 1 || txt.Length > 12)
             {
                 return false;
             }

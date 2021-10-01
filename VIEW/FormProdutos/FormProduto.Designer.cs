@@ -50,6 +50,8 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.txtNomeCategoria = new System.Windows.Forms.TextBox();
             this.lblMensagemNome = new System.Windows.Forms.Label();
+            this.lblMensagemCusto = new System.Windows.Forms.Label();
+            this.lblMensagemVenda = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,6 +152,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.cbBoxTamanho.Name = "cbBoxTamanho";
             this.cbBoxTamanho.Size = new System.Drawing.Size(66, 21);
             this.cbBoxTamanho.TabIndex = 8;
+            this.cbBoxTamanho.TextChanged += new System.EventHandler(this.cbBoxTamanho_TextChanged);
             // 
             // lblCategoria
             // 
@@ -189,6 +192,8 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.txtCusto.Name = "txtCusto";
             this.txtCusto.Size = new System.Drawing.Size(90, 23);
             this.txtCusto.TabIndex = 14;
+            this.txtCusto.TextChanged += new System.EventHandler(this.txtCusto_TextChanged);
+            this.txtCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCusto_KeyPress);
             // 
             // txtVenda
             // 
@@ -197,6 +202,8 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.txtVenda.Name = "txtVenda";
             this.txtVenda.Size = new System.Drawing.Size(90, 23);
             this.txtVenda.TabIndex = 15;
+            this.txtVenda.TextChanged += new System.EventHandler(this.txtVenda_TextChanged);
+            this.txtVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenda_KeyPress);
             // 
             // ckBoxAtivo
             // 
@@ -236,6 +243,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.txtIdCategoria.Name = "txtIdCategoria";
             this.txtIdCategoria.Size = new System.Drawing.Size(41, 23);
             this.txtIdCategoria.TabIndex = 19;
+            this.txtIdCategoria.TextChanged += new System.EventHandler(this.txtIdCategoria_TextChanged);
             // 
             // txtNomeCategoria
             // 
@@ -257,6 +265,26 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.lblMensagemNome.TabIndex = 21;
             this.lblMensagemNome.Text = "*";
             // 
+            // lblMensagemCusto
+            // 
+            this.lblMensagemCusto.AutoSize = true;
+            this.lblMensagemCusto.ForeColor = System.Drawing.Color.Red;
+            this.lblMensagemCusto.Location = new System.Drawing.Point(158, 236);
+            this.lblMensagemCusto.Name = "lblMensagemCusto";
+            this.lblMensagemCusto.Size = new System.Drawing.Size(11, 13);
+            this.lblMensagemCusto.TabIndex = 22;
+            this.lblMensagemCusto.Text = "*";
+            // 
+            // lblMensagemVenda
+            // 
+            this.lblMensagemVenda.AutoSize = true;
+            this.lblMensagemVenda.ForeColor = System.Drawing.Color.Red;
+            this.lblMensagemVenda.Location = new System.Drawing.Point(158, 265);
+            this.lblMensagemVenda.Name = "lblMensagemVenda";
+            this.lblMensagemVenda.Size = new System.Drawing.Size(11, 13);
+            this.lblMensagemVenda.TabIndex = 23;
+            this.lblMensagemVenda.Text = "*";
+            // 
             // FormProduto
             // 
             this.AcceptButton = this.btnOk;
@@ -264,6 +292,8 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(450, 356);
+            this.Controls.Add(this.lblMensagemVenda);
+            this.Controls.Add(this.lblMensagemCusto);
             this.Controls.Add(this.lblMensagemNome);
             this.Controls.Add(this.txtNomeCategoria);
             this.Controls.Add(this.txtIdCategoria);
@@ -322,5 +352,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
         private System.Windows.Forms.TextBox txtIdCategoria;
         private System.Windows.Forms.TextBox txtNomeCategoria;
         private System.Windows.Forms.Label lblMensagemNome;
+        private System.Windows.Forms.Label lblMensagemCusto;
+        private System.Windows.Forms.Label lblMensagemVenda;
     }
 }
