@@ -119,6 +119,12 @@
     <Compile Include="VIEW\FormProdutos\SeletorDeCategoria.Designer.cs">
       <DependentUpon>SeletorDeCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\TelaPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\TelaPedidos.Designer.cs">
+      <DependentUpon>TelaPedidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="VIEW\TelaProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\FormProdutos\SeletorDeCategoria.resx">
       <DependentUpon>SeletorDeCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\TelaPedidos.resx">
+      <DependentUpon>TelaPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TelaProdutos.resx">
       <DependentUpon>TelaProdutos.cs</DependentUpon>
@@ -186,6 +195,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IconCamiseta3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconPedidos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconPedidos1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

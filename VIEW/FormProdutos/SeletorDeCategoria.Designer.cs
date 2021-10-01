@@ -80,9 +80,11 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             // 
             // SeletorDeCategoria
             // 
+            this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(297, 336);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnCancelar);

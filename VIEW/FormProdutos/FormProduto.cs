@@ -270,12 +270,8 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             {
                 txtIdCategoria.Text = Convert.ToString(categoria.Id);
                 txtNomeCategoria.Text = categoria.Nome;
-                selecionarCategoria.Dispose();
             }
-            else
-            {
-                selecionarCategoria.Dispose();
-            }
+            selecionarCategoria.Dispose();
         }
     }
 }

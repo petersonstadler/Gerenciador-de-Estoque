@@ -49,6 +49,7 @@ namespace Gerenciador_de_Estoque.VIEW
             {
                 DtProdutos.DataSource = new ProdutoDAO().ListarEmDataTable();
             }
+            formProduto.Dispose();
         }
 
         private void CriarFormProdutoAlterar()
@@ -59,6 +60,7 @@ namespace Gerenciador_de_Estoque.VIEW
             {
                 DtProdutos.DataSource = new ProdutoDAO().ListarEmDataTable(); 
             }
+            formProduto.Dispose();
         }
 
         private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
