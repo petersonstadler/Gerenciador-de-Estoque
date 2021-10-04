@@ -16,5 +16,10 @@ namespace Gerenciador_de_Estoque.VIEW
         {
             InitializeComponent();
         }
+
+        private void lblX_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

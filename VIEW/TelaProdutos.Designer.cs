@@ -74,7 +74,7 @@ namespace Gerenciador_de_Estoque.VIEW
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DtProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.DtProdutos.BackgroundColor = System.Drawing.Color.White;
+            this.DtProdutos.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DtProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtProdutos.GridColor = System.Drawing.Color.LightGray;
             this.DtProdutos.Location = new System.Drawing.Point(4, 30);
@@ -92,7 +92,7 @@ namespace Gerenciador_de_Estoque.VIEW
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DtMovimentos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.DtMovimentos.BackgroundColor = System.Drawing.Color.White;
+            this.DtMovimentos.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DtMovimentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtMovimentos.GridColor = System.Drawing.Color.LightGray;
             this.DtMovimentos.Location = new System.Drawing.Point(442, 30);

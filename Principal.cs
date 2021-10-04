@@ -100,5 +100,10 @@ namespace Gerenciador_de_Estoque
         {
             AbrirFormInPanel(new TelaProdutos());
         }
+
+        private void btnPedidos_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new TelaPedidos());
+        }
     }
 }
