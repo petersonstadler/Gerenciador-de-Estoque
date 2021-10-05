@@ -129,7 +129,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             else
             {
                 tamanhoValidado = true;
-                lblTamanho.BackColor = Color.White;
+                lblTamanho.BackColor = Color.Green;
             }
         }
 
@@ -140,7 +140,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             {
                 if (valor > 0)
                 {
-                    lblCategoria.BackColor = Color.White;
+                    lblCategoria.BackColor = Color.Green;
                     idCategoriaValidado = true;
                 }
                 else
