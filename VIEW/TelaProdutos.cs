@@ -81,7 +81,6 @@ namespace Gerenciador_de_Estoque.VIEW
             menuProdutos.Items.Add("Adicionar");
             menuProdutos.Items.Add("Alterar");
             DtProdutos.ContextMenuStrip = menuProdutos;
-
             menuProdutos.ItemClicked += new ToolStripItemClickedEventHandler(menu_ItemClicked);
         }
 

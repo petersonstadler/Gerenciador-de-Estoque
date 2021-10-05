@@ -131,6 +131,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TelaPedidos";
             this.Text = "TelaPedidos";
+            this.Load += new System.EventHandler(this.TelaPedidos_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPedidos)).EndInit();
