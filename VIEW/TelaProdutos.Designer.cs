@@ -48,7 +48,7 @@ namespace Gerenciador_de_Estoque.VIEW
             // 
             this.lblProdutos.AutoSize = true;
             this.lblProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblProdutos.Location = new System.Drawing.Point(4, 1);
+            this.lblProdutos.Location = new System.Drawing.Point(3, 0);
             this.lblProdutos.Name = "lblProdutos";
             this.lblProdutos.Size = new System.Drawing.Size(90, 25);
             this.lblProdutos.TabIndex = 0;
@@ -77,10 +77,10 @@ namespace Gerenciador_de_Estoque.VIEW
             this.DtProdutos.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DtProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtProdutos.GridColor = System.Drawing.Color.LightGray;
-            this.DtProdutos.Location = new System.Drawing.Point(4, 30);
+            this.DtProdutos.Location = new System.Drawing.Point(3, 28);
             this.DtProdutos.Name = "DtProdutos";
             this.DtProdutos.ReadOnly = true;
-            this.DtProdutos.Size = new System.Drawing.Size(431, 351);
+            this.DtProdutos.Size = new System.Drawing.Size(433, 354);
             this.DtProdutos.TabIndex = 2;
             this.DtProdutos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtProdutos_CellEnter);
             // 
@@ -95,17 +95,17 @@ namespace Gerenciador_de_Estoque.VIEW
             this.DtMovimentos.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DtMovimentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtMovimentos.GridColor = System.Drawing.Color.LightGray;
-            this.DtMovimentos.Location = new System.Drawing.Point(442, 30);
+            this.DtMovimentos.Location = new System.Drawing.Point(442, 28);
             this.DtMovimentos.Name = "DtMovimentos";
             this.DtMovimentos.ReadOnly = true;
-            this.DtMovimentos.Size = new System.Drawing.Size(182, 351);
+            this.DtMovimentos.Size = new System.Drawing.Size(183, 354);
             this.DtMovimentos.TabIndex = 4;
             // 
             // lblMovimentos
             // 
             this.lblMovimentos.AutoSize = true;
             this.lblMovimentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblMovimentos.Location = new System.Drawing.Point(442, 1);
+            this.lblMovimentos.Location = new System.Drawing.Point(442, 0);
             this.lblMovimentos.Name = "lblMovimentos";
             this.lblMovimentos.Size = new System.Drawing.Size(118, 25);
             this.lblMovimentos.TabIndex = 5;
@@ -116,7 +116,6 @@ namespace Gerenciador_de_Estoque.VIEW
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));

@@ -15,12 +15,14 @@ namespace Gerenciador_de_Estoque.VIEW
     {
         private void Carregar()
         {
-            
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            dataGridPedidos.DataSource = pedidoDAO.ListarEmDataTable();
         }
 
         public TelaPedidos()
         {
             InitializeComponent();
+            Carregar();
         }
 
         private void lblX_Click(object sender, EventArgs e)

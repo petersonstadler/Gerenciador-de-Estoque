@@ -17,10 +17,10 @@ namespace Gerenciador_de_Estoque.DAO
             ApelidoTabela = "Pedidos";
 
             NomeTodasColunas = new string[] { "idpedido", "operacaopedido", "pessoapedido", "datapedido", "fretepedido", "statuspedido", "financeiropedido" };
-            ApelidoTodasColunas = new string[] {"ID", "Operação", "Pessoa/Empresa", "Data", "Frete", "Status", "Financeiro"};
+            ApelidoTodasColunas = new string[] {"ID", "Operação", "Pessoa", "Data", "Frete", "Status", "Financeiro"};
 
             NomeColunasSelect = new string[] { "idpedido", "operacaopedido", "pessoapedido", "datapedido", "fretepedido", "statuspedido", "financeiropedido" };
-            ApelidoColunasSelect = new string[] { "ID", "Operação", "Pessoa/Empresa", "Data", "Frete", "Status", "Financeiro" };
+            ApelidoColunasSelect = new string[] { "ID", "Operação", "Pessoa", "Data", "Frete", "Status", "Financeiro" };
 
             ColunasInserir = new string[] { "operacaopedido", "pessoapedido", "datapedido", "fretepedido", "statuspedido", "financeiropedido" };
             ParametrosColunasInserir = new string[] {"operacao", "pessoapedido", "datapedido", "fretepedido", "statuspedido", "financeiro"};

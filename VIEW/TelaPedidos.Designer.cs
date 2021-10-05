@@ -30,11 +30,11 @@ namespace Gerenciador_de_Estoque.VIEW
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblX = new System.Windows.Forms.Label();
             this.lblPedidos = new System.Windows.Forms.Label();
             this.lblItens = new System.Windows.Forms.Label();
             this.dataGridPedidos = new System.Windows.Forms.DataGridView();
             this.dataGridItens = new System.Windows.Forms.DataGridView();
+            this.lblX = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPedidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridItens)).BeginInit();
@@ -42,6 +42,9 @@ namespace Gerenciador_de_Estoque.VIEW
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.05732F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.94268F));
@@ -54,20 +57,8 @@ namespace Gerenciador_de_Estoque.VIEW
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(628, 387);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(628, 427);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // lblX
-            // 
-            this.lblX.AutoSize = true;
-            this.lblX.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblX.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblX.Location = new System.Drawing.Point(12, 12);
-            this.lblX.Name = "lblX";
-            this.lblX.Size = new System.Drawing.Size(17, 17);
-            this.lblX.TabIndex = 2;
-            this.lblX.Text = "X";
-            this.lblX.Click += new System.EventHandler(this.lblX_Click);
             // 
             // lblPedidos
             // 
@@ -101,7 +92,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.dataGridPedidos.Location = new System.Drawing.Point(3, 28);
             this.dataGridPedidos.Name = "dataGridPedidos";
             this.dataGridPedidos.ReadOnly = true;
-            this.dataGridPedidos.Size = new System.Drawing.Size(389, 359);
+            this.dataGridPedidos.Size = new System.Drawing.Size(389, 396);
             this.dataGridPedidos.TabIndex = 2;
             // 
             // dataGridItens
@@ -114,8 +105,20 @@ namespace Gerenciador_de_Estoque.VIEW
             this.dataGridItens.Location = new System.Drawing.Point(398, 28);
             this.dataGridItens.Name = "dataGridItens";
             this.dataGridItens.ReadOnly = true;
-            this.dataGridItens.Size = new System.Drawing.Size(227, 359);
+            this.dataGridItens.Size = new System.Drawing.Size(227, 396);
             this.dataGridItens.TabIndex = 3;
+            // 
+            // lblX
+            // 
+            this.lblX.AutoSize = true;
+            this.lblX.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblX.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblX.Location = new System.Drawing.Point(12, 12);
+            this.lblX.Name = "lblX";
+            this.lblX.Size = new System.Drawing.Size(17, 17);
+            this.lblX.TabIndex = 2;
+            this.lblX.Text = "X";
+            this.lblX.Click += new System.EventHandler(this.lblX_Click);
             // 
             // TelaPedidos
             // 
