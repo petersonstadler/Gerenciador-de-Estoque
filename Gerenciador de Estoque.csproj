@@ -114,10 +114,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="VIEW\FormProdutos\SeletorDeCategoria.cs">
+    <Compile Include="VIEW\TelaPedidos\FormPedido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VIEW\FormProdutos\SeletorDeCategoria.Designer.cs">
+    <Compile Include="VIEW\TelaPedidos\FormPedido.Designer.cs">
+      <DependentUpon>FormPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW\TelaProdutos\SeletorDeCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\TelaProdutos\SeletorDeCategoria.Designer.cs">
       <DependentUpon>SeletorDeCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\TelaPedidos.cs">
@@ -132,10 +138,10 @@
     <Compile Include="VIEW\TelaProdutos.Designer.cs">
       <DependentUpon>TelaProdutos.cs</DependentUpon>
     </Compile>
-    <Compile Include="VIEW\FormProdutos\FormProduto.cs">
+    <Compile Include="VIEW\TelaProdutos\FormProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VIEW\FormProdutos\FormProduto.Designer.cs">
+    <Compile Include="VIEW\TelaProdutos\FormProduto.Designer.cs">
       <DependentUpon>FormProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\Validador.cs" />
@@ -147,10 +153,13 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\FormProdutos\FormProduto.resx">
+    <EmbeddedResource Include="VIEW\TelaPedidos\FormPedido.resx">
+      <DependentUpon>FormPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\TelaProdutos\FormProduto.resx">
       <DependentUpon>FormProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\FormProdutos\SeletorDeCategoria.resx">
+    <EmbeddedResource Include="VIEW\TelaProdutos\SeletorDeCategoria.resx">
       <DependentUpon>SeletorDeCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TelaPedidos.resx">
