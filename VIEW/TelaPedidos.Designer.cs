@@ -120,7 +120,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.lblX.Text = "X";
             this.lblX.Click += new System.EventHandler(this.lblX_Click);
             // 
-            // TelaPedidos
+            // TelaPedidos1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,7 +129,8 @@ namespace Gerenciador_de_Estoque.VIEW
             this.Controls.Add(this.lblX);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "TelaPedidos";
+            this.Name = "TelaPedidos1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaPedidos";
             this.Load += new System.EventHandler(this.TelaPedidos_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -35,5 +35,35 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+
+        private void GerarCbBoxFinanceiro()
+        {
+            comboBoxFinanceiro.Items.Add("Pago");
+            comboBoxFinanceiro.Items.Add("Fiado");
+            comboBoxFinanceiro.Text = "Pago";
+        }
+
+        private void GerarCbBoxOperacao()
+        {
+            comboBoxOperacao.Items.Add("ENTRADA");
+            comboBoxOperacao.Items.Add("SAIDA");
+            comboBoxOperacao.Text = "SAIDA";
+        }
+
+        private void GerarCbBoxStatus()
+        {
+            comboBoxStatus.Items.Add("Aberto");
+            comboBoxStatus.Items.Add("Fechado");
+            comboBoxStatus.Items.Add("Cancelado");
+            comboBoxStatus.Text = "Aberto";
+        }
+
+        private void FormPedido_Load(object sender, EventArgs e)
+        {
+            GerarCbBoxStatus();
+            GerarCbBoxOperacao();
+            GerarCbBoxFinanceiro();
+        }
     }
 }

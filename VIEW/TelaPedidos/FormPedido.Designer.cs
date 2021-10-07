@@ -282,6 +282,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.Name = "FormPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormPedido";
+            this.Load += new System.EventHandler(this.FormPedido_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridItensPedido)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
