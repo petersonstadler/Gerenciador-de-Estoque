@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gerenciador_de_Estoque.DAO;
+using Gerenciador_de_Estoque.VIEW.TelaPedidos;
 
 namespace Gerenciador_de_Estoque.VIEW
 {
@@ -30,11 +31,18 @@ namespace Gerenciador_de_Estoque.VIEW
             this.Close();
         }
 
+        private void ChamarFormPedido()
+        {
+            FormPedido formPedido = new FormPedido();
+            formPedido.ShowDialog();
+        }
+
         private void MenuPedidosItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             switch (e.ClickedItem.Text)
             {
                 case "Criar Pedido":
+                    ChamarFormPedido();
                     break;
                 case "Alterar Pedido":
                     break;
