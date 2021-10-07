@@ -103,7 +103,7 @@ namespace Gerenciador_de_Estoque
 
         private void btnPedidos_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new TelaPedidos());
+            AbrirFormInPanel(new TelaPedidos1());
         }
     }
 }

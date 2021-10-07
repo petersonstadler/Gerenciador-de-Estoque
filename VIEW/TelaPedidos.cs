@@ -11,7 +11,7 @@ using Gerenciador_de_Estoque.DAO;
 
 namespace Gerenciador_de_Estoque.VIEW
 {
-    public partial class TelaPedidos : Form
+    public partial class TelaPedidos1 : Form
     {
         private void Carregar()
         {
@@ -20,7 +20,7 @@ namespace Gerenciador_de_Estoque.VIEW
             pedidoDAO.CloseConnections();
         }
 
-        public TelaPedidos()
+        public TelaPedidos1()
         {
             InitializeComponent();
         }

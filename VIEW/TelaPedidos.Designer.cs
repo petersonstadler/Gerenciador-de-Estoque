@@ -1,7 +1,7 @@
 ﻿
 namespace Gerenciador_de_Estoque.VIEW
 {
-    partial class TelaPedidos
+    partial class TelaPedidos1
     {
         /// <summary>
         /// Required designer variable.

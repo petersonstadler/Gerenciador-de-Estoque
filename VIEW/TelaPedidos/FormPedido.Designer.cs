@@ -47,7 +47,10 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.dataGridItensPedido = new System.Windows.Forms.DataGridView();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridItensPedido)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbID
@@ -55,7 +58,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lbID.AutoSize = true;
             this.lbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lbID.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbID.Location = new System.Drawing.Point(12, 9);
+            this.lbID.Location = new System.Drawing.Point(12, 36);
             this.lbID.Name = "lbID";
             this.lbID.Size = new System.Drawing.Size(21, 17);
             this.lbID.TabIndex = 0;
@@ -66,7 +69,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblData.AutoSize = true;
             this.lblData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblData.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblData.Location = new System.Drawing.Point(88, 9);
+            this.lblData.Location = new System.Drawing.Point(88, 36);
             this.lblData.Name = "lblData";
             this.lblData.Size = new System.Drawing.Size(38, 17);
             this.lblData.TabIndex = 1;
@@ -76,7 +79,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             // 
             this.dateTimePickerPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.dateTimePickerPedido.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerPedido.Location = new System.Drawing.Point(68, 29);
+            this.dateTimePickerPedido.Location = new System.Drawing.Point(68, 56);
             this.dateTimePickerPedido.MinDate = new System.DateTime(2011, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerPedido.Name = "dateTimePickerPedido";
             this.dateTimePickerPedido.Size = new System.Drawing.Size(158, 24);
@@ -85,7 +88,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             // txtID
             // 
             this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.txtID.Location = new System.Drawing.Point(12, 29);
+            this.txtID.Location = new System.Drawing.Point(12, 56);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(50, 24);
@@ -94,7 +97,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             // txtPessoa
             // 
             this.txtPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.txtPessoa.Location = new System.Drawing.Point(12, 85);
+            this.txtPessoa.Location = new System.Drawing.Point(12, 112);
             this.txtPessoa.Name = "txtPessoa";
             this.txtPessoa.Size = new System.Drawing.Size(311, 24);
             this.txtPessoa.TabIndex = 5;
@@ -104,7 +107,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblPessoa.AutoSize = true;
             this.lblPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblPessoa.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblPessoa.Location = new System.Drawing.Point(12, 65);
+            this.lblPessoa.Location = new System.Drawing.Point(12, 92);
             this.lblPessoa.Name = "lblPessoa";
             this.lblPessoa.Size = new System.Drawing.Size(115, 17);
             this.lblPessoa.TabIndex = 4;
@@ -115,7 +118,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblOperacao.AutoSize = true;
             this.lblOperacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblOperacao.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblOperacao.Location = new System.Drawing.Point(12, 123);
+            this.lblOperacao.Location = new System.Drawing.Point(12, 150);
             this.lblOperacao.Name = "lblOperacao";
             this.lblOperacao.Size = new System.Drawing.Size(71, 17);
             this.lblOperacao.TabIndex = 6;
@@ -125,7 +128,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             // 
             this.comboBoxOperacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.comboBoxOperacao.FormattingEnabled = true;
-            this.comboBoxOperacao.Location = new System.Drawing.Point(12, 143);
+            this.comboBoxOperacao.Location = new System.Drawing.Point(12, 170);
             this.comboBoxOperacao.Name = "comboBoxOperacao";
             this.comboBoxOperacao.Size = new System.Drawing.Size(141, 26);
             this.comboBoxOperacao.TabIndex = 7;
@@ -135,7 +138,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblFrete.AutoSize = true;
             this.lblFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblFrete.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFrete.Location = new System.Drawing.Point(181, 123);
+            this.lblFrete.Location = new System.Drawing.Point(181, 150);
             this.lblFrete.Name = "lblFrete";
             this.lblFrete.Size = new System.Drawing.Size(41, 17);
             this.lblFrete.TabIndex = 8;
@@ -144,7 +147,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.textBox1.Location = new System.Drawing.Point(159, 145);
+            this.textBox1.Location = new System.Drawing.Point(159, 172);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(107, 24);
             this.textBox1.TabIndex = 9;
@@ -153,7 +156,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             // 
             this.comboBoxStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.comboBoxStatus.FormattingEnabled = true;
-            this.comboBoxStatus.Location = new System.Drawing.Point(12, 201);
+            this.comboBoxStatus.Location = new System.Drawing.Point(12, 228);
             this.comboBoxStatus.Name = "comboBoxStatus";
             this.comboBoxStatus.Size = new System.Drawing.Size(141, 26);
             this.comboBoxStatus.TabIndex = 11;
@@ -163,7 +166,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblStatus.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblStatus.Location = new System.Drawing.Point(12, 181);
+            this.lblStatus.Location = new System.Drawing.Point(12, 208);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(48, 17);
             this.lblStatus.TabIndex = 10;
@@ -173,7 +176,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             // 
             this.comboBoxFinanceiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.comboBoxFinanceiro.FormattingEnabled = true;
-            this.comboBoxFinanceiro.Location = new System.Drawing.Point(12, 261);
+            this.comboBoxFinanceiro.Location = new System.Drawing.Point(12, 288);
             this.comboBoxFinanceiro.Name = "comboBoxFinanceiro";
             this.comboBoxFinanceiro.Size = new System.Drawing.Size(141, 26);
             this.comboBoxFinanceiro.TabIndex = 13;
@@ -183,7 +186,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblFinanceiro.AutoSize = true;
             this.lblFinanceiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblFinanceiro.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFinanceiro.Location = new System.Drawing.Point(12, 241);
+            this.lblFinanceiro.Location = new System.Drawing.Point(12, 268);
             this.lblFinanceiro.Name = "lblFinanceiro";
             this.lblFinanceiro.Size = new System.Drawing.Size(74, 17);
             this.lblFinanceiro.TabIndex = 12;
@@ -194,7 +197,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblItens.AutoSize = true;
             this.lblItens.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblItens.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblItens.Location = new System.Drawing.Point(326, 9);
+            this.lblItens.Location = new System.Drawing.Point(326, 36);
             this.lblItens.Name = "lblItens";
             this.lblItens.Size = new System.Drawing.Size(86, 17);
             this.lblItens.TabIndex = 14;
@@ -204,9 +207,9 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             // 
             this.dataGridItensPedido.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridItensPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridItensPedido.Location = new System.Drawing.Point(329, 29);
+            this.dataGridItensPedido.Location = new System.Drawing.Point(329, 56);
             this.dataGridItensPedido.Name = "dataGridItensPedido";
-            this.dataGridItensPedido.Size = new System.Drawing.Size(400, 273);
+            this.dataGridItensPedido.Size = new System.Drawing.Size(400, 246);
             this.dataGridItensPedido.TabIndex = 15;
             // 
             // btnOk
@@ -229,12 +232,34 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.panel1.Controls.Add(this.lblTitulo);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(742, 33);
+            this.panel1.TabIndex = 18;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.lblTitulo.Location = new System.Drawing.Point(309, 4);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(103, 29);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Pedidos";
+            this.lblTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseDown);
+            // 
             // FormPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(741, 360);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.dataGridItensPedido);
@@ -258,6 +283,8 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormPedido";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridItensPedido)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,5 +310,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
         private System.Windows.Forms.DataGridView dataGridItensPedido;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }
