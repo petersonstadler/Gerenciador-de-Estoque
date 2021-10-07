@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Gerenciador_de_Estoque.MODEL
 {
-    class Pedido
+    public class Pedido
     {
         private int id;
         private string operacao;
@@ -15,6 +15,8 @@ namespace Gerenciador_de_Estoque.MODEL
         private decimal frete;
         private string status;
         private string financeiro;
+
+        private List<ItemNoPedido> listaItens = new List<ItemNoPedido>();
 
         public int Id { get => id; set => id = value; }
         public string Operacao { get => operacao; set => operacao = value; }

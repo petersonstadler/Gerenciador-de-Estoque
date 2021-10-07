@@ -8,11 +8,14 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Gerenciador_de_Estoque.MODEL;
 
 namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
 {
     public partial class FormPedido : Form
     {
+
+        private String operacao;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -22,6 +25,13 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
         public FormPedido()
         {
             InitializeComponent();
+            operacao = "CRIAR";
+        }
+
+        public FormPedido(Pedido pedido)
+        {
+            InitializeComponent();
+            operacao = "ALTERAR";
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
