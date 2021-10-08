@@ -100,7 +100,7 @@ namespace Gerenciador_de_Estoque.VIEW
             // 
             this.dataGridItens.AllowUserToAddRows = false;
             this.dataGridItens.AllowUserToDeleteRows = false;
-            this.dataGridItens.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridItens.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridItens.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridItens.Dock = System.Windows.Forms.DockStyle.Fill;

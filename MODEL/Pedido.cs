@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Gerenciador_de_Estoque.DAO;
 
 namespace Gerenciador_de_Estoque.MODEL
 {
@@ -26,5 +27,11 @@ namespace Gerenciador_de_Estoque.MODEL
         public string Status { get => status; set => status = value; }
         public string Financeiro { get => financeiro; set => financeiro = value; }
         internal List<ItemNoPedido> ListaItens { get => listaItens; set => listaItens = value; }
+
+        public void GerarListaDeItens()
+        {
+            ItemNoPedidoDAO itensDAO = new ItemNoPedidoDAO();
+
+        }
     }
 }

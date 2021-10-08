@@ -58,6 +58,25 @@ namespace Gerenciador_de_Estoque.DAO
             }
         }
 
+        public virtual List<object> PreencherLista(MySqlDataReader dr) { return new List<object>(); }
+
+        public List<object> ListarComFiltro(string filtros)
+        {
+            List<object> listaObj = new List<object>();
+            try
+            {
+                cmd.CommandText = new GeradorScriptsSql().GerarSqlSELECT(NomeTabela, NomeTodasColunas, ApelidoTodasColunas) + " WHERE " + filtros;
+                MySqlDataReader dr = cmd.ExecuteReader();
+                listaObj = PreencherLista(dr);
+                dr.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Erro ao Listar! \n\n" + e, "Listar " + nomeTabela, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return listaObj;
+        }
+
         public DataTable ListarEmDataTable()
         {
             DataTable dt = new DataTable();
