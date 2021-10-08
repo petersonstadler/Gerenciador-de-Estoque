@@ -25,5 +25,6 @@ namespace Gerenciador_de_Estoque.MODEL
         public decimal Frete { get => frete; set => frete = value; }
         public string Status { get => status; set => status = value; }
         public string Financeiro { get => financeiro; set => financeiro = value; }
+        internal List<ItemNoPedido> ListaItens { get => listaItens; set => listaItens = value; }
     }
 }

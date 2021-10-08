@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Gerenciador_de_Estoque.MODEL;
 using MySql.Data.MySqlClient;
 
@@ -63,6 +64,32 @@ namespace Gerenciador_de_Estoque.DAO
                 itemNoPedido.Acrescimo = dr.GetDecimal(5);
             }
             return itemNoPedido;
+        }
+
+        public List<ItemNoPedido> ListarItensDoPedido(Pedido pedido)
+        {
+            List<ItemNoPedido> itens = new List<ItemNoPedido>();
+            ItemNoPedido itemAtual = new ItemNoPedido();
+            try
+            {
+                cmd.CommandText = new GeradorScriptsSql().GerarSqlSELECT(NomeTabela, NomeTodasColunas, ApelidoTodasColunas) + " WHERE pedidos_idpedido = " + pedido.Id;
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    itemAtual.Idpedido = dr.GetInt32(NomeTodasColunas[0]);
+                    itemAtual.Idproduto = dr.GetInt32(NomeTodasColunas[1]);
+                    itemAtual.Preco = dr.GetDecimal(NomeTodasColunas[2]);
+                    itemAtual.Quantidade = dr.GetInt32(NomeTodasColunas[3]);
+                    itemAtual.Desconto = dr.GetDecimal(NomeTodasColunas[4]);
+                    itemAtual.Acrescimo = dr.GetDecimal(NomeTodasColunas[5]);
+                    itens.Add(itemAtual);
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Falha ao tentar listar Itens do Pedido! " + e, "Listar Itens do Pedido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return itens;
         }
     }
 }

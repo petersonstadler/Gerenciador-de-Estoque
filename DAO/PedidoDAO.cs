@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Gerenciador_de_Estoque.MODEL;
 using MySql.Data.MySqlClient;
 
@@ -23,10 +24,10 @@ namespace Gerenciador_de_Estoque.DAO
             ApelidoColunasSelect = new string[] { "ID", "Operação", "Pessoa", "Data", "Frete", "Status", "Financeiro" };
 
             ColunasInserir = new string[] { "operacaopedido", "pessoapedido", "datapedido", "fretepedido", "statuspedido", "financeiropedido" };
-            ParametrosColunasInserir = new string[] {"operacao", "pessoapedido", "datapedido", "fretepedido", "statuspedido", "financeiro"};
+            ParametrosColunasInserir = new string[] {"?operacao", "?pessoapedido", "?datapedido", "?fretepedido", "?statuspedido", "?financeiro"};
 
             ColunasAlterar = new string[] { "operacaopedido", "pessoapedido", "datapedido", "fretepedido", "statuspedido", "financeiropedido" };
-            ParametrosColunasAlterar = new string[] { "operacao", "pessoapedido", "datapedido", "fretepedido", "statuspedido", "financeiro" };
+            ParametrosColunasAlterar = new string[] { "?operacao", "?pessoapedido", "?datapedido", "?fretepedido", "?statuspedido", "?financeiro" };
         }
 
         protected override void AddParametrosInserir(object obj)
@@ -69,6 +70,24 @@ namespace Gerenciador_de_Estoque.DAO
                 pedido.Id = 0;
             }
             return pedido;
+        }
+
+        public int PegarIdDoUltimoPedidoCriado()
+        {
+            int id = 1;
+            try
+            {
+                cmd.CommandText = "SELECT idpedido FROM pedidos ORDER BY idpedido DESC LIMIT 1";
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    id = dr.GetInt32("idpedido") + 1;
+                }
+            }catch(Exception e)
+            {
+                MessageBox.Show("Falha ao pegar id do Ultimo pedido criado! " + e, "Pegar id Ultimo pedido criado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return id;
         }
     }
 }

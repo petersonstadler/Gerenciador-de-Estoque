@@ -94,17 +94,20 @@ namespace Gerenciador_de_Estoque.VIEW
             this.dataGridPedidos.ReadOnly = true;
             this.dataGridPedidos.Size = new System.Drawing.Size(389, 396);
             this.dataGridPedidos.TabIndex = 2;
+            this.dataGridPedidos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPedidos_CellEnter);
             // 
             // dataGridItens
             // 
             this.dataGridItens.AllowUserToAddRows = false;
             this.dataGridItens.AllowUserToDeleteRows = false;
+            this.dataGridItens.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridItens.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridItens.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridItens.Location = new System.Drawing.Point(398, 28);
             this.dataGridItens.Name = "dataGridItens";
             this.dataGridItens.ReadOnly = true;
+            this.dataGridItens.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridItens.Size = new System.Drawing.Size(227, 396);
             this.dataGridItens.TabIndex = 3;
             // 

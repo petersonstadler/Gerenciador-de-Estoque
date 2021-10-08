@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gerenciador_de_Estoque.DAO;
+using Gerenciador_de_Estoque.MODEL;
 using Gerenciador_de_Estoque.VIEW.TelaPedidos;
 
 namespace Gerenciador_de_Estoque.VIEW
 {
     public partial class TelaPedidos1 : Form
     {
+        private Pedido pedidoSelecionado;
+
         private void Carregar()
         {
             PedidoDAO pedidoDAO = new PedidoDAO();
@@ -35,6 +38,13 @@ namespace Gerenciador_de_Estoque.VIEW
         {
             FormPedido formPedido = new FormPedido();
             formPedido.ShowDialog();
+            if(formPedido.DialogResult == DialogResult.OK)
+            {
+                PedidoDAO pedidoDAO = new PedidoDAO();
+                dataGridPedidos.DataSource = pedidoDAO.ListarEmDataTable();
+                pedidoDAO.CloseConnections();
+            }
+            formPedido.Dispose();
         }
 
         private void MenuPedidosItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -62,6 +72,17 @@ namespace Gerenciador_de_Estoque.VIEW
         {
             Carregar();
             CriarMenuDeContextoPedido();
+        }
+
+        private void dataGridPedidos_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            ItemNoPedidoDAO itensDAO = new ItemNoPedidoDAO();
+            dataGridPedidos.CurrentRow.Selected = true;
+            int idPedido = Convert.ToInt32(dataGridPedidos.CurrentRow.Cells[0].Value);
+            pedidoSelecionado = pedidoDAO.BuscarPorId(idPedido) as Pedido;
+            dataGridItens.DataSource = itensDAO.ListarEmDataTableComFiltros("pedidos_idpedido = " + idPedido);
+            pedidoDAO.CloseConnections();
         }
     }
 }

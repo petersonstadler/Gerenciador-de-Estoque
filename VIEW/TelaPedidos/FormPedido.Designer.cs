@@ -38,7 +38,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblOperacao = new System.Windows.Forms.Label();
             this.comboBoxOperacao = new System.Windows.Forms.ComboBox();
             this.lblFrete = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFrete = new System.Windows.Forms.TextBox();
             this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.comboBoxFinanceiro = new System.Windows.Forms.ComboBox();
@@ -144,13 +144,13 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblFrete.TabIndex = 8;
             this.lblFrete.Text = "Frete";
             // 
-            // textBox1
+            // txtFrete
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.textBox1.Location = new System.Drawing.Point(159, 172);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(107, 24);
-            this.textBox1.TabIndex = 9;
+            this.txtFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.txtFrete.Location = new System.Drawing.Point(159, 172);
+            this.txtFrete.Name = "txtFrete";
+            this.txtFrete.Size = new System.Drawing.Size(107, 24);
+            this.txtFrete.TabIndex = 9;
             // 
             // comboBoxStatus
             // 
@@ -205,10 +205,13 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             // 
             // dataGridItensPedido
             // 
+            this.dataGridItensPedido.AllowUserToAddRows = false;
+            this.dataGridItensPedido.AllowUserToDeleteRows = false;
             this.dataGridItensPedido.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridItensPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridItensPedido.Location = new System.Drawing.Point(329, 56);
             this.dataGridItensPedido.Name = "dataGridItensPedido";
+            this.dataGridItensPedido.ReadOnly = true;
             this.dataGridItensPedido.Size = new System.Drawing.Size(400, 246);
             this.dataGridItensPedido.TabIndex = 15;
             // 
@@ -221,6 +224,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.btnOk.TabIndex = 16;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancelar
             // 
@@ -231,6 +235,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // panel1
             // 
@@ -268,7 +273,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.Controls.Add(this.lblFinanceiro);
             this.Controls.Add(this.comboBoxStatus);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFrete);
             this.Controls.Add(this.lblFrete);
             this.Controls.Add(this.comboBoxOperacao);
             this.Controls.Add(this.lblOperacao);
@@ -302,7 +307,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
         private System.Windows.Forms.Label lblOperacao;
         private System.Windows.Forms.ComboBox comboBoxOperacao;
         private System.Windows.Forms.Label lblFrete;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFrete;
         private System.Windows.Forms.ComboBox comboBoxStatus;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ComboBox comboBoxFinanceiro;
