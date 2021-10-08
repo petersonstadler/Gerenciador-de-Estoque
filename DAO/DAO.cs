@@ -75,6 +75,23 @@ namespace Gerenciador_de_Estoque.DAO
             return dt;
         }
 
+        public DataTable ListarEmDataTableComFiltros(string filtros)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                cmd.CommandText = new GeradorScriptsSql().GerarSqlSELECT(NomeTabela, NomeColunasSelect, ApelidoColunasSelect) + " WHERE " + filtros;
+                MySqlDataReader dr = cmd.ExecuteReader();
+                dt.Load(dr);
+                dr.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Erro ao listar {ApelidoTabela}! \n\n" + e, $"Listar {ApelidoTabela}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dt;
+        }
+
         //Este metodo terá que ser sobrescrito na classe que vai ser herdada através do override
         protected virtual void AddParametrosInserir(Object obj) { }
 

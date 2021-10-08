@@ -16,6 +16,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
     {
 
         private String operacao;
+        private List<ItemNoPedido> itens = new List<ItemNoPedido>();
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
