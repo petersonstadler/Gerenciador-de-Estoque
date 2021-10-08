@@ -30,8 +30,13 @@ namespace Gerenciador_de_Estoque.MODEL
 
         public void GerarListaDeItens()
         {
+            listaItens = new List<ItemNoPedido>();
             ItemNoPedidoDAO itensDAO = new ItemNoPedidoDAO();
-
+            List<object> lista = itensDAO.ListarComFiltro("pedidos_idpedido = " + this.id);
+            foreach(object item in lista)
+            {
+                listaItens.Add(item as ItemNoPedido);
+            }
         }
     }
 }

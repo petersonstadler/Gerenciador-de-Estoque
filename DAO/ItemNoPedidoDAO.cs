@@ -91,5 +91,22 @@ namespace Gerenciador_de_Estoque.DAO
             }
             return itens;
         }
+
+        protected override List<object> PreencherLista(MySqlDataReader dr)
+        {
+            List<object> lista = new List<object>();
+            ItemNoPedido item = new ItemNoPedido();
+            while (dr.Read())
+            {
+                item.Idpedido = dr.GetInt32(0);
+                item.Idproduto = dr.GetInt32(1);
+                item.Preco = dr.GetDecimal(2);
+                item.Quantidade = dr.GetInt32(3);
+                item.Desconto = dr.GetDecimal(4);
+                item.Acrescimo = dr.GetDecimal(5);
+                lista.Add(item);
+            }
+            return lista;
+        }
     }
 }

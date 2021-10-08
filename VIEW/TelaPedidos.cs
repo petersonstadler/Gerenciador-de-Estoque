@@ -34,11 +34,24 @@ namespace Gerenciador_de_Estoque.VIEW
             this.Close();
         }
 
-        private void ChamarFormPedido()
+        private void ChamarFormPedidoCriar()
         {
             FormPedido formPedido = new FormPedido();
             formPedido.ShowDialog();
             if(formPedido.DialogResult == DialogResult.OK)
+            {
+                PedidoDAO pedidoDAO = new PedidoDAO();
+                dataGridPedidos.DataSource = pedidoDAO.ListarEmDataTable();
+                pedidoDAO.CloseConnections();
+            }
+            formPedido.Dispose();
+        }
+
+        private void ChamarFormPedidoAlterar()
+        {
+            FormPedido formPedido = new FormPedido(pedidoSelecionado);
+            formPedido.ShowDialog();
+            if (formPedido.DialogResult == DialogResult.OK)
             {
                 PedidoDAO pedidoDAO = new PedidoDAO();
                 dataGridPedidos.DataSource = pedidoDAO.ListarEmDataTable();
@@ -52,9 +65,10 @@ namespace Gerenciador_de_Estoque.VIEW
             switch (e.ClickedItem.Text)
             {
                 case "Criar Pedido":
-                    ChamarFormPedido();
+                    ChamarFormPedidoCriar();
                     break;
                 case "Alterar Pedido":
+                    ChamarFormPedidoAlterar();
                     break;
             }
         }
@@ -82,6 +96,7 @@ namespace Gerenciador_de_Estoque.VIEW
             int idPedido = Convert.ToInt32(dataGridPedidos.CurrentRow.Cells[0].Value);
             pedidoSelecionado = pedidoDAO.BuscarPorId(idPedido) as Pedido;
             dataGridItens.DataSource = itensDAO.ListarEmDataTableComFiltros("pedidos_idpedido = " + idPedido);
+            pedidoSelecionado.GerarListaDeItens();
             pedidoDAO.CloseConnections();
         }
     }

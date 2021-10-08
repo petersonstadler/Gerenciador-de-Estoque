@@ -58,7 +58,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
         }
 
-        public virtual List<object> PreencherLista(MySqlDataReader dr) { return new List<object>(); }
+        protected virtual List<object> PreencherLista(MySqlDataReader dr) { return new List<object>(); }
 
         public List<object> ListarComFiltro(string filtros)
         {

@@ -58,6 +58,13 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             InitializeComponent();
             operacao = "ALTERAR";
             this.pedido = pedido;
+            txtID.Text = Convert.ToString(pedido.Id);
+            txtPessoa.Text = pedido.Pessoa;
+            txtFrete.Text = Convert.ToString(pedido.Frete);
+            dateTimePickerPedido.Value = pedido.Data;
+            comboBoxFinanceiro.Text = pedido.Financeiro;
+            comboBoxOperacao.Text = pedido.Operacao;
+            comboBoxStatus.Text = pedido.Status;
             dataGridItensPedido.DataSource = MostrarItensPedido();
         }
 
@@ -171,42 +178,32 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             return false;
         }
 
-        private void btnOk_Click(object sender, EventArgs e)
+        private void PreencherPedido()
         {
-            ItemNoPedido item1;
-            item1 = new ItemNoPedido();
             pedido.Operacao = comboBoxOperacao.Text;
             pedido.Data = dateTimePickerPedido.Value;
             pedido.Pessoa = txtPessoa.Text;
             pedido.Financeiro = comboBoxFinanceiro.Text;
             pedido.Status = comboBoxStatus.Text;
             pedido.Frete = Convert.ToDecimal(txtFrete.Text);
+        }
 
-            /*item1.Idpedido = pedido.Id;
-            item1.Idproduto = 1;
-            item1.Preco = 2;
-            item1.Quantidade = 1;
-            item1.Desconto = 0;
-            item1.Acrescimo = 0;
-
-            pedido.ListaItens.Add(item1);
-
-            dataGridItensPedido.DataSource = MostrarItensPedido();*/
-            CriarNovoPedido();
-
-            /*if (ValidarPedido())
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            if (ValidarPedido())
             {
                 if(operacao == "CRIAR")
                 {
+                    PreencherPedido();
                     CriarNovoPedido();
                 }
                 if(operacao == "ALTERAR")
                 {
+                    PreencherPedido();
                     AlterarPedido();
                 }
                 DialogResult = DialogResult.OK;
-            }*/
-            DialogResult = DialogResult.OK;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
