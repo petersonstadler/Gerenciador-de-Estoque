@@ -172,9 +172,61 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             pedidoDAO.CloseConnections();
         }
 
+        private bool ValidarFrete()
+        {
+            decimal valor;
+            if (decimal.TryParse(txtFrete.Text, out valor))
+            {
+                lblMsgFrete.Text = "";
+                return true;
+            }
+            lblMsgFrete.Text = "*";
+            return false;
+        }
+
+        private bool ValidarOperacao()
+        {
+            if (comboBoxOperacao.Text == "ENTRADA" || comboBoxOperacao.Text == "SAIDA")
+            {
+                lblMsgOperacao.Text = "";
+                return true;
+            }
+            lblMsgOperacao.Text = "*";
+            return false;
+        }
+
+        private bool ValidarStatus()
+        {
+            if (comboBoxStatus.Text == "Aberto" || comboBoxStatus.Text == "Fechado" || comboBoxStatus.Text == "Cancelado")
+            {
+                lblMsgStatus.Text = "";
+                return true;
+            }
+            lblMsgStatus.Text = "*";
+            return false;
+        }
+
+        private bool ValidarFinanceiro()
+        {
+            if (comboBoxFinanceiro.Text == "Pago" || comboBoxFinanceiro.Text == "Fiado")
+            {
+                lblMsgFinanceiro.Text = "";
+                return true;
+            }
+            lblMsgFinanceiro.Text = "*";
+            return false;
+        }
+
         private bool ValidarPedido()
         {
-            MessageBox.Show("Ainda não foi criado condição de validar");
+            bool operacao, frete, status, financeiro;
+            operacao = ValidarOperacao();
+            frete = ValidarFrete();
+            status = ValidarStatus();
+            financeiro = ValidarFinanceiro();
+            if (operacao && frete && status && financeiro)
+                return true;
+            MessageBox.Show("Os valor de algum campo não é válido! Verifique!", "Campos invalidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
 
@@ -209,6 +261,26 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void comboBoxOperacao_TextChanged(object sender, EventArgs e)
+        {
+            ValidarOperacao();
+        }
+
+        private void txtFrete_TextChanged(object sender, EventArgs e)
+        {
+            ValidarFrete();
+        }
+
+        private void comboBoxStatus_TextChanged(object sender, EventArgs e)
+        {
+            ValidarStatus();
+        }
+
+        private void comboBoxFinanceiro_TextChanged(object sender, EventArgs e)
+        {
+            ValidarFinanceiro();
         }
     }
 }

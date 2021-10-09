@@ -49,6 +49,10 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.lblMsgOperacao = new System.Windows.Forms.Label();
+            this.lblMsgFrete = new System.Windows.Forms.Label();
+            this.lblMsgStatus = new System.Windows.Forms.Label();
+            this.lblMsgFinanceiro = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridItensPedido)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -132,6 +136,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.comboBoxOperacao.Name = "comboBoxOperacao";
             this.comboBoxOperacao.Size = new System.Drawing.Size(141, 26);
             this.comboBoxOperacao.TabIndex = 7;
+            this.comboBoxOperacao.TextChanged += new System.EventHandler(this.comboBoxOperacao_TextChanged);
             // 
             // lblFrete
             // 
@@ -151,6 +156,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.txtFrete.Name = "txtFrete";
             this.txtFrete.Size = new System.Drawing.Size(107, 24);
             this.txtFrete.TabIndex = 9;
+            this.txtFrete.TextChanged += new System.EventHandler(this.txtFrete_TextChanged);
             // 
             // comboBoxStatus
             // 
@@ -160,6 +166,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.comboBoxStatus.Name = "comboBoxStatus";
             this.comboBoxStatus.Size = new System.Drawing.Size(141, 26);
             this.comboBoxStatus.TabIndex = 11;
+            this.comboBoxStatus.TextChanged += new System.EventHandler(this.comboBoxStatus_TextChanged);
             // 
             // lblStatus
             // 
@@ -180,6 +187,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.comboBoxFinanceiro.Name = "comboBoxFinanceiro";
             this.comboBoxFinanceiro.Size = new System.Drawing.Size(141, 26);
             this.comboBoxFinanceiro.TabIndex = 13;
+            this.comboBoxFinanceiro.TextChanged += new System.EventHandler(this.comboBoxFinanceiro_TextChanged);
             // 
             // lblFinanceiro
             // 
@@ -258,12 +266,52 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblTitulo.Text = "Pedidos";
             this.lblTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseDown);
             // 
+            // lblMsgOperacao
+            // 
+            this.lblMsgOperacao.AutoSize = true;
+            this.lblMsgOperacao.ForeColor = System.Drawing.Color.Red;
+            this.lblMsgOperacao.Location = new System.Drawing.Point(78, 154);
+            this.lblMsgOperacao.Name = "lblMsgOperacao";
+            this.lblMsgOperacao.Size = new System.Drawing.Size(0, 13);
+            this.lblMsgOperacao.TabIndex = 19;
+            // 
+            // lblMsgFrete
+            // 
+            this.lblMsgFrete.AutoSize = true;
+            this.lblMsgFrete.ForeColor = System.Drawing.Color.Red;
+            this.lblMsgFrete.Location = new System.Drawing.Point(217, 155);
+            this.lblMsgFrete.Name = "lblMsgFrete";
+            this.lblMsgFrete.Size = new System.Drawing.Size(0, 13);
+            this.lblMsgFrete.TabIndex = 20;
+            // 
+            // lblMsgStatus
+            // 
+            this.lblMsgStatus.AutoSize = true;
+            this.lblMsgStatus.ForeColor = System.Drawing.Color.Red;
+            this.lblMsgStatus.Location = new System.Drawing.Point(57, 213);
+            this.lblMsgStatus.Name = "lblMsgStatus";
+            this.lblMsgStatus.Size = new System.Drawing.Size(0, 13);
+            this.lblMsgStatus.TabIndex = 21;
+            // 
+            // lblMsgFinanceiro
+            // 
+            this.lblMsgFinanceiro.AutoSize = true;
+            this.lblMsgFinanceiro.ForeColor = System.Drawing.Color.Red;
+            this.lblMsgFinanceiro.Location = new System.Drawing.Point(81, 273);
+            this.lblMsgFinanceiro.Name = "lblMsgFinanceiro";
+            this.lblMsgFinanceiro.Size = new System.Drawing.Size(0, 13);
+            this.lblMsgFinanceiro.TabIndex = 22;
+            // 
             // FormPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(741, 360);
+            this.Controls.Add(this.lblMsgFinanceiro);
+            this.Controls.Add(this.lblMsgStatus);
+            this.Controls.Add(this.lblMsgFrete);
+            this.Controls.Add(this.lblMsgOperacao);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnOk);
@@ -284,6 +332,8 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.Controls.Add(this.lblData);
             this.Controls.Add(this.lbID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(741, 360);
+            this.MinimumSize = new System.Drawing.Size(741, 360);
             this.Name = "FormPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormPedido";
@@ -318,5 +368,9 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblMsgOperacao;
+        private System.Windows.Forms.Label lblMsgFrete;
+        private System.Windows.Forms.Label lblMsgStatus;
+        private System.Windows.Forms.Label lblMsgFinanceiro;
     }
 }
