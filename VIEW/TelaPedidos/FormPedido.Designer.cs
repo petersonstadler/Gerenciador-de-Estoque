@@ -53,6 +53,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblMsgFrete = new System.Windows.Forms.Label();
             this.lblMsgStatus = new System.Windows.Forms.Label();
             this.lblMsgFinanceiro = new System.Windows.Forms.Label();
+            this.lblMsgListaItens = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridItensPedido)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -302,12 +303,22 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblMsgFinanceiro.Size = new System.Drawing.Size(0, 13);
             this.lblMsgFinanceiro.TabIndex = 22;
             // 
+            // lblMsgListaItens
+            // 
+            this.lblMsgListaItens.AutoSize = true;
+            this.lblMsgListaItens.ForeColor = System.Drawing.Color.Red;
+            this.lblMsgListaItens.Location = new System.Drawing.Point(409, 40);
+            this.lblMsgListaItens.Name = "lblMsgListaItens";
+            this.lblMsgListaItens.Size = new System.Drawing.Size(0, 13);
+            this.lblMsgListaItens.TabIndex = 23;
+            // 
             // FormPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(741, 360);
+            this.Controls.Add(this.lblMsgListaItens);
             this.Controls.Add(this.lblMsgFinanceiro);
             this.Controls.Add(this.lblMsgStatus);
             this.Controls.Add(this.lblMsgFrete);
@@ -372,5 +383,6 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
         private System.Windows.Forms.Label lblMsgFrete;
         private System.Windows.Forms.Label lblMsgStatus;
         private System.Windows.Forms.Label lblMsgFinanceiro;
+        private System.Windows.Forms.Label lblMsgListaItens;
     }
 }

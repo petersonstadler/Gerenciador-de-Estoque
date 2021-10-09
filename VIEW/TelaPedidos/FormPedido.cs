@@ -217,14 +217,26 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             return false;
         }
 
+        private bool ValidarListaItens()
+        {
+            if(pedido.ListaItens.Count > 0)
+            {
+                lblMsgListaItens.Text = "";
+                return true;
+            }
+            lblMsgListaItens.Text = "*O pedido precisa conter pelo menos um item!";
+            return false;
+        }
+
         private bool ValidarPedido()
         {
-            bool operacao, frete, status, financeiro;
+            bool operacao, frete, status, financeiro, listaItens;
             operacao = ValidarOperacao();
             frete = ValidarFrete();
             status = ValidarStatus();
             financeiro = ValidarFinanceiro();
-            if (operacao && frete && status && financeiro)
+            listaItens = ValidarListaItens();
+            if (operacao && frete && status && financeiro && listaItens)
                 return true;
             MessageBox.Show("Os valor de algum campo não é válido! Verifique!", "Campos invalidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
