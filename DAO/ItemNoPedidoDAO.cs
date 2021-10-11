@@ -69,13 +69,13 @@ namespace Gerenciador_de_Estoque.DAO
         public List<ItemNoPedido> ListarItensDoPedido(Pedido pedido)
         {
             List<ItemNoPedido> itens = new List<ItemNoPedido>();
-            ItemNoPedido itemAtual = new ItemNoPedido();
             try
             {
                 cmd.CommandText = new GeradorScriptsSql().GerarSqlSELECT(NomeTabela, NomeTodasColunas, ApelidoTodasColunas) + " WHERE pedidos_idpedido = " + pedido.Id;
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
+                    ItemNoPedido itemAtual = new ItemNoPedido();
                     itemAtual.Idpedido = dr.GetInt32(NomeTodasColunas[0]);
                     itemAtual.Idproduto = dr.GetInt32(NomeTodasColunas[1]);
                     itemAtual.Preco = dr.GetDecimal(NomeTodasColunas[2]);
@@ -95,9 +95,9 @@ namespace Gerenciador_de_Estoque.DAO
         protected override List<object> PreencherLista(MySqlDataReader dr)
         {
             List<object> lista = new List<object>();
-            ItemNoPedido item = new ItemNoPedido();
             while (dr.Read())
             {
+                ItemNoPedido item = new ItemNoPedido();
                 item.Idpedido = dr.GetInt32(0);
                 item.Idproduto = dr.GetInt32(1);
                 item.Preco = dr.GetDecimal(2);

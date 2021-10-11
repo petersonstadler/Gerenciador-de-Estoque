@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gerenciador_de_Estoque.MODEL
 {
-    class ItemNoPedido
+    public class ItemNoPedido
     {
         private int idpedido;
         private int idproduto;

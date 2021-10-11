@@ -37,6 +37,37 @@ namespace Gerenciador_de_Estoque.MODEL
             {
                 listaItens.Add(item as ItemNoPedido);
             }
+            itensDAO.CloseConnections();
+        }
+
+        public decimal PegarValorTotalItensPedido()
+        {
+            decimal valor = 0;
+            foreach(ItemNoPedido item in listaItens)
+            {
+                valor += ((decimal)item.Quantidade * item.Preco) + item.Acrescimo - item.Desconto;
+            }
+            return valor;
+        }
+
+        public decimal PegarValorTotalDesconto()
+        {
+            decimal valorDesconto = 0;
+            foreach(ItemNoPedido item in listaItens)
+            {
+                valorDesconto += item.Desconto;
+            }
+            return valorDesconto;
+        }
+
+        public decimal PegarValorTotalAcrescimo()
+        {
+            decimal valorAcrescimo = 0;
+            foreach(ItemNoPedido item in listaItens)
+            {
+                valorAcrescimo += item.Acrescimo;
+            }
+            return valorAcrescimo;
         }
     }
 }

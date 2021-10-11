@@ -121,6 +121,12 @@
     <Compile Include="VIEW\TelaPedidos\FormPedido.Designer.cs">
       <DependentUpon>FormPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\TelaPedidos\SeletorDeProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\TelaPedidos\SeletorDeProduto.Designer.cs">
+      <DependentUpon>SeletorDeProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="VIEW\TelaProdutos\SeletorDeCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TelaPedidos\FormPedido.resx">
       <DependentUpon>FormPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\TelaPedidos\SeletorDeProduto.resx">
+      <DependentUpon>SeletorDeProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TelaProdutos\FormProduto.resx">
       <DependentUpon>FormProduto.cs</DependentUpon>

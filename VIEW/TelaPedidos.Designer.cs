@@ -135,6 +135,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.Name = "TelaPedidos1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaPedidos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TelaPedidos_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

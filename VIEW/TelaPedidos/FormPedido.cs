@@ -18,6 +18,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
 
         private String operacao = "";
         private Pedido pedido = new Pedido();
+        private int indiceItemSelecionado = 0;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -26,19 +27,32 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
 
         private DataTable MostrarItensPedido()
         {
+            int cont = 1;
+            decimal total = 0;
+            decimal totalDesconto = 0;
+            decimal totalAcrescimo = 0;
             DataTable dt = new DataTable();
+            dt.Columns.Add("Ordem", typeof(int));
             dt.Columns.Add("Produto", typeof(string));
             dt.Columns.Add("Preço", typeof(decimal));
-            dt.Columns.Add("Quantidade", typeof(int));
+            dt.Columns.Add("Quantidade", typeof(float));
             dt.Columns.Add("Desconto", typeof(decimal));
             dt.Columns.Add("Acréscimo", typeof(decimal));
+            dt.Columns.Add("Total", typeof(decimal));
             foreach (ItemNoPedido item in pedido.ListaItens)
             {
                 ProdutoDAO produtoDAO = new ProdutoDAO();
                 Produto produto = produtoDAO.BuscarPorId(item.Idproduto) as Produto;
-                dt.Rows.Add(produto.Nome, item.Preco, item.Quantidade, item.Desconto, item.Acrescimo);
+                dt.Rows.Add(cont, produto.Nome, item.Preco, item.Quantidade, item.Desconto, item.Acrescimo, ((decimal)item.Quantidade * item.Preco) + item.Acrescimo - item.Desconto);
                 produtoDAO.CloseConnections();
+                total += ((decimal)item.Quantidade * item.Preco) + item.Acrescimo - item.Desconto;
+                totalDesconto += item.Desconto;
+                totalAcrescimo += item.Acrescimo;
+                cont++;
             }
+            lblValorAcrescimoTotal.Text = Convert.ToString(totalAcrescimo);
+            lblValorDescontoTotal.Text = Convert.ToString(totalDesconto);
+            lblValorTotal.Text = Convert.ToString(total);
             return dt;
         }
 
@@ -49,6 +63,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             operacao = "CRIAR";
             pedido.Id = pedidoDAO.PegarIdDoUltimoPedidoCriado();
             txtID.Text = Convert.ToString(pedido.Id);
+            txtFrete.Text = "0";
             pedidoDAO.CloseConnections();
             dataGridItensPedido.DataSource = MostrarItensPedido();
         }
@@ -103,11 +118,77 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             comboBoxStatus.Text = "Aberto";
         }
 
+        private void RemoverItemSelecionadoDaLista()
+        {
+            try
+            {
+                pedido.ListaItens.RemoveAt(indiceItemSelecionado);
+                dataGridItensPedido.DataSource = MostrarItensPedido();
+            }
+            catch
+            {
+                MessageBox.Show("Precisa selecionar um item válido para remover!", "Remover Itens", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void AdicionarItem()
+        {
+            bool itemAdicionado = false;
+            ItemNoPedido item = new ItemNoPedido();
+            SeletorDeProduto selecionarProduto = new SeletorDeProduto(ref item);
+            item.Idpedido = pedido.Id;
+            selecionarProduto.ShowDialog();
+            if(selecionarProduto.DialogResult == DialogResult.OK)
+            {
+                foreach(ItemNoPedido itemNoPedido in pedido.ListaItens)
+                {
+                    if(itemNoPedido.Idproduto == item.Idproduto)
+                    {
+                        itemNoPedido.Quantidade += item.Quantidade;
+                        itemNoPedido.Preco = item.Preco;
+                        itemNoPedido.Desconto += item.Desconto;
+                        itemNoPedido.Acrescimo += item.Acrescimo;
+                        itemAdicionado = true;
+                        break;
+                    }
+                }
+                if (!itemAdicionado)
+                {
+                    pedido.ListaItens.Add(item);
+                }
+                dataGridItensPedido.DataSource = MostrarItensPedido();
+            }
+            selecionarProduto.Dispose();
+        }
+
+        private void menuItens_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            switch (e.ClickedItem.Text)
+            {
+                case "Adicionar":
+                    AdicionarItem();
+                    break;
+                case "Remover":
+                    RemoverItemSelecionadoDaLista();
+                    break;
+            }
+        }
+
+        private ContextMenuStrip CriarMenuStripItens()
+        {
+            ContextMenuStrip menuItens = new ContextMenuStrip();
+            menuItens.Items.Add("Adicionar");
+            menuItens.Items.Add("Remover");
+            menuItens.ItemClicked += new ToolStripItemClickedEventHandler(menuItens_ItemClicked);
+            return menuItens;
+        }
+
         private void FormPedido_Load(object sender, EventArgs e)
         {
             GerarCbBoxStatus();
             GerarCbBoxOperacao();
             GerarCbBoxFinanceiro();
+            dataGridItensPedido.ContextMenuStrip = CriarMenuStripItens();
         }
 
         private bool CompararItensPedido(ItemNoPedido itemA, ItemNoPedido itemB)
@@ -120,14 +201,13 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
 
         private bool CompararListasDeItensPedido(List<ItemNoPedido> listaA, List<ItemNoPedido> listaB)
         {
-            foreach(ItemNoPedido itemListaA in listaA)
+            if (listaA.Count != listaB.Count)
+                return false;
+            for(int i = 0; i < listaA.Count; i++)
             {
-                foreach(ItemNoPedido itemListaB in listaB)
+                if(!CompararItensPedido(listaA[i], listaB[i]))
                 {
-                    if(!CompararItensPedido(itemListaA, itemListaB))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
             return true;
@@ -162,12 +242,13 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             PedidoDAO pedidoDAO = new PedidoDAO();
             pedidoDAO.Alterar(pedido.Id, pedido);
             Pedido pedidoAntigo = pedidoDAO.BuscarPorId(pedido.Id) as Pedido;
-            if(!CompararListasDeItensPedido(pedido.ListaItens, pedidoAntigo.ListaItens))
+            pedidoAntigo.GerarListaDeItens();
+            if (!CompararListasDeItensPedido(pedido.ListaItens, pedidoAntigo.ListaItens))
             {
-                ItemNoPedidoDAO itensDAO = new ItemNoPedidoDAO();
-                itensDAO.Deletar(pedido.Id);
+                ItemNoPedidoDAO itensDAO2 = new ItemNoPedidoDAO();
+                itensDAO2.Deletar(pedido.Id);
+                itensDAO2.CloseConnections();
                 CriarListaDeItens(pedido);
-                itensDAO.CloseConnections();
             }
             pedidoDAO.CloseConnections();
         }
@@ -293,6 +374,12 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
         private void comboBoxFinanceiro_TextChanged(object sender, EventArgs e)
         {
             ValidarFinanceiro();
+        }
+
+        private void dataGridItensPedido_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridItensPedido.CurrentRow.Selected = true;
+            indiceItemSelecionado = Convert.ToInt32(dataGridItensPedido.CurrentRow.Cells[0].Value) - 1;
         }
     }
 }

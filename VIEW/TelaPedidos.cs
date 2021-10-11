@@ -98,6 +98,7 @@ namespace Gerenciador_de_Estoque.VIEW
             dataGridItens.DataSource = itensDAO.ListarEmDataTableComFiltros("pedidos_idpedido = " + idPedido);
             pedidoSelecionado.GerarListaDeItens();
             pedidoDAO.CloseConnections();
+            itensDAO.CloseConnections();
         }
     }
 }

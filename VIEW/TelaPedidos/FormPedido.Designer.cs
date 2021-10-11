@@ -54,6 +54,12 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblMsgStatus = new System.Windows.Forms.Label();
             this.lblMsgFinanceiro = new System.Windows.Forms.Label();
             this.lblMsgListaItens = new System.Windows.Forms.Label();
+            this.lblDesconto = new System.Windows.Forms.Label();
+            this.lblAcrescimo = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblValorTotal = new System.Windows.Forms.Label();
+            this.lblValorAcrescimoTotal = new System.Windows.Forms.Label();
+            this.lblValorDescontoTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridItensPedido)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -216,6 +222,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             // 
             this.dataGridItensPedido.AllowUserToAddRows = false;
             this.dataGridItensPedido.AllowUserToDeleteRows = false;
+            this.dataGridItensPedido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridItensPedido.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridItensPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridItensPedido.Location = new System.Drawing.Point(329, 56);
@@ -223,6 +230,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.dataGridItensPedido.ReadOnly = true;
             this.dataGridItensPedido.Size = new System.Drawing.Size(400, 246);
             this.dataGridItensPedido.TabIndex = 15;
+            this.dataGridItensPedido.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridItensPedido_CellEnter);
             // 
             // btnOk
             // 
@@ -312,12 +320,72 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             this.lblMsgListaItens.Size = new System.Drawing.Size(0, 13);
             this.lblMsgListaItens.TabIndex = 23;
             // 
+            // lblDesconto
+            // 
+            this.lblDesconto.AutoSize = true;
+            this.lblDesconto.Location = new System.Drawing.Point(326, 310);
+            this.lblDesconto.Name = "lblDesconto";
+            this.lblDesconto.Size = new System.Drawing.Size(83, 13);
+            this.lblDesconto.TabIndex = 24;
+            this.lblDesconto.Text = "Desconto Total:";
+            // 
+            // lblAcrescimo
+            // 
+            this.lblAcrescimo.AutoSize = true;
+            this.lblAcrescimo.Location = new System.Drawing.Point(326, 323);
+            this.lblAcrescimo.Name = "lblAcrescimo";
+            this.lblAcrescimo.Size = new System.Drawing.Size(86, 13);
+            this.lblAcrescimo.TabIndex = 25;
+            this.lblAcrescimo.Text = "Acréscimo Total:";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(326, 338);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(34, 13);
+            this.lblTotal.TabIndex = 26;
+            this.lblTotal.Text = "Total:";
+            // 
+            // lblValorTotal
+            // 
+            this.lblValorTotal.AutoSize = true;
+            this.lblValorTotal.Location = new System.Drawing.Point(418, 335);
+            this.lblValorTotal.Name = "lblValorTotal";
+            this.lblValorTotal.Size = new System.Drawing.Size(13, 13);
+            this.lblValorTotal.TabIndex = 27;
+            this.lblValorTotal.Text = "0";
+            // 
+            // lblValorAcrescimoTotal
+            // 
+            this.lblValorAcrescimoTotal.AutoSize = true;
+            this.lblValorAcrescimoTotal.Location = new System.Drawing.Point(418, 323);
+            this.lblValorAcrescimoTotal.Name = "lblValorAcrescimoTotal";
+            this.lblValorAcrescimoTotal.Size = new System.Drawing.Size(13, 13);
+            this.lblValorAcrescimoTotal.TabIndex = 28;
+            this.lblValorAcrescimoTotal.Text = "0";
+            // 
+            // lblValorDescontoTotal
+            // 
+            this.lblValorDescontoTotal.AutoSize = true;
+            this.lblValorDescontoTotal.Location = new System.Drawing.Point(418, 310);
+            this.lblValorDescontoTotal.Name = "lblValorDescontoTotal";
+            this.lblValorDescontoTotal.Size = new System.Drawing.Size(13, 13);
+            this.lblValorDescontoTotal.TabIndex = 29;
+            this.lblValorDescontoTotal.Text = "0";
+            // 
             // FormPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(741, 360);
+            this.Controls.Add(this.lblValorDescontoTotal);
+            this.Controls.Add(this.lblValorAcrescimoTotal);
+            this.Controls.Add(this.lblValorTotal);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.lblAcrescimo);
+            this.Controls.Add(this.lblDesconto);
             this.Controls.Add(this.lblMsgListaItens);
             this.Controls.Add(this.lblMsgFinanceiro);
             this.Controls.Add(this.lblMsgStatus);
@@ -384,5 +452,11 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
         private System.Windows.Forms.Label lblMsgStatus;
         private System.Windows.Forms.Label lblMsgFinanceiro;
         private System.Windows.Forms.Label lblMsgListaItens;
+        private System.Windows.Forms.Label lblDesconto;
+        private System.Windows.Forms.Label lblAcrescimo;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label lblValorTotal;
+        private System.Windows.Forms.Label lblValorAcrescimoTotal;
+        private System.Windows.Forms.Label lblValorDescontoTotal;
     }
 }
