@@ -49,15 +49,18 @@ namespace Gerenciador_de_Estoque.VIEW
 
         private void ChamarFormPedidoAlterar()
         {
-            FormPedido formPedido = new FormPedido(pedidoSelecionado);
-            formPedido.ShowDialog();
-            if (formPedido.DialogResult == DialogResult.OK)
+            if (pedidoSelecionado != null)
             {
-                PedidoDAO pedidoDAO = new PedidoDAO();
-                dataGridPedidos.DataSource = pedidoDAO.ListarEmDataTable();
-                pedidoDAO.CloseConnections();
+                FormPedido formPedido = new FormPedido(pedidoSelecionado);
+                formPedido.ShowDialog();
+                if (formPedido.DialogResult == DialogResult.OK)
+                {
+                    PedidoDAO pedidoDAO = new PedidoDAO();
+                    dataGridPedidos.DataSource = pedidoDAO.ListarEmDataTable();
+                    pedidoDAO.CloseConnections();
+                }
+                formPedido.Dispose();
             }
-            formPedido.Dispose();
         }
 
         private void MenuPedidosItemClicked(object sender, ToolStripItemClickedEventArgs e)
