@@ -84,12 +84,26 @@ namespace Gerenciador_de_Estoque.DAO
             return dt;
         }
 
+        public void ExcluirMovimentoDePedido(Pedido pedido)
+        {
+            List<object> listaMovimentos = ListarComFiltro("pedidos_idpedido = " + pedido.Id);
+            if(listaMovimentos.Count > 0)
+            {
+                foreach(object obj in listaMovimentos)
+                {
+                    Movimento movimento = obj as Movimento;
+                    Deletar(movimento.Id);
+                }
+            }
+        }
+
         public bool VerificarMovimentoDePedido(Pedido pedido)
         {
             foreach(ItemNoPedido item in pedido.ListaItens)
             {
                 MovimentoDAO movimentoDAO = new MovimentoDAO();
                 List<object> listaMovimento = movimentoDAO.ListarComFiltro("pedidos_idpedido = " + item.Idpedido + "AND produtos_idproduto = " + item.Idproduto);
+                movimentoDAO.CloseConnections();
                 if(listaMovimento.Count == 1)
                 {
                     Movimento movimento = new Movimento();
