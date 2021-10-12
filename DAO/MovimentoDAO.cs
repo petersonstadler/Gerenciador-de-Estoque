@@ -83,5 +83,22 @@ namespace Gerenciador_de_Estoque.DAO
             }
             return dt;
         }
+
+        public bool VerificarMovimentoDePedido(Pedido pedido)
+        {
+            foreach(ItemNoPedido item in pedido.ListaItens)
+            {
+                MovimentoDAO movimentoDAO = new MovimentoDAO();
+                List<object> listaMovimento = movimentoDAO.ListarComFiltro("pedidos_idpedido = " + item.Idpedido + "AND produtos_idproduto = " + item.Idproduto);
+                if(listaMovimento.Count == 1)
+                {
+                    Movimento movimento = new Movimento();
+                    movimento = listaMovimento[0] as Movimento;
+                    if (movimento.Quantidade == item.Quantidade && movimento.Operacao == pedido.Operacao)
+                        return true;
+                }
+            }
+            return false;
+        }
     }
 }
