@@ -106,13 +106,29 @@ namespace Gerenciador_de_Estoque.DAO
                 movimentoDAO.CloseConnections();
                 if(listaMovimento.Count == 1)
                 {
-                    Movimento movimento = new Movimento();
-                    movimento = listaMovimento[0] as Movimento;
+                    Movimento movimento = listaMovimento[0] as Movimento;
                     if (movimento.Quantidade == item.Quantidade && movimento.Operacao == pedido.Operacao)
                         return true;
                 }
             }
             return false;
+        }
+
+        public void CriarMovimentoDePedido(Pedido pedido)
+        {
+            if (!VerificarMovimentoDePedido(pedido))
+            {
+                foreach(ItemNoPedido item in pedido.ListaItens)
+                {
+                    Movimento movimentoItem = new Movimento();
+                    movimentoItem.Descricao = "Movimento gerado pelo pedido: " + pedido.Id;
+                    movimentoItem.Quantidade = item.Quantidade;
+                    movimentoItem.Idproduto = item.Idproduto;
+                    movimentoItem.Operacao = pedido.Operacao;
+                    movimentoItem.Idpedido = pedido.Id;
+                    Inserir(movimentoItem);
+                }
+            }
         }
     }
 }
