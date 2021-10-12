@@ -18,7 +18,7 @@ namespace Gerenciador_de_Estoque.DAO
             ApelidoTabela = "Movimentos";
 
             NomeTodasColunas = new string[] { "idmovimento", "descmovimento", "qtdmovimento", "produtos_idproduto", "operacaomovimento", "pedidos_idpedido" };
-            ApelidoTodasColunas = new string[] { "Id", "Descrição", "Quantidade", "Produto", "Operação", "Id Pedido" };
+            ApelidoTodasColunas = new string[] { "Id", "Descrição", "Quantidade", "Produto", "Operação", "IdPedido" };
 
             NomeColunasSelect = new string[] { "idmovimento", "descmovimento", "qtdmovimento", "produtos_idproduto", "operacaomovimento", "pedidos_idpedido" };
             ApelidoColunasSelect = new string[] { "Id", "Descrição", "Quantidade", "Produto", "Operação", "IdPedido" };
@@ -84,6 +84,24 @@ namespace Gerenciador_de_Estoque.DAO
             return dt;
         }
 
+        protected override List<object> PreencherLista(MySqlDataReader dr)
+        {
+            List<object> lista = new List<object>();
+            while (dr.Read())
+            {
+                Movimento movimento = new Movimento();
+                movimento.Id = dr.GetInt32(0);
+                movimento.Descricao = dr.GetString(1);
+                movimento.Quantidade = dr.GetFloat(2);
+                movimento.Idproduto = dr.GetInt32(3);
+                movimento.Operacao = dr.GetString(4);
+                movimento.Idpedido = dr.GetInt32(5);
+                lista.Add(movimento);
+            }
+            return lista;
+        }
+
+
         public void ExcluirMovimentoDePedido(Pedido pedido)
         {
             List<object> listaMovimentos = ListarComFiltro("pedidos_idpedido = " + pedido.Id);
@@ -102,7 +120,7 @@ namespace Gerenciador_de_Estoque.DAO
             foreach(ItemNoPedido item in pedido.ListaItens)
             {
                 MovimentoDAO movimentoDAO = new MovimentoDAO();
-                List<object> listaMovimento = movimentoDAO.ListarComFiltro("pedidos_idpedido = " + item.Idpedido + "AND produtos_idproduto = " + item.Idproduto);
+                List<object> listaMovimento = movimentoDAO.ListarComFiltro("pedidos_idpedido = " + pedido.Id + " AND produtos_idproduto = " + item.Idproduto);
                 movimentoDAO.CloseConnections();
                 if(listaMovimento.Count == 1)
                 {
@@ -116,18 +134,16 @@ namespace Gerenciador_de_Estoque.DAO
 
         public void CriarMovimentoDePedido(Pedido pedido)
         {
-            if (!VerificarMovimentoDePedido(pedido))
+            ExcluirMovimentoDePedido(pedido);
+            foreach(ItemNoPedido item in pedido.ListaItens)
             {
-                foreach(ItemNoPedido item in pedido.ListaItens)
-                {
-                    Movimento movimentoItem = new Movimento();
-                    movimentoItem.Descricao = "Movimento gerado pelo pedido: " + pedido.Id;
-                    movimentoItem.Quantidade = item.Quantidade;
-                    movimentoItem.Idproduto = item.Idproduto;
-                    movimentoItem.Operacao = pedido.Operacao;
-                    movimentoItem.Idpedido = pedido.Id;
-                    Inserir(movimentoItem);
-                }
+                Movimento movimentoItem = new Movimento();
+                movimentoItem.Descricao = "Movimento gerado pelo pedido: " + pedido.Id;
+                movimentoItem.Quantidade = item.Quantidade;
+                movimentoItem.Idproduto = item.Idproduto;
+                movimentoItem.Operacao = pedido.Operacao;
+                movimentoItem.Idpedido = pedido.Id;
+                Inserir(movimentoItem);
             }
         }
     }

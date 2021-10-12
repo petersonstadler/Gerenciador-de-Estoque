@@ -121,6 +121,7 @@ namespace Gerenciador_de_Estoque.DAO
                 cmd.CommandText = new GeradorScriptsSql().GerarSqlINSERT(NomeTabela, ColunasInserir, ParametrosColunasInserir);
                 AddParametrosInserir(obj);
                 _ = cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
             }
             catch(Exception e)
             {
@@ -138,6 +139,7 @@ namespace Gerenciador_de_Estoque.DAO
                 cmd.CommandText = new GeradorScriptsSql().GerarSqlUPDATE(id, NomeTodasColunas[0], NomeTabela, ColunasAlterar, ParametrosColunasAlterar);
                 AddParametroAlterar(obj);
                 _ = cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
             }
             catch(Exception e)
             {
@@ -193,6 +195,7 @@ namespace Gerenciador_de_Estoque.DAO
                 MySqlDataReader dr = cmd.ExecuteReader();
                 dt.Load(dr);
                 dr.Close();
+                cmd.Parameters.Clear();
             }
             catch(Exception e)
             {

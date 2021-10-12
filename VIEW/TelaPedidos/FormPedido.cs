@@ -100,14 +100,12 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
         {
             comboBoxFinanceiro.Items.Add("Pago");
             comboBoxFinanceiro.Items.Add("Fiado");
-            comboBoxFinanceiro.Text = "Pago";
         }
 
         private void GerarCbBoxOperacao()
         {
             comboBoxOperacao.Items.Add("ENTRADA");
             comboBoxOperacao.Items.Add("SAIDA");
-            comboBoxOperacao.Text = "SAIDA";
         }
 
         private void GerarCbBoxStatus()
@@ -115,7 +113,6 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             comboBoxStatus.Items.Add("Aberto");
             comboBoxStatus.Items.Add("Fechado");
             comboBoxStatus.Items.Add("Cancelado");
-            comboBoxStatus.Text = "Aberto";
         }
 
         private void RemoverItemSelecionadoDaLista()
@@ -229,12 +226,27 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             }
         }
 
+        private void GerarMovimento()
+        {
+            MovimentoDAO movimentoDAO = new MovimentoDAO();
+            if (comboBoxStatus.Text == "Fechado")
+            {
+                movimentoDAO.CriarMovimentoDePedido(pedido);
+            }
+            else
+            {
+                movimentoDAO.ExcluirMovimentoDePedido(pedido);
+            }
+            movimentoDAO.CloseConnections();
+        }
+
         private void CriarNovoPedido()
         {
             PedidoDAO pedidoDAO = new PedidoDAO();
             pedidoDAO.Inserir(pedido);
             CriarListaDeItens(pedido);
             pedidoDAO.CloseConnections();
+            GerarMovimento();
         }
 
         private void AlterarPedido()
@@ -251,6 +263,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
                 CriarListaDeItens(pedido);
             }
             pedidoDAO.CloseConnections();
+            GerarMovimento();
         }
 
         private bool ValidarFrete()
