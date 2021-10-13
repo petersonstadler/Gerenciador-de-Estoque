@@ -65,7 +65,7 @@ namespace Gerenciador_de_Estoque.DAO
             return movimento;
         }
 
-        public DataTable ListarPorFiltroIdProduto(int id)
+        /*public DataTable ListarPorFiltroIdProduto(int id)
         {
             DataTable dt = new DataTable();
             try
@@ -82,7 +82,7 @@ namespace Gerenciador_de_Estoque.DAO
                 MessageBox.Show("Erro ao listar movimentos por filtro de produtos! \n\n" + e, "Listar Movimentos com Filtro de Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
-        }
+        }*/
 
         protected override List<object> PreencherLista(MySqlDataReader dr)
         {

@@ -97,7 +97,8 @@ namespace Gerenciador_de_Estoque.VIEW
                 MovimentoDAO movimentoDAO = new MovimentoDAO();
                 movimentoDAO.NomeColunasSelect = new string[] { "idmovimento", "descmovimento", "qtdmovimento", "operacaomovimento", "pedidos_idpedido" };
                 movimentoDAO.ApelidoColunasSelect = new string[] { "Id", "Descrição", "Quantidade", "Operação", "IdPedido" };
-                DtMovimentos.DataSource = movimentoDAO.ListarPorFiltroIdProduto(idProduto);
+                //DtMovimentos.DataSource = movimentoDAO.ListarPorFiltroIdProduto(idProduto);
+                DtMovimentos.DataSource = movimentoDAO.ListarEmDataTableComFiltros("produtos_idproduto = " + idProduto + " AND " + "qtdmovimento != 0");
                 movimentoDAO.CloseConnections();
                 produtoDAO.CloseConnections();
             }
