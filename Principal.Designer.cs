@@ -95,6 +95,7 @@ namespace Gerenciador_de_Estoque
             this.btnCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategorias.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCategorias.ForeColor = System.Drawing.Color.White;
+            this.btnCategorias.Image = global::Gerenciador_de_Estoque.Properties.Resources.icon_categoria;
             this.btnCategorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCategorias.Location = new System.Drawing.Point(0, 178);
             this.btnCategorias.Name = "btnCategorias";
