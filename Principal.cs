@@ -105,5 +105,11 @@ namespace Gerenciador_de_Estoque
         {
             AbrirFormInPanel(new TelaPedidos1());
         }
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            TelaCategorias telaCategorias = new TelaCategorias();
+            telaCategorias.ShowDialog();
+        }
     }
 }

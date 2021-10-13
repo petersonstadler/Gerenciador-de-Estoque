@@ -115,6 +115,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\TelaCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\TelaCategorias.Designer.cs">
+      <DependentUpon>TelaCategorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="VIEW\TelaPedidos\FormPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\TelaCategorias.resx">
+      <DependentUpon>TelaCategorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TelaPedidos\FormPedido.resx">
       <DependentUpon>FormPedido.cs</DependentUpon>
