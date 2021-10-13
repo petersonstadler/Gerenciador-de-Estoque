@@ -54,6 +54,7 @@ namespace Gerenciador_de_Estoque.VIEW
                 {
                     categoriaDAO.Deletar(categoriaSelecionada.Id);
                     MessageBox.Show("Categoria excluida com sucesso!", "Excluir Categoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridCategorias.DataSource = categoriaDAO.ListarEmDataTable();
                 }
                 produtoDAO.CloseConnections();
                 categoriaDAO.CloseConnections();
@@ -79,6 +80,38 @@ namespace Gerenciador_de_Estoque.VIEW
             menuDataGridCategorias.ItemClicked += new ToolStripItemClickedEventHandler(menuDataGridCategorias_ItemClicked);
             dataGridCategorias.ContextMenuStrip = menuDataGridCategorias;
             categoriaDAO.CloseConnections();
+        }
+
+        private void dataGridCategorias_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridCategorias.CurrentRow.Selected = true;
+            categoriaSelecionada = new Categoria();
+            categoriaSelecionada.Id = Convert.ToInt32(dataGridCategorias.CurrentRow.Cells[0].Value);
+            categoriaSelecionada.Nome = Convert.ToString(dataGridCategorias.CurrentRow.Cells[1].Value);
+        }
+
+        private bool ValidarCampoNome()
+        {
+            lblMsgNome.Text = "*Necessário pelo menos 3 letras";
+            if (txtNome.Text.Length > 2)
+            {
+                lblMsgNome.Text = "";
+                return true;
+            }
+            return false;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (ValidarCampoNome())
+            {
+                CategoriaDAO categoriaDAO = new CategoriaDAO();
+                Categoria categoria = new Categoria();
+                categoria.Nome = txtNome.Text;
+                categoriaDAO.Inserir(categoria);
+                dataGridCategorias.DataSource = categoriaDAO.ListarEmDataTable();
+                categoriaDAO.CloseConnections();
+            }
         }
     }
 }

@@ -74,6 +74,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.dataGridCategorias.ReadOnly = true;
             this.dataGridCategorias.Size = new System.Drawing.Size(239, 255);
             this.dataGridCategorias.TabIndex = 1;
+            this.dataGridCategorias.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCategorias_CellEnter);
             // 
             // lblAdd
             // 
@@ -120,6 +121,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Adicionar";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnSair
             // 
