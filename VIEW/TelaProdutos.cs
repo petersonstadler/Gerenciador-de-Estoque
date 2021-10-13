@@ -106,7 +106,9 @@ namespace Gerenciador_de_Estoque.VIEW
 
         private void txtBusca_TextChanged(object sender, EventArgs e)
         {
-            DtProdutos.DataSource = new ProdutoDAO().BuscarPorNome(txtBusca.Text);
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+            DtProdutos.DataSource = produtoDAO.BuscarPorNome(txtBusca.Text);
+            produtoDAO.CloseConnections();
         }
     }
 }
