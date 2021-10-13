@@ -15,6 +15,7 @@ namespace Gerenciador_de_Estoque.VIEW
 {
     public partial class TelaCategorias : Form
     {
+        Categoria categoriaSelecionada = null;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -38,10 +39,46 @@ namespace Gerenciador_de_Estoque.VIEW
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        private void ExcluirCategoriaSelecionada()
+        {
+            if(categoriaSelecionada != null)
+            {
+                CategoriaDAO categoriaDAO = new CategoriaDAO();
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                List<object> listaProdutos = produtoDAO.ListarComFiltro("categorias_idcategoria = " + categoriaSelecionada.Id);
+                if(listaProdutos.Count > 0)
+                {
+                    MessageBox.Show("Você não pode excluir uma categoria em uso!", "Excluir Categoria", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    categoriaDAO.Deletar(categoriaSelecionada.Id);
+                    MessageBox.Show("Categoria excluida com sucesso!", "Excluir Categoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                produtoDAO.CloseConnections();
+                categoriaDAO.CloseConnections();
+            }
+        }
+
+        private void menuDataGridCategorias_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            switch (e.ClickedItem.Text)
+            {
+                case "Excluir":
+                    ExcluirCategoriaSelecionada();
+                    break;
+            }
+        }
+
         private void TelaCategorias_Load(object sender, EventArgs e)
         {
             CategoriaDAO categoriaDAO = new CategoriaDAO();
             dataGridCategorias.DataSource = categoriaDAO.ListarEmDataTable();
+            ContextMenuStrip menuDataGridCategorias = new ContextMenuStrip();
+            menuDataGridCategorias.Items.Add("Excluir");
+            menuDataGridCategorias.ItemClicked += new ToolStripItemClickedEventHandler(menuDataGridCategorias_ItemClicked);
+            dataGridCategorias.ContextMenuStrip = menuDataGridCategorias;
+            categoriaDAO.CloseConnections();
         }
     }
 }

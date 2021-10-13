@@ -75,5 +75,24 @@ namespace Gerenciador_de_Estoque.DAO
             }
             return produto;
         }
+
+        protected override List<object> PreencherLista(MySqlDataReader dr)
+        {
+            List<object> lista = new List<object>();
+            while (dr.Read())
+            {
+                Produto produto = new Produto();
+                produto.Id = dr.GetInt32(NomeTodasColunas[0]);
+                produto.Nome = dr.GetString(NomeTodasColunas[1]);
+                produto.Descricao = dr.GetString(NomeColunasSelect[2]);
+                produto.Tamanho = dr.GetString(NomeTodasColunas[3]);
+                produto.Custo = dr.GetDecimal(NomeTodasColunas[4]);
+                produto.Preco = dr.GetDecimal(NomeTodasColunas[5]);
+                produto.Idcategoria = dr.GetInt32(NomeTodasColunas[6]);
+                produto.Ativo = dr.GetBoolean(NomeTodasColunas[7]);
+                lista.Add(produto);
+            }
+            return lista;
+        }
     }
 }

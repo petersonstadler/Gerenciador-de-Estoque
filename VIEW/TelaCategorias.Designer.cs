@@ -149,6 +149,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.MaximumSize = new System.Drawing.Size(476, 300);
             this.MinimumSize = new System.Drawing.Size(476, 300);
             this.Name = "TelaCategorias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaCategorias";
             this.Load += new System.EventHandler(this.TelaCategorias_Load);
             this.panel1.ResumeLayout(false);
