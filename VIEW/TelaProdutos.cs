@@ -86,21 +86,28 @@ namespace Gerenciador_de_Estoque.VIEW
 
         private void DtProdutos_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            int idProduto;
-            string valorIdString;
-            DtProdutos.CurrentRow.Selected = true;
-            valorIdString = Convert.ToString(DtProdutos.Rows[e.RowIndex].Cells[0].Value);
-            if(int.TryParse(valorIdString, out idProduto))
+            try
             {
-                ProdutoDAO produtoDAO = new ProdutoDAO();
-                produtoSelecionado = produtoDAO.BuscarPorId(idProduto) as Produto;
-                MovimentoDAO movimentoDAO = new MovimentoDAO();
-                movimentoDAO.NomeColunasSelect = new string[] { "idmovimento", "descmovimento", "qtdmovimento", "operacaomovimento", "pedidos_idpedido" };
-                movimentoDAO.ApelidoColunasSelect = new string[] { "Id", "Descrição", "Quantidade", "Operação", "IdPedido" };
-                //DtMovimentos.DataSource = movimentoDAO.ListarPorFiltroIdProduto(idProduto);
-                DtMovimentos.DataSource = movimentoDAO.ListarEmDataTableComFiltros("produtos_idproduto = " + idProduto + " AND " + "qtdmovimento != 0");
-                movimentoDAO.CloseConnections();
-                produtoDAO.CloseConnections();
+                int idProduto;
+                string valorIdString;
+                DtProdutos.CurrentRow.Selected = true;
+                valorIdString = Convert.ToString(DtProdutos.Rows[e.RowIndex].Cells[0].Value);
+                if (int.TryParse(valorIdString, out idProduto))
+                {
+                    ProdutoDAO produtoDAO = new ProdutoDAO();
+                    produtoSelecionado = produtoDAO.BuscarPorId(idProduto) as Produto;
+                    MovimentoDAO movimentoDAO = new MovimentoDAO();
+                    movimentoDAO.NomeColunasSelect = new string[] { "idmovimento", "descmovimento", "qtdmovimento", "operacaomovimento", "pedidos_idpedido" };
+                    movimentoDAO.ApelidoColunasSelect = new string[] { "Id", "Descrição", "Quantidade", "Operação", "IdPedido" };
+                    //DtMovimentos.DataSource = movimentoDAO.ListarPorFiltroIdProduto(idProduto);
+                    DtMovimentos.DataSource = movimentoDAO.ListarEmDataTableComFiltros("produtos_idproduto = " + idProduto + " AND " + "qtdmovimento != 0");
+                    movimentoDAO.CloseConnections();
+                    produtoDAO.CloseConnections();
+                }
+            }
+            catch(Exception er)
+            {
+                MessageBox.Show("Falha ao selecionar Produto! \n\n" + er, "Selecionar Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -93,15 +93,22 @@ namespace Gerenciador_de_Estoque.VIEW
 
         private void dataGridPedidos_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            PedidoDAO pedidoDAO = new PedidoDAO();
-            ItemNoPedidoDAO itensDAO = new ItemNoPedidoDAO();
-            dataGridPedidos.CurrentRow.Selected = true;
-            int idPedido = Convert.ToInt32(dataGridPedidos.CurrentRow.Cells[0].Value);
-            pedidoSelecionado = pedidoDAO.BuscarPorId(idPedido) as Pedido;
-            dataGridItens.DataSource = itensDAO.ListarEmDataTableComFiltros("pedidos_idpedido = " + idPedido);
-            pedidoSelecionado.GerarListaDeItens();
-            pedidoDAO.CloseConnections();
-            itensDAO.CloseConnections();
+            try
+            {
+                PedidoDAO pedidoDAO = new PedidoDAO();
+                ItemNoPedidoDAO itensDAO = new ItemNoPedidoDAO();
+                dataGridPedidos.CurrentRow.Selected = true;
+                int idPedido = Convert.ToInt32(dataGridPedidos.CurrentRow.Cells[0].Value);
+                pedidoSelecionado = pedidoDAO.BuscarPorId(idPedido) as Pedido;
+                dataGridItens.DataSource = itensDAO.ListarEmDataTableComFiltros("pedidos_idpedido = " + idPedido);
+                pedidoSelecionado.GerarListaDeItens();
+                pedidoDAO.CloseConnections();
+                itensDAO.CloseConnections();
+            }
+            catch(Exception er)
+            {
+                MessageBox.Show("Falha ao selecionar pedido! \n\n" + er, "Selecionar Pedido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

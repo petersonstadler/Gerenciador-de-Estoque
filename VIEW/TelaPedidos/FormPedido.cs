@@ -391,8 +391,15 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
 
         private void dataGridItensPedido_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridItensPedido.CurrentRow.Selected = true;
-            indiceItemSelecionado = Convert.ToInt32(dataGridItensPedido.CurrentRow.Cells[0].Value) - 1;
+            try
+            {
+                dataGridItensPedido.CurrentRow.Selected = true;
+                indiceItemSelecionado = Convert.ToInt32(dataGridItensPedido.CurrentRow.Cells[0].Value) - 1;
+            }
+            catch(Exception er)
+            {
+                MessageBox.Show("Falha ao selecionar Item! \n\n" + er, "Selecionar Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
