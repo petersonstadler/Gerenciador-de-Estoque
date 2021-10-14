@@ -242,6 +242,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             this.txtIdCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtIdCategoria.Location = new System.Drawing.Point(233, 202);
             this.txtIdCategoria.Name = "txtIdCategoria";
+            this.txtIdCategoria.ReadOnly = true;
             this.txtIdCategoria.Size = new System.Drawing.Size(41, 23);
             this.txtIdCategoria.TabIndex = 19;
             this.txtIdCategoria.TextChanged += new System.EventHandler(this.txtIdCategoria_TextChanged);
