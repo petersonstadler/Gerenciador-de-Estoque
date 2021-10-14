@@ -7,9 +7,9 @@ namespace Gerenciador_de_Estoque.DAO
     class Conexao
     {
         private readonly string dbhost = "localhost";
-        private readonly string dbnome = "db_mayara";
-        private readonly string user = "teste";
-        private readonly string passwd = "teste";
+        private readonly string dbnome = "db_groovy";
+        private readonly string user = "cliente";
+        private readonly string passwd = "tangerina";
         private readonly int port = 3306;
 
         public MySqlConnection GetConnection()

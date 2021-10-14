@@ -71,12 +71,19 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
 
         public FormProduto(ref Produto prod)
         {
-            InitializeComponent();
-            produto = prod;
-            operacao = "ALTERAR";
-            PreencherComboBoxes();
-            PreencherTxtBoxes();
-            txtNomeCategoria.Text = PegarNomeDaCategoria(Convert.ToInt32(txtIdCategoria.Text));
+            try
+            {
+                InitializeComponent();
+                produto = prod;
+                operacao = "ALTERAR";
+                PreencherComboBoxes();
+                PreencherTxtBoxes();
+                txtNomeCategoria.Text = PegarNomeDaCategoria(Convert.ToInt32(txtIdCategoria.Text));
+            }
+            catch(Exception er)
+            {
+                MessageBox.Show("Falha ao tentar alterar produto! \n\n" + er, "Preencher Campos para alterar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -140,8 +147,13 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             {
                 if (valor > 0)
                 {
-                    lblCategoria.BackColor = Color.Green;
-                    idCategoriaValidado = true;
+                    CategoriaDAO categoriaDAO = new CategoriaDAO();
+                    if (categoriaDAO.VerificarCategoria(valor))
+                    {
+                        lblCategoria.BackColor = Color.Green;
+                        idCategoriaValidado = true;
+                    }
+                    categoriaDAO.CloseConnections();
                 }
                 else
                 {

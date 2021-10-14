@@ -54,9 +54,17 @@ namespace Gerenciador_de_Estoque.DAO
             }
             else
             {
-                categoria.Id = 1;
+                categoria.Id = 0;
             }
             return categoria;
+        }
+
+        public bool VerificarCategoria(int idCategoria)
+        {
+            Categoria categoria = BuscarPorId(idCategoria) as Categoria;
+            if (categoria.Id > 0)
+                return true;
+            return false;
         }
     }
 }

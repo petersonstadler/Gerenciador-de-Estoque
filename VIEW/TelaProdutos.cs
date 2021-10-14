@@ -54,13 +54,16 @@ namespace Gerenciador_de_Estoque.VIEW
 
         private void CriarFormProdutoAlterar()
         {
-            FormProduto formProduto = new FormProduto(ref produtoSelecionado);
-            formProduto.ShowDialog();
-            if(formProduto.DialogResult == DialogResult.OK)
+            if (produtoSelecionado != null)
             {
-                DtProdutos.DataSource = new ProdutoDAO().ListarEmDataTable(); 
+                FormProduto formProduto = new FormProduto(ref produtoSelecionado);
+                formProduto.ShowDialog();
+                if (formProduto.DialogResult == DialogResult.OK)
+                {
+                    DtProdutos.DataSource = new ProdutoDAO().ListarEmDataTable();
+                }
+                formProduto.Dispose();
             }
-            formProduto.Dispose();
         }
 
         private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
