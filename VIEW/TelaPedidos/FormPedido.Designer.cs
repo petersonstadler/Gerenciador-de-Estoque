@@ -107,6 +107,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             // 
             // txtPessoa
             // 
+            this.txtPessoa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.txtPessoa.Location = new System.Drawing.Point(12, 112);
             this.txtPessoa.Name = "txtPessoa";
