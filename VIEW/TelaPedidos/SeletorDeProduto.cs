@@ -91,6 +91,15 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             return false;
         }
 
+        private decimal GerarCustoDoItem()
+        {
+            decimal custo;
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+            Produto produto = produtoDAO.BuscarPorId(idProdutoSelecionado) as Produto;
+            produtoDAO.CloseConnections();
+            return produto.Custo;
+        }
+
         private void btnOk_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
@@ -100,6 +109,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
                 item.Acrescimo = Convert.ToDecimal(txtAcrescimo.Text);
                 item.Desconto = Convert.ToDecimal(txtDesconto.Text);
                 item.Quantidade = (float)Convert.ToDecimal(txtQuantidade.Text);
+                item.Custo = GerarCustoDoItem();
                 DialogResult = DialogResult.OK;
             }
             else

@@ -16,14 +16,14 @@ namespace Gerenciador_de_Estoque.DAO
             NomeTabela = "pedidos_has_produtos";
             ApelidoTabela = "ItensPedido";
 
-            NomeTodasColunas = new string[] { "pedidos_idpedido", "produtos_idproduto", "preco", "qtd", "desconto", "acrescimo" };
-            ApelidoTodasColunas = new string[] { "IdPedido", "IdPeoduto", "Preço", "Quantidade", "Desconto", "Acrescimo" };
+            NomeTodasColunas = new string[] { "pedidos_idpedido", "produtos_idproduto", "custo", "preco", "qtd", "desconto", "acrescimo" };
+            ApelidoTodasColunas = new string[] { "IdPedido", "IdPeoduto", "Custo", "Preço", "Quantidade", "Desconto", "Acrescimo" };
 
             NomeColunasSelect = new string[] { "(SELECT nomeproduto FROM produtos WHERE idproduto = produtos_idproduto)", "preco", "qtd", "desconto", "acrescimo" };
             ApelidoColunasSelect = new string[] { "Produto", "Preço", "Quantidade", "Desconto", "Acréscimo" };
 
             ColunasInserir = NomeTodasColunas;
-            ParametrosColunasInserir = new string[] { "?idpedido", "?idproduto", "?preco", "?quantidade", "?desconto", "?acrescimo" };
+            ParametrosColunasInserir = new string[] { "?idpedido", "?idproduto", "?custo","?preco", "?quantidade", "?desconto", "?acrescimo" };
 
             ColunasAlterar = ColunasInserir;
             ParametrosColunasAlterar = ParametrosColunasInserir;
@@ -34,10 +34,11 @@ namespace Gerenciador_de_Estoque.DAO
             ItemNoPedido itemNoPedido = obj as ItemNoPedido;
             cmd.Parameters.AddWithValue(ParametrosColunasInserir[0], itemNoPedido.Idpedido);
             cmd.Parameters.AddWithValue(ParametrosColunasInserir[1], itemNoPedido.Idproduto);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[2], itemNoPedido.Preco);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[3], itemNoPedido.Quantidade);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[4], itemNoPedido.Desconto);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[5], itemNoPedido.Acrescimo);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[2], itemNoPedido.Custo);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[3], itemNoPedido.Preco);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[4], itemNoPedido.Quantidade);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[5], itemNoPedido.Desconto);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[6], itemNoPedido.Acrescimo);
         }
 
         protected override void AddParametroAlterar(object obj)
@@ -45,10 +46,11 @@ namespace Gerenciador_de_Estoque.DAO
             ItemNoPedido itemNoPedido = obj as ItemNoPedido;
             cmd.Parameters.AddWithValue(ParametrosColunasInserir[0], itemNoPedido.Idpedido);
             cmd.Parameters.AddWithValue(ParametrosColunasInserir[1], itemNoPedido.Idproduto);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[2], itemNoPedido.Preco);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[3], itemNoPedido.Quantidade);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[4], itemNoPedido.Desconto);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[5], itemNoPedido.Acrescimo);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[2], itemNoPedido.Custo);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[3], itemNoPedido.Preco);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[4], itemNoPedido.Quantidade);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[5], itemNoPedido.Desconto);
+            cmd.Parameters.AddWithValue(ParametrosColunasInserir[6], itemNoPedido.Acrescimo);
         }
 
         protected override object PreencherDados(MySqlDataReader dr)
@@ -58,10 +60,11 @@ namespace Gerenciador_de_Estoque.DAO
             {
                 itemNoPedido.Idpedido = dr.GetInt32(0);
                 itemNoPedido.Idproduto = dr.GetInt32(1);
-                itemNoPedido.Preco = dr.GetDecimal(2);
-                itemNoPedido.Quantidade = dr.GetInt32(3);
-                itemNoPedido.Desconto = dr.GetDecimal(4);
-                itemNoPedido.Acrescimo = dr.GetDecimal(5);
+                itemNoPedido.Custo = dr.GetDecimal(2);
+                itemNoPedido.Preco = dr.GetDecimal(3);
+                itemNoPedido.Quantidade = dr.GetInt32(4);
+                itemNoPedido.Desconto = dr.GetDecimal(5);
+                itemNoPedido.Acrescimo = dr.GetDecimal(6);
             }
             return itemNoPedido;
         }
@@ -78,10 +81,11 @@ namespace Gerenciador_de_Estoque.DAO
                     ItemNoPedido itemAtual = new ItemNoPedido();
                     itemAtual.Idpedido = dr.GetInt32(NomeTodasColunas[0]);
                     itemAtual.Idproduto = dr.GetInt32(NomeTodasColunas[1]);
-                    itemAtual.Preco = dr.GetDecimal(NomeTodasColunas[2]);
-                    itemAtual.Quantidade = dr.GetInt32(NomeTodasColunas[3]);
-                    itemAtual.Desconto = dr.GetDecimal(NomeTodasColunas[4]);
-                    itemAtual.Acrescimo = dr.GetDecimal(NomeTodasColunas[5]);
+                    itemAtual.Custo = dr.GetDecimal(NomeTodasColunas[2]);
+                    itemAtual.Preco = dr.GetDecimal(NomeTodasColunas[3]);
+                    itemAtual.Quantidade = dr.GetInt32(NomeTodasColunas[4]);
+                    itemAtual.Desconto = dr.GetDecimal(NomeTodasColunas[5]);
+                    itemAtual.Acrescimo = dr.GetDecimal(NomeTodasColunas[6]);
                     itens.Add(itemAtual);
                 }
             }
@@ -100,10 +104,11 @@ namespace Gerenciador_de_Estoque.DAO
                 ItemNoPedido item = new ItemNoPedido();
                 item.Idpedido = dr.GetInt32(0);
                 item.Idproduto = dr.GetInt32(1);
-                item.Preco = dr.GetDecimal(2);
-                item.Quantidade = dr.GetInt32(3);
-                item.Desconto = dr.GetDecimal(4);
-                item.Acrescimo = dr.GetDecimal(5);
+                item.Custo = dr.GetDecimal(2);
+                item.Preco = dr.GetDecimal(3);
+                item.Quantidade = dr.GetInt32(4);
+                item.Desconto = dr.GetDecimal(5);
+                item.Acrescimo = dr.GetDecimal(6);
                 lista.Add(item);
             }
             return lista;
