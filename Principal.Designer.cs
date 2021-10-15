@@ -29,6 +29,7 @@ namespace Gerenciador_de_Estoque
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.MenuVertical = new System.Windows.Forms.Panel();
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.panelPrincipal = new System.Windows.Forms.Panel();
@@ -219,6 +220,7 @@ namespace Gerenciador_de_Estoque
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.MenuVertical);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
