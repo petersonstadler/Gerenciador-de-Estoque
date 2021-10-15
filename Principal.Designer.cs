@@ -32,12 +32,12 @@ namespace Gerenciador_de_Estoque
             this.MenuVertical = new System.Windows.Forms.Panel();
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.panelPrincipal = new System.Windows.Forms.Panel();
-            this.btnCategorias = new System.Windows.Forms.Button();
             this.iconMinimizar = new System.Windows.Forms.PictureBox();
             this.iconDiminuir = new System.Windows.Forms.PictureBox();
             this.iconAumentar = new System.Windows.Forms.PictureBox();
             this.iconFechar = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
+            this.btnCategorias = new System.Windows.Forms.Button();
             this.btnPedidos = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -86,24 +86,6 @@ namespace Gerenciador_de_Estoque
             this.panelPrincipal.Name = "panelPrincipal";
             this.panelPrincipal.Size = new System.Drawing.Size(1050, 600);
             this.panelPrincipal.TabIndex = 2;
-            // 
-            // btnCategorias
-            // 
-            this.btnCategorias.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCategorias.FlatAppearance.BorderSize = 0;
-            this.btnCategorias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategorias.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategorias.ForeColor = System.Drawing.Color.White;
-            this.btnCategorias.Image = global::Gerenciador_de_Estoque.Properties.Resources.icon_categoria;
-            this.btnCategorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategorias.Location = new System.Drawing.Point(0, 178);
-            this.btnCategorias.Name = "btnCategorias";
-            this.btnCategorias.Size = new System.Drawing.Size(250, 40);
-            this.btnCategorias.TabIndex = 3;
-            this.btnCategorias.Text = "Categorias";
-            this.btnCategorias.UseVisualStyleBackColor = true;
-            this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
             // 
             // iconMinimizar
             // 
@@ -165,6 +147,24 @@ namespace Gerenciador_de_Estoque
             this.btnSlide.TabStop = false;
             this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
             // 
+            // btnCategorias
+            // 
+            this.btnCategorias.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCategorias.FlatAppearance.BorderSize = 0;
+            this.btnCategorias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategorias.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategorias.ForeColor = System.Drawing.Color.White;
+            this.btnCategorias.Image = global::Gerenciador_de_Estoque.Properties.Resources.icon_categoria;
+            this.btnCategorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategorias.Location = new System.Drawing.Point(0, 178);
+            this.btnCategorias.Name = "btnCategorias";
+            this.btnCategorias.Size = new System.Drawing.Size(250, 40);
+            this.btnCategorias.TabIndex = 3;
+            this.btnCategorias.Text = "Categorias";
+            this.btnCategorias.UseVisualStyleBackColor = true;
+            this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
+            // 
             // btnPedidos
             // 
             this.btnPedidos.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -203,9 +203,10 @@ namespace Gerenciador_de_Estoque
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::Gerenciador_de_Estoque.Properties.Resources.logo_provisório1;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(241, 68);
+            this.pictureBox1.Size = new System.Drawing.Size(247, 68);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
