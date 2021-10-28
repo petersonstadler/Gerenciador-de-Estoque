@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Gerenciador_de_Estoque.DAO
 {
-    class DAO
+    abstract class DAO
     {
         protected readonly MySqlConnection conn;
         protected readonly MySqlCommand cmd;
