@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gerenciador_de_Estoque.MODEL;
 using Gerenciador_de_Estoque.DAO;
@@ -28,6 +22,17 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
+
+        public FormProduto()
+        {
+            InitializeComponent();
+            txtID.Text = "0";
+            operacao = "CADASTRAR";
+            txtIdCategoria.Text = "1";
+            txtNomeCategoria.Text = PegarNomeDaCategoria(1);
+            PreencherComboBoxes();
+        }
+
         private void PreencherComboBoxes()
         {
             cbBoxTamanho.Items.Add("P");
@@ -35,18 +40,6 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             cbBoxTamanho.Items.Add("G");
             cbBoxTamanho.Items.Add("GG");
             cbBoxTamanho.Items.Add("XG");
-        }
-
-        private void PreencherTxtBoxes()
-        {
-            txtID.Text = Convert.ToString(produto.Id);
-            txtNome.Text = produto.Nome;
-            txtDescricao.Text = produto.Descricao;
-            cbBoxTamanho.Text = produto.Tamanho;
-            txtCusto.Text = Convert.ToString(produto.Custo);
-            txtVenda.Text = Convert.ToString(produto.Preco);
-            txtIdCategoria.Text = Convert.ToString(produto.Idcategoria);
-            ckBoxAtivo.Checked = produto.Ativo;
         }
 
         private string PegarNomeDaCategoria(int id)
@@ -57,16 +50,6 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             categoria = categoriaDAO.BuscarPorId(id) as Categoria;
             nome = categoria.Nome;
             return nome;
-        }
-
-        public FormProduto()
-        {
-            InitializeComponent();
-            txtID.Text = "0";
-            operacao = "CADASTRAR";
-            txtIdCategoria.Text = "1";
-            txtNomeCategoria.Text = PegarNomeDaCategoria(1);
-            PreencherComboBoxes();
         }
 
         public FormProduto(ref Produto prod)
@@ -84,6 +67,18 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             {
                 MessageBox.Show("Falha ao tentar alterar produto! \n\n" + er, "Preencher Campos para alterar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void PreencherTxtBoxes()
+        {
+            txtID.Text = Convert.ToString(produto.Id);
+            txtNome.Text = produto.Nome;
+            txtDescricao.Text = produto.Descricao;
+            cbBoxTamanho.Text = produto.Tamanho;
+            txtCusto.Text = Convert.ToString(produto.Custo);
+            txtVenda.Text = Convert.ToString(produto.Preco);
+            txtIdCategoria.Text = Convert.ToString(produto.Idcategoria);
+            ckBoxAtivo.Checked = produto.Ativo;
         }
 
         public FormProduto(ref Produto prod, string duplicar)

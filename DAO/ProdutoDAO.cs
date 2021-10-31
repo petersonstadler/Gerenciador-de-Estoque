@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MySql.Data.MySqlClient;
-using System.Windows.Forms;
 using Gerenciador_de_Estoque.MODEL;
-using System.Data;
 
 namespace Gerenciador_de_Estoque.DAO
 {
