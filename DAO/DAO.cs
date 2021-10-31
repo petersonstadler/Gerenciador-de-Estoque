@@ -58,6 +58,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
         }
 
+        //Este metodo terá que ser sobrescrito na classe que vai ser herdada através do override
         protected virtual List<object> PreencherLista(MySqlDataReader dr) { return new List<object>(); }
 
         public List<object> ListarComFiltro(string filtros)

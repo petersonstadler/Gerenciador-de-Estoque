@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gerenciador_de_Estoque.DAO;
 using Gerenciador_de_Estoque.MODEL;
@@ -47,7 +40,9 @@ namespace Gerenciador_de_Estoque.VIEW
             formProduto.ShowDialog();
             if(formProduto.DialogResult == DialogResult.OK)
             {
-                DtProdutos.DataSource = new ProdutoDAO().ListarEmDataTable();
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                DtProdutos.DataSource = produtoDAO.ListarEmDataTable();
+                produtoDAO.CloseConnections();
             }
             formProduto.Dispose();
         }
@@ -60,7 +55,25 @@ namespace Gerenciador_de_Estoque.VIEW
                 formProduto.ShowDialog();
                 if (formProduto.DialogResult == DialogResult.OK)
                 {
-                    DtProdutos.DataSource = new ProdutoDAO().ListarEmDataTable();
+                    ProdutoDAO produtoDAO = new ProdutoDAO();
+                    DtProdutos.DataSource = produtoDAO.ListarEmDataTable();
+                    produtoDAO.CloseConnections();
+                }
+                formProduto.Dispose();
+            }
+        }
+
+        private void CriarFormProdutoDuplicar()
+        {
+            if(produtoSelecionado != null)
+            {
+                FormProduto formProduto = new FormProduto(ref produtoSelecionado, "DUPLICAR");
+                formProduto.ShowDialog();
+                if(formProduto.DialogResult == DialogResult.OK)
+                {
+                    ProdutoDAO produtoDAO = new ProdutoDAO();
+                    DtProdutos.DataSource = produtoDAO.ListarEmDataTable();
+                    produtoDAO.CloseConnections();
                 }
                 formProduto.Dispose();
             }
@@ -76,6 +89,9 @@ namespace Gerenciador_de_Estoque.VIEW
                 case "Alterar":
                     CriarFormProdutoAlterar();
                     break;
+                case "Duplicar":
+                    CriarFormProdutoDuplicar();
+                    break;
             }
         }
 
@@ -83,6 +99,7 @@ namespace Gerenciador_de_Estoque.VIEW
         {
             menuProdutos.Items.Add("Adicionar");
             menuProdutos.Items.Add("Alterar");
+            menuProdutos.Items.Add("Duplicar");
             DtProdutos.ContextMenuStrip = menuProdutos;
             menuProdutos.ItemClicked += new ToolStripItemClickedEventHandler(menu_ItemClicked);
         }

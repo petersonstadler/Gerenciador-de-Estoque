@@ -86,6 +86,24 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             }
         }
 
+        public FormProduto(ref Produto prod, string duplicar)
+        {
+            try
+            {
+                InitializeComponent();
+                produto = prod;
+                operacao = "CADASTRAR";
+                PreencherComboBoxes();
+                PreencherTxtBoxes();
+                txtID.Text = "0";
+                txtNomeCategoria.Text = PegarNomeDaCategoria(Convert.ToInt32(txtIdCategoria.Text));
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show("Falha ao tentar alterar produto! \n\n" + er, "Preencher Campos para alterar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
