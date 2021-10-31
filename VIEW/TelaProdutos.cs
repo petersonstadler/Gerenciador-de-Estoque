@@ -17,21 +17,9 @@ namespace Gerenciador_de_Estoque.VIEW
             this.Carregar();
         }
 
-        private void lblX_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void Carregar()
         {
-            ProdutoDAO produtoDao = new ProdutoDAO();
-            DtProdutos.DataSource = produtoDao.ListarEmDataTable();
-            produtoDao.CloseConnections();
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-
+            AtualizarDtProdutos();
         }
 
         private void CriarFormProdutoAdicionar()
@@ -40,9 +28,7 @@ namespace Gerenciador_de_Estoque.VIEW
             formProduto.ShowDialog();
             if(formProduto.DialogResult == DialogResult.OK)
             {
-                ProdutoDAO produtoDAO = new ProdutoDAO();
-                DtProdutos.DataSource = produtoDAO.ListarEmDataTable();
-                produtoDAO.CloseConnections();
+                AtualizarDtProdutos();
             }
             formProduto.Dispose();
         }
@@ -55,9 +41,7 @@ namespace Gerenciador_de_Estoque.VIEW
                 formProduto.ShowDialog();
                 if (formProduto.DialogResult == DialogResult.OK)
                 {
-                    ProdutoDAO produtoDAO = new ProdutoDAO();
-                    DtProdutos.DataSource = produtoDAO.ListarEmDataTable();
-                    produtoDAO.CloseConnections();
+                    AtualizarDtProdutos();
                 }
                 formProduto.Dispose();
             }
@@ -71,12 +55,26 @@ namespace Gerenciador_de_Estoque.VIEW
                 formProduto.ShowDialog();
                 if(formProduto.DialogResult == DialogResult.OK)
                 {
-                    ProdutoDAO produtoDAO = new ProdutoDAO();
-                    DtProdutos.DataSource = produtoDAO.ListarEmDataTable();
-                    produtoDAO.CloseConnections();
+                    AtualizarDtProdutos();
                 }
                 formProduto.Dispose();
             }
+        }
+
+        private void AtualizarDtProdutos()
+        {
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+            DtProdutos.DataSource = produtoDAO.ListarEmDataTable();
+            produtoDAO.CloseConnections();
+        }
+
+        private void FormProdutos_Load(object sender, EventArgs e)
+        {
+            menuProdutos.Items.Add("Adicionar");
+            menuProdutos.Items.Add("Alterar");
+            menuProdutos.Items.Add("Duplicar");
+            DtProdutos.ContextMenuStrip = menuProdutos;
+            menuProdutos.ItemClicked += new ToolStripItemClickedEventHandler(menu_ItemClicked);
         }
 
         private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -93,15 +91,6 @@ namespace Gerenciador_de_Estoque.VIEW
                     CriarFormProdutoDuplicar();
                     break;
             }
-        }
-
-        private void FormProdutos_Load(object sender, EventArgs e)
-        {
-            menuProdutos.Items.Add("Adicionar");
-            menuProdutos.Items.Add("Alterar");
-            menuProdutos.Items.Add("Duplicar");
-            DtProdutos.ContextMenuStrip = menuProdutos;
-            menuProdutos.ItemClicked += new ToolStripItemClickedEventHandler(menu_ItemClicked);
         }
 
         private void DtProdutos_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -136,6 +125,16 @@ namespace Gerenciador_de_Estoque.VIEW
             ProdutoDAO produtoDAO = new ProdutoDAO();
             DtProdutos.DataSource = produtoDAO.BuscarPorNome(txtBusca.Text);
             produtoDAO.CloseConnections();
+        }
+
+        private void lblX_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
