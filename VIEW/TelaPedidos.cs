@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gerenciador_de_Estoque.DAO;
 using Gerenciador_de_Estoque.MODEL;
@@ -17,50 +10,31 @@ namespace Gerenciador_de_Estoque.VIEW
     {
         private Pedido pedidoSelecionado;
 
-        private void Carregar()
+        public TelaPedidos1()
+        {
+            InitializeComponent();
+        }
+
+        private void TelaPedidos_Load(object sender, EventArgs e)
+        {
+            AtualizarDataGridPedidos();
+            CriarMenuDeContextoPedido();
+        }
+
+        private void AtualizarDataGridPedidos()
         {
             PedidoDAO pedidoDAO = new PedidoDAO();
             dataGridPedidos.DataSource = pedidoDAO.ListarEmDataTable();
             pedidoDAO.CloseConnections();
         }
 
-        public TelaPedidos1()
+        private void CriarMenuDeContextoPedido()
         {
-            InitializeComponent();
-        }
-
-        private void lblX_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void ChamarFormPedidoCriar()
-        {
-            FormPedido formPedido = new FormPedido();
-            formPedido.ShowDialog();
-            if(formPedido.DialogResult == DialogResult.OK)
-            {
-                PedidoDAO pedidoDAO = new PedidoDAO();
-                dataGridPedidos.DataSource = pedidoDAO.ListarEmDataTable();
-                pedidoDAO.CloseConnections();
-            }
-            formPedido.Dispose();
-        }
-
-        private void ChamarFormPedidoAlterar()
-        {
-            if (pedidoSelecionado != null)
-            {
-                FormPedido formPedido = new FormPedido(pedidoSelecionado);
-                formPedido.ShowDialog();
-                if (formPedido.DialogResult == DialogResult.OK)
-                {
-                    PedidoDAO pedidoDAO = new PedidoDAO();
-                    dataGridPedidos.DataSource = pedidoDAO.ListarEmDataTable();
-                    pedidoDAO.CloseConnections();
-                }
-                formPedido.Dispose();
-            }
+            ContextMenuStrip menuPedidos = new ContextMenuStrip();
+            menuPedidos.Items.Add("Criar Pedido");
+            menuPedidos.Items.Add("Alterar Pedido");
+            menuPedidos.ItemClicked += new ToolStripItemClickedEventHandler(MenuPedidosItemClicked);
+            dataGridPedidos.ContextMenuStrip = menuPedidos;
         }
 
         private void MenuPedidosItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -76,19 +50,29 @@ namespace Gerenciador_de_Estoque.VIEW
             }
         }
 
-        private void CriarMenuDeContextoPedido()
+        private void ChamarFormPedidoCriar()
         {
-            ContextMenuStrip menuPedidos = new ContextMenuStrip();
-            menuPedidos.Items.Add("Criar Pedido");
-            menuPedidos.Items.Add("Alterar Pedido");
-            menuPedidos.ItemClicked += new ToolStripItemClickedEventHandler(MenuPedidosItemClicked);
-            dataGridPedidos.ContextMenuStrip = menuPedidos;
+            FormPedido formPedido = new FormPedido();
+            formPedido.ShowDialog();
+            if (formPedido.DialogResult == DialogResult.OK)
+            {
+                AtualizarDataGridPedidos();
+            }
+            formPedido.Dispose();
         }
 
-        private void TelaPedidos_Load(object sender, EventArgs e)
+        private void ChamarFormPedidoAlterar()
         {
-            Carregar();
-            CriarMenuDeContextoPedido();
+            if (pedidoSelecionado != null)
+            {
+                FormPedido formPedido = new FormPedido(pedidoSelecionado);
+                formPedido.ShowDialog();
+                if (formPedido.DialogResult == DialogResult.OK)
+                {
+                    AtualizarDataGridPedidos();
+                }
+                formPedido.Dispose();
+            }
         }
 
         private void dataGridPedidos_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -109,6 +93,11 @@ namespace Gerenciador_de_Estoque.VIEW
             {
                 MessageBox.Show("Falha ao selecionar pedido! \n\n" + er, "Selecionar Pedido", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void lblX_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
