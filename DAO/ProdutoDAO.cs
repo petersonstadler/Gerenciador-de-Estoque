@@ -40,13 +40,13 @@ namespace Gerenciador_de_Estoque.DAO
         protected override void AddParametroAlterar(object obj)
         {
             Produto produto = obj as Produto;
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[0], produto.Nome);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[1], produto.Descricao);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[2], produto.Tamanho);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[3], produto.Custo);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[4], produto.Preco);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[5], produto.Idcategoria);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[6], produto.Ativo);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[0], produto.Nome);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[1], produto.Descricao);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[2], produto.Tamanho);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[3], produto.Custo);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[4], produto.Preco);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[5], produto.Idcategoria);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[6], produto.Ativo);
         }
 
         protected override object PreencherDados(MySqlDataReader dr)

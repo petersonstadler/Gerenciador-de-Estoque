@@ -41,13 +41,13 @@ namespace Gerenciador_de_Estoque.DAO
         protected override void AddParametroAlterar(object obj)
         {
             ItemNoPedido itemNoPedido = obj as ItemNoPedido;
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[0], itemNoPedido.Idpedido);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[1], itemNoPedido.Idproduto);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[2], itemNoPedido.Custo);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[3], itemNoPedido.Preco);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[4], itemNoPedido.Quantidade);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[5], itemNoPedido.Desconto);
-            cmd.Parameters.AddWithValue(ParametrosColunasInserir[6], itemNoPedido.Acrescimo);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[0], itemNoPedido.Idpedido);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[1], itemNoPedido.Idproduto);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[2], itemNoPedido.Custo);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[3], itemNoPedido.Preco);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[4], itemNoPedido.Quantidade);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[5], itemNoPedido.Desconto);
+            cmd.Parameters.AddWithValue(ParametrosColunasAlterar[6], itemNoPedido.Acrescimo);
         }
 
         protected override object PreencherDados(MySqlDataReader dr)
