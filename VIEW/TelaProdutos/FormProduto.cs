@@ -29,6 +29,7 @@ namespace Gerenciador_de_Estoque.VIEW.FormProdutos
             txtID.Text = "0";
             operacao = "CADASTRAR";
             txtIdCategoria.Text = "1";
+            ckBoxAtivo.Checked = true;
             txtNomeCategoria.Text = PegarNomeDaCategoria(1);
             PreencherComboBoxes();
         }

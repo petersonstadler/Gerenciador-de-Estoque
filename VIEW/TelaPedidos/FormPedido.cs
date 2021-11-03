@@ -343,19 +343,27 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            if (ValidarPedido())
+            try
             {
-                if(operacao == "CRIAR")
+                if (ValidarPedido())
                 {
-                    PreencherPedido();
-                    CriarNovoPedido();
+                    if (operacao == "CRIAR")
+                    {
+                        PreencherPedido();
+                        CriarNovoPedido();
+                        MessageBox.Show("Pedido criado com sucesso!", $"Confirmar Pedido({operacao})", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    if (operacao == "ALTERAR")
+                    {
+                        PreencherPedido();
+                        AlterarPedido();
+                        MessageBox.Show("Pedido alterado com sucesso!", $"Confirmar Pedido({operacao})", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    DialogResult = DialogResult.OK;
                 }
-                if(operacao == "ALTERAR")
-                {
-                    PreencherPedido();
-                    AlterarPedido();
-                }
-                DialogResult = DialogResult.OK;
+            }catch(Exception er)
+            {
+                MessageBox.Show("Falha ao confirmar! \n\n" + er, $"Confirmar Pedido({operacao})", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
