@@ -111,5 +111,16 @@ namespace Gerenciador_de_Estoque
             TelaCategorias telaCategorias = new TelaCategorias();
             telaCategorias.ShowDialog();
         }
+
+        private void btnFinanceiro_Click(object sender, EventArgs e)
+        {
+            Financeiro financeiro = new Financeiro();
+            FinanceiroDAO financeiroDAO = new FinanceiroDAO();
+            financeiro.DataInicial = new DateTime(2021, 8, 1, 8, 30, 00);
+            financeiro.DataFinal = DateTime.Now;
+            financeiro.Faturamento = financeiroDAO.CalcularFaturamentoPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
+            MessageBox.Show("As datas são: " + financeiro.DataInicial + " e " + financeiro.DataFinal + " O faturamento é: " + financeiro.Faturamento);
+            financeiroDAO.CloseConnections();
+        }
     }
 }
