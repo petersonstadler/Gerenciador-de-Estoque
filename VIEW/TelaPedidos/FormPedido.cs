@@ -29,6 +29,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             DataTable dt = new DataTable();
             dt.Columns.Add("Ordem", typeof(int));
             dt.Columns.Add("Produto", typeof(string));
+            dt.Columns.Add("Tamanho", typeof(string));
             dt.Columns.Add("Preço", typeof(decimal));
             dt.Columns.Add("Quantidade", typeof(float));
             dt.Columns.Add("Desconto", typeof(decimal));
@@ -38,7 +39,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             {
                 ProdutoDAO produtoDAO = new ProdutoDAO();
                 Produto produto = produtoDAO.BuscarPorId(item.Idproduto) as Produto;
-                dt.Rows.Add(cont, produto.Nome, item.Preco, item.Quantidade, item.Desconto, item.Acrescimo, ((decimal)item.Quantidade * item.Preco) + item.Acrescimo - item.Desconto);
+                dt.Rows.Add(cont, produto.Nome, produto.Tamanho, item.Preco, item.Quantidade, item.Desconto, item.Acrescimo, ((decimal)item.Quantidade * item.Preco) + item.Acrescimo - item.Desconto);
                 produtoDAO.CloseConnections();
                 total += ((decimal)item.Quantidade * item.Preco) + item.Acrescimo - item.Desconto;
                 totalDesconto += item.Desconto;

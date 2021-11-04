@@ -19,8 +19,8 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
         private ProdutoDAO MontarProdutoDAO()
         {
             ProdutoDAO produtoDAO = new ProdutoDAO();
-            produtoDAO.NomeColunasSelect = new string [] { "idproduto", "nomeproduto", "precoproduto" };
-            produtoDAO.ApelidoColunasSelect = new string[] { "ID", "Nome", "Preço" };
+            produtoDAO.NomeColunasSelect = new string [] { "idproduto", "nomeproduto", "tamanhoproduto", "precoproduto" };
+            produtoDAO.ApelidoColunasSelect = new string[] { "ID", "Nome", "Tamanho", "Preço" };
             return produtoDAO;
         }
 
