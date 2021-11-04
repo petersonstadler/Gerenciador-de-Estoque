@@ -44,9 +44,31 @@ namespace Gerenciador_de_Estoque.DAO
             }
             catch (Exception e)
             {
-                MessageBox.Show("Falha ao Calcular Faturamento! \n\n" + e, "Financeiro: Calcular Faturamento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao Calcular Gastos! \n\n" + e, "Financeiro: Calcular Gastos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return gastos;
+        }
+        
+        public decimal CalcularFiadosPorPeriodo(DateTime dataInicial, DateTime dataFinal)
+        {
+            decimal fiados = 0;
+            string inicio = dataInicial.Year + "-" + dataInicial.Month + "-" + dataInicial.Day + " 00-00-00";
+            string final = dataFinal.Year + "-" + dataFinal.Month + "-" + dataFinal.Day + " 23-59-59";
+            try
+            {
+                cmd.CommandText = $"SELECT COALESCE(SUM(preco * qtd) - SUM(desconto * qtd) + SUM(acrescimo * qtd), 0) as Fiados  FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fiado' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'SAIDA' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    fiados = dr.GetDecimal("Fiados");
+                }
+                dr.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Falha ao Calcular Fiados! \n\n" + e, "Financeiro: Calcular Fiados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return fiados;
         }
     }
 }
