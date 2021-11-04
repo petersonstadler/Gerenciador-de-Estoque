@@ -121,7 +121,9 @@ namespace Gerenciador_de_Estoque
             financeiro.Faturamento = financeiroDAO.CalcularFaturamentoPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
             financeiro.Gastos = financeiroDAO.CalcularGastosPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
             financeiro.Lucro = financeiro.Faturamento - financeiro.Gastos;
-            MessageBox.Show("As datas são: " + financeiro.DataInicial + " e " + financeiro.DataFinal + " O faturamento é: " + financeiro.Faturamento + " e os gastos são: " + financeiro.Gastos + " e o lucro é: " + financeiro.Lucro);
+            financeiro.Fiado = financeiroDAO.CalcularFiadosPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
+            financeiro.Dividas = financeiroDAO.CalcularDividasPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
+            MessageBox.Show("As datas são: " + financeiro.DataInicial + " e " + financeiro.DataFinal + " O faturamento é: " + financeiro.Faturamento + " e os gastos são: " + financeiro.Gastos + " e o lucro é: " + financeiro.Lucro + " e para receber tem: " + financeiro.Fiado + " e suas dividas são: " + financeiro.Dividas);
             financeiroDAO.CloseConnections();
         }
     }

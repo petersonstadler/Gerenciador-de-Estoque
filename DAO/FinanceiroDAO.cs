@@ -70,5 +70,27 @@ namespace Gerenciador_de_Estoque.DAO
             }
             return fiados;
         }
+
+        public decimal CalcularDividasPorPeriodo(DateTime dataInicial, DateTime dataFinal)
+        {
+            decimal dividas = 0;
+            string inicio = dataInicial.Year + "-" + dataInicial.Month + "-" + dataInicial.Day + " 00-00-00";
+            string final = dataFinal.Year + "-" + dataFinal.Month + "-" + dataFinal.Day + " 23-59-59";
+            try
+            {
+                cmd.CommandText = $"SELECT COALESCE(SUM(custo * qtd) - SUM(desconto * qtd) + SUM(acrescimo * qtd), 0) as Dividas  FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fiado' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Entrada' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    dividas = dr.GetDecimal("Dividas");
+                }
+                dr.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Falha ao Calcular Dividas! \n\n" + e, "Financeiro: Calcular Dividas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dividas;
+        }
     }
 }
