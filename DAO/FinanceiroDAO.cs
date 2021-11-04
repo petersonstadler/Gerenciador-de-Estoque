@@ -20,7 +20,8 @@ namespace Gerenciador_de_Estoque.DAO
                     faturamento = dr.GetDecimal("Faturamento");
                 }
                 dr.Close();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 MessageBox.Show("Falha ao Calcular Faturamento! \n\n" + e, "Financeiro: Calcular Faturamento", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -48,7 +49,7 @@ namespace Gerenciador_de_Estoque.DAO
             }
             return gastos;
         }
-        
+
         public decimal CalcularFiadosPorPeriodo(DateTime dataInicial, DateTime dataFinal)
         {
             decimal fiados = 0;
