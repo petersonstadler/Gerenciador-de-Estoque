@@ -288,5 +288,14 @@
   <ItemGroup>
     <None Include="Resources\logo provisório1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon financeiro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\financeiro icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon financeiro ok.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

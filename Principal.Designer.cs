@@ -31,26 +31,26 @@ namespace Gerenciador_de_Estoque
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.MenuVertical = new System.Windows.Forms.Panel();
-            this.btnCategorias = new System.Windows.Forms.Button();
-            this.btnPedidos = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BarraTitulo = new System.Windows.Forms.Panel();
+            this.panelPrincipal = new System.Windows.Forms.Panel();
             this.iconMinimizar = new System.Windows.Forms.PictureBox();
             this.iconDiminuir = new System.Windows.Forms.PictureBox();
             this.iconAumentar = new System.Windows.Forms.PictureBox();
             this.iconFechar = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
-            this.panelPrincipal = new System.Windows.Forms.Panel();
             this.btnFinanceiro = new System.Windows.Forms.Button();
+            this.btnCategorias = new System.Windows.Forms.Button();
+            this.btnPedidos = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MenuVertical.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconDiminuir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconAumentar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlide)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuVertical
@@ -66,6 +66,107 @@ namespace Gerenciador_de_Estoque
             this.MenuVertical.Name = "MenuVertical";
             this.MenuVertical.Size = new System.Drawing.Size(250, 650);
             this.MenuVertical.TabIndex = 0;
+            // 
+            // BarraTitulo
+            // 
+            this.BarraTitulo.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.BarraTitulo.Controls.Add(this.iconMinimizar);
+            this.BarraTitulo.Controls.Add(this.iconDiminuir);
+            this.BarraTitulo.Controls.Add(this.iconAumentar);
+            this.BarraTitulo.Controls.Add(this.iconFechar);
+            this.BarraTitulo.Controls.Add(this.btnSlide);
+            this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BarraTitulo.Location = new System.Drawing.Point(250, 0);
+            this.BarraTitulo.Name = "BarraTitulo";
+            this.BarraTitulo.Size = new System.Drawing.Size(1050, 50);
+            this.BarraTitulo.TabIndex = 1;
+            this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
+            // 
+            // panelPrincipal
+            // 
+            this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPrincipal.Location = new System.Drawing.Point(250, 50);
+            this.panelPrincipal.Name = "panelPrincipal";
+            this.panelPrincipal.Size = new System.Drawing.Size(1050, 600);
+            this.panelPrincipal.TabIndex = 2;
+            // 
+            // iconMinimizar
+            // 
+            this.iconMinimizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.iconMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconMinimizar.Image = global::Gerenciador_de_Estoque.Properties.Resources.minimizarIcon;
+            this.iconMinimizar.Location = new System.Drawing.Point(966, 9);
+            this.iconMinimizar.Name = "iconMinimizar";
+            this.iconMinimizar.Size = new System.Drawing.Size(20, 20);
+            this.iconMinimizar.TabIndex = 4;
+            this.iconMinimizar.TabStop = false;
+            this.iconMinimizar.Click += new System.EventHandler(this.iconMinimizar_Click);
+            // 
+            // iconDiminuir
+            // 
+            this.iconDiminuir.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.iconDiminuir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconDiminuir.Image = global::Gerenciador_de_Estoque.Properties.Resources.diminuirIcon;
+            this.iconDiminuir.Location = new System.Drawing.Point(992, 9);
+            this.iconDiminuir.Name = "iconDiminuir";
+            this.iconDiminuir.Size = new System.Drawing.Size(20, 20);
+            this.iconDiminuir.TabIndex = 3;
+            this.iconDiminuir.TabStop = false;
+            this.iconDiminuir.Visible = false;
+            this.iconDiminuir.Click += new System.EventHandler(this.iconDiminuir_Click);
+            // 
+            // iconAumentar
+            // 
+            this.iconAumentar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.iconAumentar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconAumentar.Image = global::Gerenciador_de_Estoque.Properties.Resources.aumentarIcon;
+            this.iconAumentar.Location = new System.Drawing.Point(992, 9);
+            this.iconAumentar.Name = "iconAumentar";
+            this.iconAumentar.Size = new System.Drawing.Size(20, 20);
+            this.iconAumentar.TabIndex = 2;
+            this.iconAumentar.TabStop = false;
+            this.iconAumentar.Click += new System.EventHandler(this.iconAumentar_Click);
+            // 
+            // iconFechar
+            // 
+            this.iconFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconFechar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconFechar.Image = global::Gerenciador_de_Estoque.Properties.Resources.Xiconcerto;
+            this.iconFechar.Location = new System.Drawing.Point(1018, 9);
+            this.iconFechar.Name = "iconFechar";
+            this.iconFechar.Size = new System.Drawing.Size(20, 20);
+            this.iconFechar.TabIndex = 1;
+            this.iconFechar.TabStop = false;
+            this.iconFechar.Click += new System.EventHandler(this.iconFechar_Click);
+            // 
+            // btnSlide
+            // 
+            this.btnSlide.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSlide.Image = global::Gerenciador_de_Estoque.Properties.Resources.menuIcon;
+            this.btnSlide.Location = new System.Drawing.Point(6, 9);
+            this.btnSlide.Name = "btnSlide";
+            this.btnSlide.Size = new System.Drawing.Size(35, 35);
+            this.btnSlide.TabIndex = 0;
+            this.btnSlide.TabStop = false;
+            this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
+            // 
+            // btnFinanceiro
+            // 
+            this.btnFinanceiro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFinanceiro.FlatAppearance.BorderSize = 0;
+            this.btnFinanceiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnFinanceiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinanceiro.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinanceiro.ForeColor = System.Drawing.Color.White;
+            this.btnFinanceiro.Image = global::Gerenciador_de_Estoque.Properties.Resources.icon_financeiro_ok;
+            this.btnFinanceiro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFinanceiro.Location = new System.Drawing.Point(0, 224);
+            this.btnFinanceiro.Name = "btnFinanceiro";
+            this.btnFinanceiro.Size = new System.Drawing.Size(250, 40);
+            this.btnFinanceiro.TabIndex = 4;
+            this.btnFinanceiro.Text = "Financeiro";
+            this.btnFinanceiro.UseVisualStyleBackColor = true;
+            this.btnFinanceiro.Click += new System.EventHandler(this.btnFinanceiro_Click);
             // 
             // btnCategorias
             // 
@@ -130,107 +231,6 @@ namespace Gerenciador_de_Estoque
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // BarraTitulo
-            // 
-            this.BarraTitulo.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.BarraTitulo.Controls.Add(this.iconMinimizar);
-            this.BarraTitulo.Controls.Add(this.iconDiminuir);
-            this.BarraTitulo.Controls.Add(this.iconAumentar);
-            this.BarraTitulo.Controls.Add(this.iconFechar);
-            this.BarraTitulo.Controls.Add(this.btnSlide);
-            this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BarraTitulo.Location = new System.Drawing.Point(250, 0);
-            this.BarraTitulo.Name = "BarraTitulo";
-            this.BarraTitulo.Size = new System.Drawing.Size(1050, 50);
-            this.BarraTitulo.TabIndex = 1;
-            this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
-            // 
-            // iconMinimizar
-            // 
-            this.iconMinimizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.iconMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconMinimizar.Image = global::Gerenciador_de_Estoque.Properties.Resources.minimizarIcon;
-            this.iconMinimizar.Location = new System.Drawing.Point(966, 9);
-            this.iconMinimizar.Name = "iconMinimizar";
-            this.iconMinimizar.Size = new System.Drawing.Size(20, 20);
-            this.iconMinimizar.TabIndex = 4;
-            this.iconMinimizar.TabStop = false;
-            this.iconMinimizar.Click += new System.EventHandler(this.iconMinimizar_Click);
-            // 
-            // iconDiminuir
-            // 
-            this.iconDiminuir.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.iconDiminuir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconDiminuir.Image = global::Gerenciador_de_Estoque.Properties.Resources.diminuirIcon;
-            this.iconDiminuir.Location = new System.Drawing.Point(992, 9);
-            this.iconDiminuir.Name = "iconDiminuir";
-            this.iconDiminuir.Size = new System.Drawing.Size(20, 20);
-            this.iconDiminuir.TabIndex = 3;
-            this.iconDiminuir.TabStop = false;
-            this.iconDiminuir.Visible = false;
-            this.iconDiminuir.Click += new System.EventHandler(this.iconDiminuir_Click);
-            // 
-            // iconAumentar
-            // 
-            this.iconAumentar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.iconAumentar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconAumentar.Image = global::Gerenciador_de_Estoque.Properties.Resources.aumentarIcon;
-            this.iconAumentar.Location = new System.Drawing.Point(992, 9);
-            this.iconAumentar.Name = "iconAumentar";
-            this.iconAumentar.Size = new System.Drawing.Size(20, 20);
-            this.iconAumentar.TabIndex = 2;
-            this.iconAumentar.TabStop = false;
-            this.iconAumentar.Click += new System.EventHandler(this.iconAumentar_Click);
-            // 
-            // iconFechar
-            // 
-            this.iconFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconFechar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconFechar.Image = global::Gerenciador_de_Estoque.Properties.Resources.Xiconcerto;
-            this.iconFechar.Location = new System.Drawing.Point(1018, 9);
-            this.iconFechar.Name = "iconFechar";
-            this.iconFechar.Size = new System.Drawing.Size(20, 20);
-            this.iconFechar.TabIndex = 1;
-            this.iconFechar.TabStop = false;
-            this.iconFechar.Click += new System.EventHandler(this.iconFechar_Click);
-            // 
-            // btnSlide
-            // 
-            this.btnSlide.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSlide.Image = global::Gerenciador_de_Estoque.Properties.Resources.menuIcon;
-            this.btnSlide.Location = new System.Drawing.Point(6, 9);
-            this.btnSlide.Name = "btnSlide";
-            this.btnSlide.Size = new System.Drawing.Size(35, 35);
-            this.btnSlide.TabIndex = 0;
-            this.btnSlide.TabStop = false;
-            this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
-            // 
-            // panelPrincipal
-            // 
-            this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPrincipal.Location = new System.Drawing.Point(250, 50);
-            this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(1050, 600);
-            this.panelPrincipal.TabIndex = 2;
-            // 
-            // btnFinanceiro
-            // 
-            this.btnFinanceiro.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFinanceiro.FlatAppearance.BorderSize = 0;
-            this.btnFinanceiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnFinanceiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinanceiro.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinanceiro.ForeColor = System.Drawing.Color.White;
-            this.btnFinanceiro.Image = global::Gerenciador_de_Estoque.Properties.Resources.icon_categoria;
-            this.btnFinanceiro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFinanceiro.Location = new System.Drawing.Point(0, 224);
-            this.btnFinanceiro.Name = "btnFinanceiro";
-            this.btnFinanceiro.Size = new System.Drawing.Size(250, 40);
-            this.btnFinanceiro.TabIndex = 4;
-            this.btnFinanceiro.Text = "Financeiro";
-            this.btnFinanceiro.UseVisualStyleBackColor = true;
-            this.btnFinanceiro.Click += new System.EventHandler(this.btnFinanceiro_Click);
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,13 +245,13 @@ namespace Gerenciador_de_Estoque
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
             this.MenuVertical.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.BarraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconDiminuir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconAumentar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlide)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
