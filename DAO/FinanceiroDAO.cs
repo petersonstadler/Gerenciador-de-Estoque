@@ -105,13 +105,13 @@ namespace Gerenciador_de_Estoque.DAO
                 MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    lucro = dr.GetDecimal(1);
+                    lucro = dr.GetDecimal("Lucro");
                 }
                 dr.Close();
             }
             catch(Exception e)
             {
-                MessageBox.Show("Falha ao Calcular Lucro! \n\n" + e, "Financeiro: Calcular Lucro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao Calcular Lucro das Vendas! \n\n" + e, "Financeiro: Calcular Lucro das Vendas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lucro;
         }

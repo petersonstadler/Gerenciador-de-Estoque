@@ -37,15 +37,6 @@ namespace Gerenciador_de_Estoque.VIEW
             this.panelApoioDeCima = new System.Windows.Forms.Panel();
             this.panelApoioDeBaixo = new System.Windows.Forms.Panel();
             this.panelCentral = new System.Windows.Forms.Panel();
-            this.cardFaturamento = new System.Windows.Forms.Panel();
-            this.cardLucro = new System.Windows.Forms.Panel();
-            this.cardLucroVendas = new System.Windows.Forms.Panel();
-            this.labelFaturamentoTotal = new System.Windows.Forms.Label();
-            this.lblLucroLiquido = new System.Windows.Forms.Label();
-            this.lblValorFaturamentoTotal = new System.Windows.Forms.Label();
-            this.lblValorLucroLiquido = new System.Windows.Forms.Label();
-            this.lblValorLucroVendas = new System.Windows.Forms.Label();
-            this.lblLucroDeVendas = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblValorFiado = new System.Windows.Forms.Label();
             this.lblFiado = new System.Windows.Forms.Label();
@@ -55,13 +46,22 @@ namespace Gerenciador_de_Estoque.VIEW
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblValorGastos = new System.Windows.Forms.Label();
             this.lblGastos = new System.Windows.Forms.Label();
+            this.cardLucroVendas = new System.Windows.Forms.Panel();
+            this.lblValorLucroVendas = new System.Windows.Forms.Label();
+            this.lblLucroDeVendas = new System.Windows.Forms.Label();
+            this.cardLucro = new System.Windows.Forms.Panel();
+            this.lblValorLucroLiquido = new System.Windows.Forms.Label();
+            this.lblLucroLiquido = new System.Windows.Forms.Label();
+            this.cardFaturamento = new System.Windows.Forms.Panel();
+            this.lblValorFaturamentoTotal = new System.Windows.Forms.Label();
+            this.labelFaturamentoTotal = new System.Windows.Forms.Label();
             this.panelCentral.SuspendLayout();
-            this.cardFaturamento.SuspendLayout();
-            this.cardLucro.SuspendLayout();
-            this.cardLucroVendas.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.cardLucroVendas.SuspendLayout();
+            this.cardLucro.SuspendLayout();
+            this.cardFaturamento.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblFiltrarDe
@@ -147,106 +147,8 @@ namespace Gerenciador_de_Estoque.VIEW
             this.panelCentral.Size = new System.Drawing.Size(651, 320);
             this.panelCentral.TabIndex = 7;
             // 
-            // cardFaturamento
-            // 
-            this.cardFaturamento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cardFaturamento.BackColor = System.Drawing.Color.RoyalBlue;
-            this.cardFaturamento.Controls.Add(this.lblValorFaturamentoTotal);
-            this.cardFaturamento.Controls.Add(this.labelFaturamentoTotal);
-            this.cardFaturamento.Location = new System.Drawing.Point(3, 3);
-            this.cardFaturamento.Name = "cardFaturamento";
-            this.cardFaturamento.Size = new System.Drawing.Size(211, 100);
-            this.cardFaturamento.TabIndex = 0;
-            // 
-            // cardLucro
-            // 
-            this.cardLucro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cardLucro.BackColor = System.Drawing.Color.Green;
-            this.cardLucro.Controls.Add(this.lblValorLucroLiquido);
-            this.cardLucro.Controls.Add(this.lblLucroLiquido);
-            this.cardLucro.Location = new System.Drawing.Point(220, 3);
-            this.cardLucro.Name = "cardLucro";
-            this.cardLucro.Size = new System.Drawing.Size(211, 100);
-            this.cardLucro.TabIndex = 1;
-            // 
-            // cardLucroVendas
-            // 
-            this.cardLucroVendas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cardLucroVendas.BackColor = System.Drawing.Color.DarkGreen;
-            this.cardLucroVendas.Controls.Add(this.lblValorLucroVendas);
-            this.cardLucroVendas.Controls.Add(this.lblLucroDeVendas);
-            this.cardLucroVendas.Location = new System.Drawing.Point(437, 3);
-            this.cardLucroVendas.Name = "cardLucroVendas";
-            this.cardLucroVendas.Size = new System.Drawing.Size(211, 100);
-            this.cardLucroVendas.TabIndex = 1;
-            // 
-            // labelFaturamentoTotal
-            // 
-            this.labelFaturamentoTotal.AutoSize = true;
-            this.labelFaturamentoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelFaturamentoTotal.Location = new System.Drawing.Point(3, 7);
-            this.labelFaturamentoTotal.Name = "labelFaturamentoTotal";
-            this.labelFaturamentoTotal.Size = new System.Drawing.Size(188, 26);
-            this.labelFaturamentoTotal.TabIndex = 0;
-            this.labelFaturamentoTotal.Text = "Faturamento Total";
-            // 
-            // lblLucroLiquido
-            // 
-            this.lblLucroLiquido.AutoSize = true;
-            this.lblLucroLiquido.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lblLucroLiquido.Location = new System.Drawing.Point(3, 7);
-            this.lblLucroLiquido.Name = "lblLucroLiquido";
-            this.lblLucroLiquido.Size = new System.Drawing.Size(142, 26);
-            this.lblLucroLiquido.TabIndex = 0;
-            this.lblLucroLiquido.Text = "Lucro Liquido";
-            // 
-            // lblValorFaturamentoTotal
-            // 
-            this.lblValorFaturamentoTotal.AutoSize = true;
-            this.lblValorFaturamentoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lblValorFaturamentoTotal.Location = new System.Drawing.Point(3, 46);
-            this.lblValorFaturamentoTotal.Name = "lblValorFaturamentoTotal";
-            this.lblValorFaturamentoTotal.Size = new System.Drawing.Size(52, 26);
-            this.lblValorFaturamentoTotal.TabIndex = 0;
-            this.lblValorFaturamentoTotal.Text = "R$0";
-            // 
-            // lblValorLucroLiquido
-            // 
-            this.lblValorLucroLiquido.AutoSize = true;
-            this.lblValorLucroLiquido.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lblValorLucroLiquido.Location = new System.Drawing.Point(3, 46);
-            this.lblValorLucroLiquido.Name = "lblValorLucroLiquido";
-            this.lblValorLucroLiquido.Size = new System.Drawing.Size(52, 26);
-            this.lblValorLucroLiquido.TabIndex = 1;
-            this.lblValorLucroLiquido.Text = "R$0";
-            // 
-            // lblValorLucroVendas
-            // 
-            this.lblValorLucroVendas.AutoSize = true;
-            this.lblValorLucroVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lblValorLucroVendas.Location = new System.Drawing.Point(3, 46);
-            this.lblValorLucroVendas.Name = "lblValorLucroVendas";
-            this.lblValorLucroVendas.Size = new System.Drawing.Size(52, 26);
-            this.lblValorLucroVendas.TabIndex = 3;
-            this.lblValorLucroVendas.Text = "R$0";
-            // 
-            // lblLucroDeVendas
-            // 
-            this.lblLucroDeVendas.AutoSize = true;
-            this.lblLucroDeVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lblLucroDeVendas.Location = new System.Drawing.Point(3, 7);
-            this.lblLucroDeVendas.Name = "lblLucroDeVendas";
-            this.lblLucroDeVendas.Size = new System.Drawing.Size(146, 26);
-            this.lblLucroDeVendas.TabIndex = 2;
-            this.lblLucroDeVendas.Text = "Lucro Vendas";
-            // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.DarkOrange;
             this.panel1.Controls.Add(this.lblValorFiado);
             this.panel1.Controls.Add(this.lblFiado);
@@ -277,8 +179,6 @@ namespace Gerenciador_de_Estoque.VIEW
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Indigo;
             this.panel2.Controls.Add(this.lblValorDividas);
             this.panel2.Controls.Add(this.lblDividas);
@@ -309,8 +209,6 @@ namespace Gerenciador_de_Estoque.VIEW
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.DarkRed;
             this.panel3.Controls.Add(this.lblValorGastos);
             this.panel3.Controls.Add(this.lblGastos);
@@ -339,6 +237,96 @@ namespace Gerenciador_de_Estoque.VIEW
             this.lblGastos.TabIndex = 0;
             this.lblGastos.Text = "Gastos";
             // 
+            // cardLucroVendas
+            // 
+            this.cardLucroVendas.BackColor = System.Drawing.Color.DarkGreen;
+            this.cardLucroVendas.Controls.Add(this.lblValorLucroVendas);
+            this.cardLucroVendas.Controls.Add(this.lblLucroDeVendas);
+            this.cardLucroVendas.Location = new System.Drawing.Point(437, 3);
+            this.cardLucroVendas.Name = "cardLucroVendas";
+            this.cardLucroVendas.Size = new System.Drawing.Size(211, 100);
+            this.cardLucroVendas.TabIndex = 1;
+            // 
+            // lblValorLucroVendas
+            // 
+            this.lblValorLucroVendas.AutoSize = true;
+            this.lblValorLucroVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lblValorLucroVendas.Location = new System.Drawing.Point(3, 46);
+            this.lblValorLucroVendas.Name = "lblValorLucroVendas";
+            this.lblValorLucroVendas.Size = new System.Drawing.Size(52, 26);
+            this.lblValorLucroVendas.TabIndex = 3;
+            this.lblValorLucroVendas.Text = "R$0";
+            // 
+            // lblLucroDeVendas
+            // 
+            this.lblLucroDeVendas.AutoSize = true;
+            this.lblLucroDeVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lblLucroDeVendas.Location = new System.Drawing.Point(3, 7);
+            this.lblLucroDeVendas.Name = "lblLucroDeVendas";
+            this.lblLucroDeVendas.Size = new System.Drawing.Size(146, 26);
+            this.lblLucroDeVendas.TabIndex = 2;
+            this.lblLucroDeVendas.Text = "Lucro Vendas";
+            // 
+            // cardLucro
+            // 
+            this.cardLucro.BackColor = System.Drawing.Color.Green;
+            this.cardLucro.Controls.Add(this.lblValorLucroLiquido);
+            this.cardLucro.Controls.Add(this.lblLucroLiquido);
+            this.cardLucro.Location = new System.Drawing.Point(220, 3);
+            this.cardLucro.Name = "cardLucro";
+            this.cardLucro.Size = new System.Drawing.Size(211, 100);
+            this.cardLucro.TabIndex = 1;
+            // 
+            // lblValorLucroLiquido
+            // 
+            this.lblValorLucroLiquido.AutoSize = true;
+            this.lblValorLucroLiquido.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lblValorLucroLiquido.Location = new System.Drawing.Point(3, 46);
+            this.lblValorLucroLiquido.Name = "lblValorLucroLiquido";
+            this.lblValorLucroLiquido.Size = new System.Drawing.Size(52, 26);
+            this.lblValorLucroLiquido.TabIndex = 1;
+            this.lblValorLucroLiquido.Text = "R$0";
+            // 
+            // lblLucroLiquido
+            // 
+            this.lblLucroLiquido.AutoSize = true;
+            this.lblLucroLiquido.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lblLucroLiquido.Location = new System.Drawing.Point(3, 7);
+            this.lblLucroLiquido.Name = "lblLucroLiquido";
+            this.lblLucroLiquido.Size = new System.Drawing.Size(142, 26);
+            this.lblLucroLiquido.TabIndex = 0;
+            this.lblLucroLiquido.Text = "Lucro Liquido";
+            // 
+            // cardFaturamento
+            // 
+            this.cardFaturamento.BackColor = System.Drawing.Color.RoyalBlue;
+            this.cardFaturamento.Controls.Add(this.lblValorFaturamentoTotal);
+            this.cardFaturamento.Controls.Add(this.labelFaturamentoTotal);
+            this.cardFaturamento.Location = new System.Drawing.Point(3, 3);
+            this.cardFaturamento.Name = "cardFaturamento";
+            this.cardFaturamento.Size = new System.Drawing.Size(211, 100);
+            this.cardFaturamento.TabIndex = 0;
+            // 
+            // lblValorFaturamentoTotal
+            // 
+            this.lblValorFaturamentoTotal.AutoSize = true;
+            this.lblValorFaturamentoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lblValorFaturamentoTotal.Location = new System.Drawing.Point(3, 46);
+            this.lblValorFaturamentoTotal.Name = "lblValorFaturamentoTotal";
+            this.lblValorFaturamentoTotal.Size = new System.Drawing.Size(52, 26);
+            this.lblValorFaturamentoTotal.TabIndex = 0;
+            this.lblValorFaturamentoTotal.Text = "R$0";
+            // 
+            // labelFaturamentoTotal
+            // 
+            this.labelFaturamentoTotal.AutoSize = true;
+            this.labelFaturamentoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.labelFaturamentoTotal.Location = new System.Drawing.Point(3, 7);
+            this.labelFaturamentoTotal.Name = "labelFaturamentoTotal";
+            this.labelFaturamentoTotal.Size = new System.Drawing.Size(188, 26);
+            this.labelFaturamentoTotal.TabIndex = 0;
+            this.labelFaturamentoTotal.Text = "Faturamento Total";
+            // 
             // TelaFinanceiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,19 +344,20 @@ namespace Gerenciador_de_Estoque.VIEW
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TelaFinanceiro";
             this.Text = "TelaFinanceiro";
+            this.Load += new System.EventHandler(this.TelaFinanceiro_Load);
             this.panelCentral.ResumeLayout(false);
-            this.cardFaturamento.ResumeLayout(false);
-            this.cardFaturamento.PerformLayout();
-            this.cardLucro.ResumeLayout(false);
-            this.cardLucro.PerformLayout();
-            this.cardLucroVendas.ResumeLayout(false);
-            this.cardLucroVendas.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.cardLucroVendas.ResumeLayout(false);
+            this.cardLucroVendas.PerformLayout();
+            this.cardLucro.ResumeLayout(false);
+            this.cardLucro.PerformLayout();
+            this.cardFaturamento.ResumeLayout(false);
+            this.cardFaturamento.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

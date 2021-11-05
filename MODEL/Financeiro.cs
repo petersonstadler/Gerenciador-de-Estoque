@@ -15,5 +15,10 @@ namespace Gerenciador_de_Estoque.MODEL
         public decimal Gastos { get => gastos; set => gastos = value; }
         public decimal Dividas { get => dividas; set => dividas = value; }
         public decimal LucroDasVendas { get => lucroDasVendas; set => lucroDasVendas = value; }
+
+        public void CalcularLucro()
+        {
+            lucro = faturamento - gastos;
+        }
     }
 }
