@@ -13,7 +13,7 @@ namespace Gerenciador_de_Estoque.DAO
             string final = dataFinal.Year + "-" + dataFinal.Month + "-" + dataFinal.Day + " 23-59-59";
             try
             {
-                cmd.CommandText = $"SELECT COALESCE(SUM(preco * qtd) - SUM(desconto * qtd) + SUM(acrescimo * qtd) - (SELECT SUM(fretepedido) FROM pedidos WHERE statuspedido = 'Fechado' AND operacaopedido = 'SAIDA'), 0) as Faturamento FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Pago' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'SAIDA' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
+                cmd.CommandText = $"SELECT COALESCE(SUM(preco * qtd) - SUM(desconto) + SUM(acrescimo) - (SELECT SUM(fretepedido) FROM pedidos WHERE statuspedido = 'Fechado' AND operacaopedido = 'SAIDA'), 0) as Faturamento FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Pago' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'SAIDA' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
                 MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
@@ -35,7 +35,7 @@ namespace Gerenciador_de_Estoque.DAO
             string final = dataFinal.Year + "-" + dataFinal.Month + "-" + dataFinal.Day + " 23-59-59";
             try
             {
-                cmd.CommandText = $"SELECT COALESCE(SUM(custo * qtd) - SUM(desconto * qtd) + SUM(acrescimo * qtd) + (SELECT SUM(fretepedido) FROM pedidos WHERE statuspedido = 'Fechado' AND operacaopedido = 'ENTRADA'), 0) as Gastos FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Pago' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'ENTRADA' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
+                cmd.CommandText = $"SELECT COALESCE(SUM(custo * qtd) - SUM(desconto) + SUM(acrescimo) + (SELECT SUM(fretepedido) FROM pedidos WHERE statuspedido = 'Fechado' AND operacaopedido = 'ENTRADA'), 0) as Gastos FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Pago' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'ENTRADA' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
                 MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
@@ -57,7 +57,7 @@ namespace Gerenciador_de_Estoque.DAO
             string final = dataFinal.Year + "-" + dataFinal.Month + "-" + dataFinal.Day + " 23-59-59";
             try
             {
-                cmd.CommandText = $"SELECT COALESCE(SUM(preco * qtd) - SUM(desconto * qtd) + SUM(acrescimo * qtd), 0) as Fiados  FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fiado' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'SAIDA' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
+                cmd.CommandText = $"SELECT COALESCE(SUM(preco * qtd) - SUM(desconto) + SUM(acrescimo), 0) as Fiados  FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fiado' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'SAIDA' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
                 MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
@@ -79,7 +79,7 @@ namespace Gerenciador_de_Estoque.DAO
             string final = dataFinal.Year + "-" + dataFinal.Month + "-" + dataFinal.Day + " 23-59-59";
             try
             {
-                cmd.CommandText = $"SELECT COALESCE(SUM(custo * qtd) - SUM(desconto * qtd) + SUM(acrescimo * qtd), 0) as Dividas  FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fiado' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Entrada' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
+                cmd.CommandText = $"SELECT COALESCE(SUM(custo * qtd) - SUM(desconto) + SUM(acrescimo), 0) as Dividas  FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fiado' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Entrada' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
                 MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
@@ -92,6 +92,28 @@ namespace Gerenciador_de_Estoque.DAO
                 MessageBox.Show("Falha ao Calcular Dividas! \n\n" + e, "Financeiro: Calcular Dividas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dividas;
+        }
+
+        public decimal CalcularLucroDeVendasPorPeriodo(DateTime dataInicial, DateTime dataFinal)
+        {
+            decimal lucro = 0;
+            string inicio = dataInicial.Year + "-" + dataInicial.Month + "-" + dataInicial.Day + " 00-00-00";
+            string final = dataFinal.Year + "-" + dataFinal.Month + "-" + dataFinal.Day + " 23-59-59";
+            try
+            {
+                cmd.CommandText = $"SELECT (SUM(preco * qtd) - SUM(custo * qtd)) - SUM(desconto) + SUM(acrescimo) as Lucro FROM  pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Pago' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'SAIDA' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    lucro = dr.GetDecimal(1);
+                }
+                dr.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Falha ao Calcular Lucro! \n\n" + e, "Financeiro: Calcular Lucro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return lucro;
         }
     }
 }
