@@ -156,6 +156,12 @@
     <Compile Include="VIEW\TelaCategorias.Designer.cs">
       <DependentUpon>TelaCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\TelaFinanceiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\TelaFinanceiro.Designer.cs">
+      <DependentUpon>TelaFinanceiro.cs</DependentUpon>
+    </Compile>
     <Compile Include="VIEW\TelaPedidos\FormPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TelaCategorias.resx">
       <DependentUpon>TelaCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\TelaFinanceiro.resx">
+      <DependentUpon>TelaFinanceiro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TelaPedidos\FormPedido.resx">
       <DependentUpon>FormPedido.cs</DependentUpon>
