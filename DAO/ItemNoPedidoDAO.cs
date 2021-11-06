@@ -16,8 +16,8 @@ namespace Gerenciador_de_Estoque.DAO
             NomeTodasColunas = new string[] { "pedidos_idpedido", "produtos_idproduto", "custo", "preco", "qtd", "desconto", "acrescimo" };
             ApelidoTodasColunas = new string[] { "IdPedido", "IdPeoduto", "Custo", "Preço", "Quantidade", "Desconto", "Acrescimo" };
 
-            NomeColunasSelect = new string[] { "(SELECT nomeproduto FROM produtos WHERE idproduto = produtos_idproduto)", "preco", "qtd", "desconto", "acrescimo" };
-            ApelidoColunasSelect = new string[] { "Produto", "Preço", "Quantidade", "Desconto", "Acréscimo" };
+            NomeColunasSelect = new string[] { "(SELECT nomeproduto FROM produtos WHERE idproduto = produtos_idproduto)", "(SELECT tamanhoproduto FROM produtos WHERE idproduto = produtos_idproduto)", "preco", "qtd", "desconto", "acrescimo", "(preco * qtd) - desconto + acrescimo"};
+            ApelidoColunasSelect = new string[] { "Produto", "Tamanho","Preço", "Quantidade", "Desconto", "Acréscimo", "Total"};
 
             ColunasInserir = NomeTodasColunas;
             ParametrosColunasInserir = new string[] { "?idpedido", "?idproduto", "?custo","?preco", "?quantidade", "?desconto", "?acrescimo" };
