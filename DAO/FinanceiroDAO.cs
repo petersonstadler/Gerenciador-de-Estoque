@@ -57,7 +57,7 @@ namespace Gerenciador_de_Estoque.DAO
             string final = dataFinal.Year + "-" + dataFinal.Month + "-" + dataFinal.Day + " 23-59-59";
             try
             {
-                cmd.CommandText = $"SELECT COALESCE(SUM(preco * qtd) - SUM(desconto) + SUM(acrescimo), 0) as Fiados  FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fiado' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'SAIDA' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
+                cmd.CommandText = $"SELECT COALESCE(SUM(preco * qtd - desconto + acrescimo), 0) as Fiados  FROM pedidos_has_produtos WHERE (SELECT statuspedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fechado' AND (SELECT financeiropedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'Fiado' AND (SELECT operacaopedido FROM pedidos WHERE idpedido = pedidos_idpedido) = 'SAIDA' AND (SELECT datapedido FROM pedidos WHERE idpedido = pedidos_idpedido) BETWEEN '{inicio}' AND '{final}'";
                 MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
