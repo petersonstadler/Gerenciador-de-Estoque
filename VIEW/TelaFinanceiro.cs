@@ -27,6 +27,8 @@ namespace Gerenciador_de_Estoque.VIEW
             CalcularGastos();
             CalcularLucro();
             CalcularLucroVendas();
+            CalcularDividas();
+            CalcularFiado();
         }
 
         private void CalcularFaturamento()
@@ -57,6 +59,22 @@ namespace Gerenciador_de_Estoque.VIEW
             financeiro.LucroDasVendas = financeiroDAO.CalcularLucroDeVendasPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
             financeiroDAO.CloseConnections();
             lblValorLucroVendas.Text = "R$" + financeiro.LucroDasVendas;
+        }
+
+        private void CalcularDividas()
+        {
+            FinanceiroDAO financeiroDAO = new FinanceiroDAO();
+            financeiro.Dividas = financeiroDAO.CalcularDividasPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
+            financeiroDAO.CloseConnections();
+            lblValorDividas.Text = "R$" + financeiro.Dividas;
+        }
+
+        private void CalcularFiado()
+        {
+            FinanceiroDAO financeiroDAO = new FinanceiroDAO();
+            financeiro.Fiado = financeiroDAO.CalcularFiadosPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
+            financeiroDAO.CloseConnections();
+            lblValorFiado.Text = "R$" + financeiro.Fiado;
         }
     }
 }

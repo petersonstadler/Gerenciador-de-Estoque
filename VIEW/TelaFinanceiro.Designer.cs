@@ -36,7 +36,6 @@ namespace Gerenciador_de_Estoque.VIEW
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.panelApoioDeCima = new System.Windows.Forms.Panel();
             this.panelApoioDeBaixo = new System.Windows.Forms.Panel();
-            this.panelCentral = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblValorFiado = new System.Windows.Forms.Label();
             this.lblFiado = new System.Windows.Forms.Label();
@@ -55,13 +54,14 @@ namespace Gerenciador_de_Estoque.VIEW
             this.cardFaturamento = new System.Windows.Forms.Panel();
             this.lblValorFaturamentoTotal = new System.Windows.Forms.Label();
             this.labelFaturamentoTotal = new System.Windows.Forms.Label();
-            this.panelCentral.SuspendLayout();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.cardLucroVendas.SuspendLayout();
             this.cardLucro.SuspendLayout();
             this.cardFaturamento.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblFiltrarDe
@@ -130,31 +130,14 @@ namespace Gerenciador_de_Estoque.VIEW
             this.panelApoioDeBaixo.Size = new System.Drawing.Size(651, 36);
             this.panelApoioDeBaixo.TabIndex = 6;
             // 
-            // panelCentral
-            // 
-            this.panelCentral.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelCentral.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelCentral.Controls.Add(this.panel1);
-            this.panelCentral.Controls.Add(this.panel2);
-            this.panelCentral.Controls.Add(this.panel3);
-            this.panelCentral.Controls.Add(this.cardLucroVendas);
-            this.panelCentral.Controls.Add(this.cardLucro);
-            this.panelCentral.Controls.Add(this.cardFaturamento);
-            this.panelCentral.Location = new System.Drawing.Point(12, 77);
-            this.panelCentral.Name = "panelCentral";
-            this.panelCentral.Size = new System.Drawing.Size(651, 320);
-            this.panelCentral.TabIndex = 7;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkOrange;
             this.panel1.Controls.Add(this.lblValorFiado);
             this.panel1.Controls.Add(this.lblFiado);
-            this.panel1.Location = new System.Drawing.Point(437, 109);
+            this.panel1.Location = new System.Drawing.Point(441, 114);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(211, 100);
+            this.panel1.Size = new System.Drawing.Size(207, 100);
             this.panel1.TabIndex = 4;
             // 
             // lblValorFiado
@@ -182,7 +165,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.panel2.BackColor = System.Drawing.Color.Indigo;
             this.panel2.Controls.Add(this.lblValorDividas);
             this.panel2.Controls.Add(this.lblDividas);
-            this.panel2.Location = new System.Drawing.Point(220, 109);
+            this.panel2.Location = new System.Drawing.Point(222, 114);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(211, 100);
             this.panel2.TabIndex = 3;
@@ -212,7 +195,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.panel3.BackColor = System.Drawing.Color.DarkRed;
             this.panel3.Controls.Add(this.lblValorGastos);
             this.panel3.Controls.Add(this.lblGastos);
-            this.panel3.Location = new System.Drawing.Point(3, 109);
+            this.panel3.Location = new System.Drawing.Point(3, 114);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(211, 100);
             this.panel3.TabIndex = 2;
@@ -242,9 +225,9 @@ namespace Gerenciador_de_Estoque.VIEW
             this.cardLucroVendas.BackColor = System.Drawing.Color.DarkGreen;
             this.cardLucroVendas.Controls.Add(this.lblValorLucroVendas);
             this.cardLucroVendas.Controls.Add(this.lblLucroDeVendas);
-            this.cardLucroVendas.Location = new System.Drawing.Point(437, 3);
+            this.cardLucroVendas.Location = new System.Drawing.Point(441, 3);
             this.cardLucroVendas.Name = "cardLucroVendas";
-            this.cardLucroVendas.Size = new System.Drawing.Size(211, 100);
+            this.cardLucroVendas.Size = new System.Drawing.Size(207, 100);
             this.cardLucroVendas.TabIndex = 1;
             // 
             // lblValorLucroVendas
@@ -272,7 +255,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.cardLucro.BackColor = System.Drawing.Color.Green;
             this.cardLucro.Controls.Add(this.lblValorLucroLiquido);
             this.cardLucro.Controls.Add(this.lblLucroLiquido);
-            this.cardLucro.Location = new System.Drawing.Point(220, 3);
+            this.cardLucro.Location = new System.Drawing.Point(222, 3);
             this.cardLucro.Name = "cardLucro";
             this.cardLucro.Size = new System.Drawing.Size(211, 100);
             this.cardLucro.TabIndex = 1;
@@ -327,13 +310,34 @@ namespace Gerenciador_de_Estoque.VIEW
             this.labelFaturamentoTotal.TabIndex = 0;
             this.labelFaturamentoTotal.Text = "Faturamento Total";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 212F));
+            this.tableLayoutPanel1.Controls.Add(this.cardFaturamento, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cardLucro, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cardLucroVendas, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 77);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.6875F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.3125F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(651, 320);
+            this.tableLayoutPanel1.TabIndex = 7;
+            // 
             // TelaFinanceiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(675, 451);
-            this.Controls.Add(this.panelCentral);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panelApoioDeBaixo);
             this.Controls.Add(this.panelApoioDeCima);
             this.Controls.Add(this.btnAtualizar);
@@ -345,7 +349,6 @@ namespace Gerenciador_de_Estoque.VIEW
             this.Name = "TelaFinanceiro";
             this.Text = "TelaFinanceiro";
             this.Load += new System.EventHandler(this.TelaFinanceiro_Load);
-            this.panelCentral.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -358,6 +361,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.cardLucro.PerformLayout();
             this.cardFaturamento.ResumeLayout(false);
             this.cardFaturamento.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,7 +376,6 @@ namespace Gerenciador_de_Estoque.VIEW
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Panel panelApoioDeCima;
         private System.Windows.Forms.Panel panelApoioDeBaixo;
-        private System.Windows.Forms.Panel panelCentral;
         private System.Windows.Forms.Panel cardFaturamento;
         private System.Windows.Forms.Panel cardLucroVendas;
         private System.Windows.Forms.Panel cardLucro;
@@ -391,5 +394,6 @@ namespace Gerenciador_de_Estoque.VIEW
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblValorGastos;
         private System.Windows.Forms.Label lblGastos;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
