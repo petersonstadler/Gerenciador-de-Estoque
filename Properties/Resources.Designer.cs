@@ -83,9 +83,39 @@ namespace Gerenciador_de_Estoque.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap financeiro_icon {
+            get {
+                object obj = ResourceManager.GetObject("financeiro icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_categoria {
             get {
                 object obj = ResourceManager.GetObject("icon-categoria", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_financeiro {
+            get {
+                object obj = ResourceManager.GetObject("icon financeiro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_financeiro_ok {
+            get {
+                object obj = ResourceManager.GetObject("icon financeiro ok", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

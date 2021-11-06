@@ -111,5 +111,21 @@ namespace Gerenciador_de_Estoque
             TelaCategorias telaCategorias = new TelaCategorias();
             telaCategorias.ShowDialog();
         }
+
+        private void btnFinanceiro_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new TelaFinanceiro());
+            /*Financeiro financeiro = new Financeiro();
+            FinanceiroDAO financeiroDAO = new FinanceiroDAO();
+            financeiro.DataInicial = new DateTime(2021, 8, 1, 8, 30, 00);
+            financeiro.DataFinal = DateTime.Now;
+            financeiro.Faturamento = financeiroDAO.CalcularFaturamentoPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
+            financeiro.Gastos = financeiroDAO.CalcularGastosPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
+            financeiro.Lucro = financeiro.Faturamento - financeiro.Gastos;
+            financeiro.Fiado = financeiroDAO.CalcularFiadosPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
+            financeiro.Dividas = financeiroDAO.CalcularDividasPorPeriodo(financeiro.DataInicial, financeiro.DataFinal);
+            MessageBox.Show("As datas são: " + financeiro.DataInicial + " e " + financeiro.DataFinal + " O faturamento é: " + financeiro.Faturamento + " e os gastos são: " + financeiro.Gastos + " e o lucro é: " + financeiro.Lucro + " e para receber tem: " + financeiro.Fiado + " e suas dividas são: " + financeiro.Dividas);
+            financeiroDAO.CloseConnections();*/
+        }
     }
 }

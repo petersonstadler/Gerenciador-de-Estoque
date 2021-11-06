@@ -38,6 +38,7 @@ namespace Gerenciador_de_Estoque
             this.iconAumentar = new System.Windows.Forms.PictureBox();
             this.iconFechar = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
+            this.btnFinanceiro = new System.Windows.Forms.Button();
             this.btnCategorias = new System.Windows.Forms.Button();
             this.btnPedidos = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -55,6 +56,7 @@ namespace Gerenciador_de_Estoque
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.MenuVertical.Controls.Add(this.btnFinanceiro);
             this.MenuVertical.Controls.Add(this.btnCategorias);
             this.MenuVertical.Controls.Add(this.btnPedidos);
             this.MenuVertical.Controls.Add(this.button1);
@@ -147,6 +149,24 @@ namespace Gerenciador_de_Estoque
             this.btnSlide.TabIndex = 0;
             this.btnSlide.TabStop = false;
             this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
+            // 
+            // btnFinanceiro
+            // 
+            this.btnFinanceiro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFinanceiro.FlatAppearance.BorderSize = 0;
+            this.btnFinanceiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnFinanceiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinanceiro.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinanceiro.ForeColor = System.Drawing.Color.White;
+            this.btnFinanceiro.Image = global::Gerenciador_de_Estoque.Properties.Resources.icon_financeiro_ok;
+            this.btnFinanceiro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFinanceiro.Location = new System.Drawing.Point(0, 224);
+            this.btnFinanceiro.Name = "btnFinanceiro";
+            this.btnFinanceiro.Size = new System.Drawing.Size(250, 40);
+            this.btnFinanceiro.TabIndex = 4;
+            this.btnFinanceiro.Text = "Financeiro";
+            this.btnFinanceiro.UseVisualStyleBackColor = true;
+            this.btnFinanceiro.Click += new System.EventHandler(this.btnFinanceiro_Click);
             // 
             // btnCategorias
             // 
@@ -250,6 +270,7 @@ namespace Gerenciador_de_Estoque
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnPedidos;
         private System.Windows.Forms.Button btnCategorias;
+        private System.Windows.Forms.Button btnFinanceiro;
     }
 }
 
