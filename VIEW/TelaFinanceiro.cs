@@ -76,5 +76,29 @@ namespace Gerenciador_de_Estoque.VIEW
             financeiroDAO.CloseConnections();
             lblValorFiado.Text = "R$" + financeiro.Fiado;
         }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            if (ValidarDatas())
+            {
+                financeiro.DataInicial = dataInicialPicker.Value;
+                financeiro.DataFinal = dataFinalPicker.Value;
+                GerarFinanceiro();
+            }
+            else
+            {
+                MessageBox.Show("A data Inicial não pode ser maior que a data final!", "Calcular Financeiro por Periodo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private bool ValidarDatas()
+        {
+            int valor = DateTime.Compare(dataInicialPicker.Value, dataFinalPicker.Value);
+            if(valor > 1)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

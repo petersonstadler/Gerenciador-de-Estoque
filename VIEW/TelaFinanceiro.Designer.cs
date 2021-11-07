@@ -111,6 +111,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.btnAtualizar.TabIndex = 4;
             this.btnAtualizar.Text = "Atualizar Informações";
             this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // panelApoioDeCima
             // 
@@ -348,6 +349,7 @@ namespace Gerenciador_de_Estoque.VIEW
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TelaFinanceiro";
             this.Text = "TelaFinanceiro";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TelaFinanceiro_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
