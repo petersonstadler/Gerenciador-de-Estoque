@@ -29,7 +29,7 @@ namespace Gerenciador_de_Estoque.VIEW.TelaPedidos
             InitializeComponent();
             item = itemRecebido;
             ProdutoDAO produtoDAO = MontarProdutoDAO();
-            dataGridProduto.DataSource = produtoDAO.ListarEmDataTable();
+            dataGridProduto.DataSource = produtoDAO.ListarEmDataTableComFiltros("ativoproduto = 1");
             txtAcrescimo.Text = "0";
             txtDesconto.Text = "0";
             txtQuantidade.Text = "1";
